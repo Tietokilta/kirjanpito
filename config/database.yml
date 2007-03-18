@@ -13,7 +13,7 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql
-  database: TiKirjanpito_development
+  database: tikki_development
   username: root
   password:
   host: localhost
@@ -23,14 +23,14 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql
-  database: TiKirjanpito_test
+  database: tikki_test
   username: root
   password:
   host: localhost
 
 production:
   adapter: mysql
-  database: TiKirjanpito_production
+  database: tikki_production
   username: root
   password: 
   host: localhost
