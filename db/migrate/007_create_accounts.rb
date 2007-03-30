@@ -10,9 +10,17 @@ class CreateAccounts < ActiveRecord::Migration
       t.column "type_id",           :integer
       t.column "parent_id",         :integer
     end
+
+		foreign_key(:accounts, :fiscal_period_id, :fiscal_periods)
+		foreign_key(:accounts, :parent_id, :accounts)
+		foreign_key(:accounts, :type_id, :account_types)
+
   end
 
   def self.down
+		drop_foreign_key(:accounts, :fiscal_period_id, :fiscal_periods)
+		drop_foreign_key(:accounts, :parent_id, :accounts)
+		drop_foreign_key(:accounts, :type_id, :account_types)
     drop_table :accounts
   end
 end
