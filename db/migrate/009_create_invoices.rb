@@ -1,4 +1,8 @@
+require 'migration_helpers'
+
 class CreateInvoices < ActiveRecord::Migration
+  extend MigrationHelpers
+
   def self.up
     create_table :invoices do |t|
 			t.column "date", :date

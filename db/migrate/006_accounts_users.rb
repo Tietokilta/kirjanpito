@@ -1,6 +1,8 @@
 require 'migration_helpers'
 
 class AccountsUsers < ActiveRecord::Migration
+  extend MigrationHelpers
+
   def self.up
     create_table :accounts_users do |t|
       t.column "account_id", :integer

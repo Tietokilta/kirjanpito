@@ -4,7 +4,7 @@ module MigrationHelpers
     
     execute %{alter table #{from_table}
               add constraint #{constraint_name}
-              foreign key #{from_column}
+              foreign key (#{from_column})
               references #{to_table}(id)}
   end
 

@@ -1,6 +1,8 @@
 require 'migration_helpers'
 
 class CreateEntries < ActiveRecord::Migration
+  extend MigrationHelpers
+
   def self.up
     create_table :entries do |t|
 			t.column "receipt_number",    :integer

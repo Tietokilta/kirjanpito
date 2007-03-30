@@ -1,3 +1,5 @@
+require 'migration_helpers'
+
 class CreateFiscalPeriods < ActiveRecord::Migration
   def self.up
     create_table :fiscal_periods do |t|

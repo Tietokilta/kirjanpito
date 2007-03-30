@@ -1,6 +1,8 @@
 require 'migration_helpers'
 
 class CreateAccounts < ActiveRecord::Migration
+  extend MigrationHelpers
+
   def self.up
     create_table :accounts do |t|
       t.column "name",              :string

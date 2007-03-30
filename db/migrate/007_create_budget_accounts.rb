@@ -1,4 +1,8 @@
+require 'migration_helpers'
+
 class CreateBudgetAccounts < ActiveRecord::Migration
+  extend MigrationHelpers
+
   def self.up
     create_table :budget_accounts do |t|
 			t.column "budget_id",   :integer
