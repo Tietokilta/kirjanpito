@@ -20,4 +20,12 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
+
+  # RESTful routes
+  map.resources :users, :sessions
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
+
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.login  '/login', :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
 end
