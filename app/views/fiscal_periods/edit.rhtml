@@ -1,0 +1,9 @@
+<h1>Editing fiscal_period</h1>
+
+<% form_tag :action => 'update', :id => @fiscal_period do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @fiscal_period %> |
+<%= link_to 'Back', :action => 'list' %>
