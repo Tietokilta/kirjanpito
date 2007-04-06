@@ -17,4 +17,15 @@ class Account < ActiveRecord::Base
   belongs_to  :account
   belongs_to  :account_type
 
+  validates_presence_of :name, :fiscal_period_id, :number, :type_id
+  validates_numericality_of :number, :only_integer => true, 
+    :message => " must be an integer."
+  validates_length_of :number, :is => 4,
+    :message => " must have 4 digits."
+  validates_uniqueness_of :number, :scope => "fiscal_period_id"
+ 
+  def validate
+    errors.add_to_base('The selected fiscal period does not exist.') if account.nil?
+  end 
+
 end

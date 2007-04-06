@@ -1,0 +1,50 @@
+<style>
+  div.auto_complete {
+    width: 350px;
+    background: #fff;
+  }
+  div.auto_complete ul {
+    border:1px solid #888;
+    margin:0;
+    padding:0;
+    width:100%;
+    list-style-type:none;
+  }
+  div.auto_complete ul li {
+    margin:0;
+    padding:3px;
+  }
+  div.auto_complete ul li.selected {
+    background-color: #ffb;
+  }
+  div.auto_complete ul strong.highlight {
+    color: #800;
+    margin:0;
+    padding:0;
+  }
+</style>
+
+<%= error_messages_for 'account' %>
+
+<!--[form:account]-->
+<p><label for="account_name">Name</label><br/>
+<%= text_field 'account', 'name'  %></p>
+
+<p><label for="account_number">Number</label><br/>
+<%= text_field 'account', 'number'  %></p>
+
+<p><label for="account_description">Description</label><br/>
+<%= text_field 'account', 'description'  %></p>
+
+<p><label for="account_fiscal_period_id">Fiscal period</label><br/>
+<input id="account_fiscal_period_id" name="account[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period_id.startdate unless @fiscal_period_id.nil? %> - <%= @fiscal_period_id.enddate unless @fiscal_period_id.nil? %>" /></p>
+<div class="auto_complete" id="account_fiscal_period_id_auto_complete"></div>
+<%= auto_complete_field 'account_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
+
+<p><label for="account_account_type_id">Account type</label><br/>
+<input id="account_account_type_id" name="account[account_type_id]" size="30" type="text" value="<%= @account_type_id.description unless @account_type_id.nil? %>" /></p>
+<div class="auto_complete" id="account_account_type_id_auto_complete"></div>
+<%= auto_complete_field 'account_account_type_id', :url => {:action => 'autocomplete_account_type_id'} %>
+
+<!--[eoform:account]-->
+

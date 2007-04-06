@@ -1,0 +1,5 @@
+<ul class="autocomplete_list" >
+        <% @fiscal_period_ids.each do |fp| %>
+        <li class="autocomplete_item" ><%= fp.startdate %> - <%= h(fp.enddate) %></li>
+        <% end %>
+</ul>
