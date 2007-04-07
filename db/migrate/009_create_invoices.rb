@@ -23,9 +23,9 @@ class CreateInvoices < ActiveRecord::Migration
   end
 
   def self.down
-		drop_foreign_key(:invoices, :fiscal_period_id, :fiscal_periods)
-		drop_foreign_key(:invoices, :source_account_id, :accounts)
-		drop_foreign_key(:invoices, :target_account_id, :accounts)
+#		drop_foreign_key(:invoices, :fiscal_period_id, :fiscal_periods)
+#		drop_foreign_key(:invoices, :source_account_id, :accounts)
+#		drop_foreign_key(:invoices, :target_account_id, :accounts)
     drop_table :invoices
   end
 end

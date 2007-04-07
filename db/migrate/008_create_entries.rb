@@ -20,9 +20,9 @@ class CreateEntries < ActiveRecord::Migration
   end
 
   def self.down
-		drop_foreign_key(:entries, :fiscal_period_id, :fiscal_periods);
-		drop_foreign_key(:entries, :debet_account_id, :accounts);
-		drop_foreign_key(:entries, :credit_account_id, :accounts);
+#		drop_foreign_key(:entries, :fiscal_period_id, :fiscal_periods);
+#		drop_foreign_key(:entries, :debet_account_id, :accounts);
+#		drop_foreign_key(:entries, :credit_account_id, :accounts);
 		
     drop_table :entries
   end

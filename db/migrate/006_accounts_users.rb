@@ -14,8 +14,8 @@ class AccountsUsers < ActiveRecord::Migration
   end
 
   def self.down
-    drop_foreign_key(:accounts_users, :account_id, :accounts)
-    drop_foreign_key(:accounts_users, :user_id, :users)
+#    drop_foreign_key(:accounts_users, :account_id, :accounts)
+#    drop_foreign_key(:accounts_users, :user_id, :users)
     drop_table :accounts_users
   end
 end

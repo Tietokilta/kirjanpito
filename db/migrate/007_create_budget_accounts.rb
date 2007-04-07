@@ -15,8 +15,8 @@ class CreateBudgetAccounts < ActiveRecord::Migration
   end
 
   def self.down
-		drop_foreign_key(:budget_accounts, :budget_id, :budgets)
-		drop_foreign_key(:budget_accounts, :account_id, :accounts)
+#		drop_foreign_key(:budget_accounts, :budget_id, :budgets)
+#		drop_foreign_key(:budget_accounts, :account_id, :accounts)
 
     drop_table :budget_accounts
   end

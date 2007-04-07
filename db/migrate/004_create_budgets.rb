@@ -13,7 +13,7 @@ class CreateBudgets < ActiveRecord::Migration
   end
 
   def self.down
-		drop_foreign_key(:budgets, :fiscal_period_id, :fiscal_periods)
+#		drop_foreign_key(:budgets, :fiscal_period_id, :fiscal_periods)
 
     drop_table :budgets
   end

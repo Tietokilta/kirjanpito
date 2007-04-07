@@ -6,6 +6,9 @@ login: &login
 <% if `uname -n`.strip == "ampere.aketzu.net" %>
   username: tikki
   password: D.uMJK4pjxnrE9uH
+<% elsif `uname -n`.strip == "kjue" %>
+  username: tikki
+  password: tikki
 <% else %>
   username: root
   password: 
