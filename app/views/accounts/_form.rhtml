@@ -31,7 +31,7 @@
 <%= text_field 'account', 'name'  %></p>
 
 <p><label for="account_number">Number</label><br/>
-<%= text_field 'account', 'number'  %></p>
+<input id="account_number" name="account[number]" size="30" type="text" value="<%= "%04d" % @account.number %>" /></p>
 
 <p><label for="account_description">Description</label><br/>
 <%= text_field 'account', 'description'  %></p>
@@ -41,10 +41,20 @@
 <div class="auto_complete" id="account_fiscal_period_id_auto_complete"></div>
 <%= auto_complete_field 'account_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
 
-<p><label for="account_account_type_id">Account type</label><br/>
-<input id="account_account_type_id" name="account[account_type_id]" size="30" type="text" value="<%= @account_type_id.description unless @account_type_id.nil? %>" /></p>
-<div class="auto_complete" id="account_account_type_id_auto_complete"></div>
-<%= auto_complete_field 'account_account_type_id', :url => {:action => 'autocomplete_account_type_id'} %>
+<p><label for="type_id">Account type</label><br/>
+<input id="type_id" name="account[type_id]" size="30" type="text" value="<%= @type_id.description unless @type_id.nil? %>" /></p>
+<div class="auto_complete" id="type_id_auto_complete"></div>
+<%= auto_complete_field 'type_id', :url => {:action => 'autocomplete_type_id'} %>
+
+<p><label for="parent_id">Parent account</label><br/>
+<input id="parent_id" name="account[parent_id]" size="30" type="text" value="<%= 
+    if @parent_id
+        parent = @parent_id.number.to_s + @parent_id.name
+        parent
+    end %>" /></p>
+<div class="auto_complete" id="parent_id_auto_complete"></div>
+<%= auto_complete_field 'parent_id', :url => {:action => 'autocomplete_parent_id'} %>
+
 
 <!--[eoform:account]-->
 

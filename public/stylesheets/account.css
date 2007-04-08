@@ -1,0 +1,9 @@
+.heading {
+    font-weight: bold;
+}
+
+.account {
+    font-weight: normal;
+    margin-left: 0; 
+    padding-left: 1em;
+}

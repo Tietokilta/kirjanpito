@@ -1,8 +1,37 @@
-<% for column in Account.content_columns %>
+<% for column in Account.columns %>
 <p>
-  <b><%= column.human_name %>:</b> <%=h @account.send(column.name) %>
+  <b><%= column.human_name %>:</b>
+  <%=
+    case column.human_name
+        when "Fiscal period"
+            fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            if fiscal_period
+                fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
+                fiscal_period
+            else
+                "&nbsp;"
+            end
+        when "Type"
+            type = AccountType.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            if type
+                type.description
+            else
+                "&nbsp;"
+            end
+        when "Parent"
+            parent = Account.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            if parent
+                parentnmbr = "%04d" % parent.number 
+                parent = parentnmbr +" " +parent.name
+                parent
+            else
+                "&nbsp;"
+            end
+        else
+            h @account.send(column.name)
+    end
+   %>
 </p>
 <% end %>
-
 <%= link_to 'Edit', :action => 'edit', :id => @account %> |
 <%= link_to 'Back', :action => 'list' %>

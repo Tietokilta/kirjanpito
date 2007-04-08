@@ -5,10 +5,10 @@ class CreateAccounts < ActiveRecord::Migration
 
   def self.up
     create_table :accounts do |t|
-      t.column "name",              :string
-      t.column "fiscal_period_id",  :integer
       t.column "number",            :integer
+      t.column "name",              :string
       t.column "description",       :string
+      t.column "fiscal_period_id",  :integer
       t.column "type_id",           :integer
       t.column "parent_id",         :integer
     end

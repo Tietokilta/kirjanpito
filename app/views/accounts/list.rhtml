@@ -2,26 +2,69 @@
 
 <table>
   <tr>
-  <% for column in Account.content_columns %>
-    <th><%= column.human_name %></th>
+  <% for column in Account.columns
+    case column.human_name
+        when "Id"
+        else
+            %><th><%= column.human_name %></th>
+    <% end %>
   <% end %>
   </tr>
   
-<% for account in @accounts %>
-  <tr>
-  <% for column in Account.content_columns %>
-    <td><%=h account.send(column.name) %></td>
-  <% end %>
+<% for heading in @accounts %>
+  <% if !heading.parent_id %>
+  <tr class="heading">
+  <td  colspan=<%= Account.columns.length %>>
+      <%= heading.send("name") %>
+  </td>
+  </tr>
+    <% for account in Account.find(:all, :conditions => ['parent_id = ?', heading.id]) %>
+        <tr class="account">
+        <% for column in Account.columns %>
+        <% if column.human_name == "Id" 
+            else %>
+            <td>
+            <%=
+            case column.human_name
+                when "Id"
+                when "Fiscal period"
+                    fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', account.send(column.name)])
+                    if fiscal_period
+                        fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
+                        fiscal_period
+                    else
+                        "&nbsp;"
+                    end
+                when "Type"
+                    type = AccountType.find(:first, :conditions => ['id = ?', account.send(column.name)])
+                    if type
+                        type.description
+                    else
+                        "&nbsp;"
+                    end
+                when "Parent"
+                    parent = Account.find(:first, :conditions => ['id = ?', account.send(column.name)])
+                    if parent
+                        parent = parent.number.to_s +  " " + parent.name
+                        parent
+                     else
+                        "&nbsp;"
+                    end
+                 when "Number"
+                    "%04d" % account.number
+                 else
+                    h account.send(column.name)
+            end %>
+            </td>
+        <% end %>
+        <% end %>
     <td><%= link_to 'Show', :action => 'show', :id => account %></td>
     <td><%= link_to 'Edit', :action => 'edit', :id => account %></td>
     <td><%= link_to 'Destroy', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %></td>
   </tr>
+    <% end %>
+  <% end %>
 <% end %>
 </table>
-
-<%= link_to 'Previous page', { :page => @account_pages.current.previous } if @account_pages.current.previous %>
-<%= link_to 'Next page', { :page => @account_pages.current.next } if @account_pages.current.next %> 
-
-<br />
 
 <%= link_to 'New account', :action => 'new' %>
