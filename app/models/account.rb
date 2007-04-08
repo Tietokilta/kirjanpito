@@ -18,16 +18,20 @@ class Account < ActiveRecord::Base
   belongs_to  :account_type
 
   validates_presence_of :name, :fiscal_period_id, :type_id
-  validates_numericality_of :number, :only_integer => true, 
-    :message => " must be an integer."
-#  validates_uniqueness_of :number, :scope => "fiscal_period_id"
+#  validates_numericality_of :number, :only_integer => true, 
+#    :message => " must be an integer."
+  validates_uniqueness_of :number, :scope => "fiscal_period_id"
 
   def validate
     errors.add_to_base('The given fiscal period does not exist.') if fiscal_period_id.nil?
   end 
 
   def smallest_child
-    return Account.minimum("number", :conditions => ['parent_id = ?', self.id])
+    sc = Account.minimum("number", :conditions => ['parent_id = ?', self.id])
+    if !sc
+      sc = 10000;
+    end
+    return sc
   end
 
 end

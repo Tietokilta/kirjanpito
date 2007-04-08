@@ -1,25 +1,40 @@
 <h1>Listing accounts</h1>
 
+
+<p>Select fiscal period:</p>
+<% form_for :fiscal_period do |form| %> 
+
+<%= 
+@fp = FiscalPeriod.find(:all, :order => "id").map {|fp| [[fp.startdate.strftime("%d.%m.%Y"), " - ", fp.enddate.strftime("%d.%m.%Y")], fp.id] }
+form.select(:id, @fp) 
+%>
+<% end %> 
+</p><br />
 <table>
-  <tr>
-  <% for column in Account.columns
-    case column.human_name
-        when "Id"
-        else
-            %><th><%= column.human_name %></th>
-    <% end %>
-  <% end %>
-  </tr>
   
-<% for heading in @accounts %>
-  <% if !heading.parent_id %>
-  <tr class="heading">
-  <td  colspan=<%= Account.columns.length %>>
-      <%= heading.send("name") %>
-  </td>
-  </tr>
-    <% for account in Account.find(:all, :conditions => ['parent_id = ?', heading.id]) %>
-        <tr class="account">
+  <% for heading in @headings %>
+    <tr class="heading">
+    <td  colspan=<%= Account.columns.length+2 %>>
+        <%= heading.name %>: <%= heading.description %>
+    </td></tr>
+    <tr>
+      <% for column in Account.columns
+        case column.human_name
+            when "Id"
+            else
+                %><th><%= column.human_name %></th>
+        <% end %>
+      <% end %>
+    </tr>
+    <% i = 0; %>
+    <% for account in @accounts[heading.id] %>
+        <% i += 1; %>
+        <tr class="<%= if i % 2 == 0
+            "even_row"
+        else
+            "odd_row"
+        end    
+        %>">
         <% for column in Account.columns %>
         <% if column.human_name == "Id" 
             else %>
@@ -64,7 +79,6 @@
   </tr>
     <% end %>
   <% end %>
-<% end %>
 </table>
 
 <%= link_to 'New account', :action => 'new' %>

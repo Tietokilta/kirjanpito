@@ -1,9 +1,12 @@
 .heading {
+    background-color: grey;
     font-weight: bold;
 }
 
-.account {
-    font-weight: normal;
-    margin-left: 0; 
-    padding-left: 1em;
+.even_row {
+    background-color: #faf7f3;
+}
+
+.odd_row {
+    background-color: #e7ebdb;
 }

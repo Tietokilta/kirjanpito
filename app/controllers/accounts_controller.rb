@@ -9,7 +9,12 @@ class AccountsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @accounts = Account.find(:all, :order => "parent_id")
+    @headings = Account.find(:all, :conditions => 'parent_id IS NULL')
+    @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
+    @accounts = Hash.new
+    for h in @headings
+      @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
+    end
   end
 
   def show
