@@ -37,7 +37,7 @@
 <%= text_field 'account', 'description'  %></p>
 
 <p><label for="account_fiscal_period_id">Fiscal period</label><br/>
-<input id="account_fiscal_period_id" name="account[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period_id.startdate unless @fiscal_period_id.nil? %> - <%= @fiscal_period_id.enddate unless @fiscal_period_id.nil? %>" /></p>
+<input id="account_fiscal_period_id" name="account[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + @fiscal_period.enddate.strftime("%d.%m.%Y") unless @fiscal_period.nil? %>" /></p>
 <div class="auto_complete" id="account_fiscal_period_id_auto_complete"></div>
 <%= auto_complete_field 'account_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
 

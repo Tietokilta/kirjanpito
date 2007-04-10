@@ -1,84 +1,28 @@
 <h1>Listing accounts</h1>
 
 
-<p>Select fiscal period:</p>
-<% form_for :fiscal_period do |form| %> 
-
+<p>
+<form name="sform" action="" style="display:inline;">
+Select fiscal period:
 <%= 
-@fp = FiscalPeriod.find(:all, :order => "id").map {|fp| [[fp.startdate.strftime("%d.%m.%Y"), " - ", fp.enddate.strftime("%d.%m.%Y")], fp.id] }
-form.select(:id, @fp) 
+select_tag "query", options_for_select(@fp_options, :selected => @fiscal_period_id)
 %>
-<% end %> 
-</p><br />
-<table>
-  
-  <% for heading in @headings %>
-    <tr class="heading">
-    <td  colspan=<%= Account.columns.length+2 %>>
-        <%= heading.name %>: <%= heading.description %>
-    </td></tr>
-    <tr>
-      <% for column in Account.columns
-        case column.human_name
-            when "Id"
-            else
-                %><th><%= column.human_name %></th>
-        <% end %>
-      <% end %>
-    </tr>
-    <% i = 0; %>
-    <% for account in @accounts[heading.id] %>
-        <% i += 1; %>
-        <tr class="<%= if i % 2 == 0
-            "even_row"
-        else
-            "odd_row"
-        end    
-        %>">
-        <% for column in Account.columns %>
-        <% if column.human_name == "Id" 
-            else %>
-            <td>
-            <%=
-            case column.human_name
-                when "Id"
-                when "Fiscal period"
-                    fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', account.send(column.name)])
-                    if fiscal_period
-                        fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
-                        fiscal_period
-                    else
-                        "&nbsp;"
-                    end
-                when "Type"
-                    type = AccountType.find(:first, :conditions => ['id = ?', account.send(column.name)])
-                    if type
-                        type.description
-                    else
-                        "&nbsp;"
-                    end
-                when "Parent"
-                    parent = Account.find(:first, :conditions => ['id = ?', account.send(column.name)])
-                    if parent
-                        parent = parent.number.to_s +  " " + parent.name
-                        parent
-                     else
-                        "&nbsp;"
-                    end
-                 when "Number"
-                    "%04d" % account.number
-                 else
-                    h account.send(column.name)
-            end %>
-            </td>
-        <% end %>
-        <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => account %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => account %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %></td>
-  </tr>
-    <% end %>
-  <% end %>
-</table>
+</form>
+<%= image_tag("spinner.gif",
+    :align => 'absmiddle',
+    :border=> 0,
+    :id => "spinner",
+    :style=>"display: none;") %>
+</p>
 
-<%= link_to 'New account', :action => 'new' %>
+<%= observe_field 'query', :frequency => 2,
+    :update => 'table',
+    :before => "Element.show('spinner')",
+    :success => "Element.hide('spinner')",
+    :url => {:action => 'list'},
+    :with => 'query' %>
+
+<br />
+<div id="table">
+    <%= render :partial => "list" %>
+</div>

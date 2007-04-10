@@ -9,12 +9,24 @@ class AccountsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @headings = Account.find(:all, :conditions => 'parent_id IS NULL')
+    if params[:query].nil?
+      @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id")
+    elsif
+      @fiscal_period_id = params[:query]
+    end
+    @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @accounts = Hash.new
     for h in @headings
       @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
     end
+
+    if request.xml_http_request?
+      render :partial => "list", :layout => false
+    end
+
+    @fp_options = FiscalPeriod.find(:all, :order => "id DESC").map {|fp| [[fp.startdate.strftime("%d.%m.%Y"), " - ", fp.enddate.strftime("%d.%m.%Y")], fp.id] }
+
   end
 
   def show
@@ -23,6 +35,8 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
+    logger.info "FP " + params[:fiscal_period_id]
+    @fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', params[:fiscal_period_id]])
   end
 
   def create
@@ -61,7 +75,7 @@ class AccountsController < ApplicationController
 
   def edit
     @account = Account.find(params[:id])
-    @fiscal_period_id = FiscalPeriod.find(@account[:fiscal_period_id]) unless @account[:fiscal_period_id].nil?
+    @fiscal_period = FiscalPeriod.find(@account[:fiscal_period_id]) unless @account[:fiscal_period_id].nil?
     @type_id = AccountType.find(@account[:type_id]) unless @account[:type_id].nil?
   end
 
