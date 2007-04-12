@@ -35,7 +35,6 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
-    logger.info "FP " + params[:fiscal_period_id]
     @fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', params[:fiscal_period_id]])
   end
 
