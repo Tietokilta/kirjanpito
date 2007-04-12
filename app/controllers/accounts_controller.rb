@@ -40,10 +40,12 @@ class AccountsController < ApplicationController
 
   def create
     @dates = params[:account][:fiscal_period_id].split(" - ")
-    @fiscal_period = FiscalPeriod.find(:first,
+    @dates[0] = Date.strptime(@dates[0], "%d.%m.%Y")
+    @dates[1] = Date.strptime(@dates[1], "%d.%m.%Y")
+    @fiscal_period_id = FiscalPeriod.find(:first,
       :conditions => ['startdate LIKE ? AND enddate LIKE ?', @dates[0], @dates[1] ])
-    if @fiscal_period
-      @fiscal_period = @fiscal_period.id
+    if @fiscal_period_id
+      @fiscal_period_id = @fiscal_period_id.id
     end
 
     @type = AccountType.find(:first, :conditions => ['description LIKE ?', params[:account][:type_id]])
@@ -51,14 +53,14 @@ class AccountsController < ApplicationController
       @type = @type.id
     end
 
-    @parent = Account.find(:first, :conditions => ['number LIKE ?', params[:account][:parent_id][0..3]])
+    @parent = Account.find(:first, :conditions => ['name LIKE ?', params[:account][:parent_id][5..-1]])
     if @parent
       @parent = @parent.id
     end
     
     @account = Account.new({
       :name => params[:account][:name],
-      :fiscal_period_id => @fiscal_period,
+      :fiscal_period_id => @fiscal_period_id,
       :number => params[:account][:number],
       :description => params[:account][:description],
       :type_id => @type,
@@ -76,15 +78,18 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     @fiscal_period = FiscalPeriod.find(@account[:fiscal_period_id]) unless @account[:fiscal_period_id].nil?
     @type_id = AccountType.find(@account[:type_id]) unless @account[:type_id].nil?
+    @parent_id = Account.find(@account[:parent_id]) unless @account[:parent_id].nil?
   end
 
   def update
     @account = Account.find(params[:id])
     @dates = params[:account][:fiscal_period_id].split(" - ")
-    @fiscal_period = FiscalPeriod.find(:first,
+    @dates[0] = Date.strptime(@dates[0], "%d.%m.%Y")
+    @dates[1] = Date.strptime(@dates[1], "%d.%m.%Y")
+    @fiscal_period_id = FiscalPeriod.find(:first,
       :conditions => ['startdate LIKE ? AND enddate LIKE ?', @dates[0], @dates[1] ])
-    if @fiscal_period
-      @fiscal_period = @fiscal_period.id
+    if @fiscal_period_id
+      @fiscal_period_id = @fiscal_period_id.id
     end
 
     @type = AccountType.find(:first, :conditions => ['description LIKE ?', params[:account][:type_id]])
@@ -92,14 +97,14 @@ class AccountsController < ApplicationController
       @type = @type.id
     end
 
-    @parent = Account.find(:first, :conditions => ['number LIKE ?', params[:account][:parent_id][0..3]])
+    @parent = Account.find(:first, :conditions => ['name LIKE ?', params[:account][:parent_id][5..-1]])
     if @parent
       @parent = @parent.id
     end
     
     if @account.update_attributes({
       :name => params[:account][:name],
-      :fiscal_period_id => @fiscal_period,
+      :fiscal_period_id => @fiscal_period_id,
       :number => params[:account][:number],
       :description => params[:account][:description],
       :type_id => @type,

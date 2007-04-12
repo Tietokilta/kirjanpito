@@ -49,7 +49,8 @@
 <p><label for="parent_id">Parent account</label><br/>
 <input id="parent_id" name="account[parent_id]" size="30" type="text" value="<%= 
     if @parent_id
-        parent = @parent_id.number.to_s + @parent_id.name
+        parent_nmbr = "%04d" %  @parent_id.number
+        parent = parent_nmbr +" "+ @parent_id.name
         parent
     end %>" /></p>
 <div class="auto_complete" id="parent_id_auto_complete"></div>
