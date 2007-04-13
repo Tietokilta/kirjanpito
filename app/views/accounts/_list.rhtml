@@ -1,8 +1,8 @@
-<table>
+<table cellspacing=0 border=0>
   
   <% for heading in @headings %>
-    <tr class="heading">
-    <td  colspan=<%= Account.columns.length+2 %>>
+    <tr>
+    <td class="heading" colspan=<%= Account.columns.length+2 %>>
         <%= heading.name %>: <%= heading.description %>
     </td></tr>
     <tr>
@@ -13,6 +13,7 @@
                 %><th><%= column.human_name %></th>
         <% end %>
       <% end %>
+      <th>&nbsp;</th>
     </tr>
     <% i = 0; %>
     <% for account in @accounts[heading.id] %>
@@ -61,9 +62,13 @@
             </td>
         <% end %>
         <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => account %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => account %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %></td>
+    <td>
+    <div>
+    <%= link_to 'Show', :action => 'show', :id => account %>
+    <%= link_to 'Edit', :action => 'edit', :id => account %>
+    <%= link_to 'Destroy', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
+    </div>
+    </td>
   </tr>
     <% end %>
   <% end %>
