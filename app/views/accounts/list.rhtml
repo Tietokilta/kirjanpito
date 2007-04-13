@@ -15,7 +15,7 @@ select_tag "query", options_for_select(@fp_options, :selected => @fiscal_period_
     :style=>"display: none;") %>
 </p>
 
-<%= observe_field 'query', :frequency => 2,
+<%= observe_field 'query',
     :update => 'table',
     :before => "Element.show('spinner')",
     :success => "Element.hide('spinner')",
