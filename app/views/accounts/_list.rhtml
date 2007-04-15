@@ -1,4 +1,4 @@
-<table cellspacing=0 border=0>
+<table cellspacing="0">
   
   <% for heading in @headings %>
     <tr>
@@ -13,7 +13,7 @@
                 %><th><%= column.human_name %></th>
         <% end %>
       <% end %>
-      <th>&nbsp;</th>
+      <th>Actions</th>
     </tr>
     <% i = 0; %>
     <% for account in @accounts[heading.id] %>
@@ -64,9 +64,9 @@
         <% end %>
     <td>
     <div>
-    <%= link_to 'Show', :action => 'show', :id => account %>
-    <%= link_to 'Edit', :action => 'edit', :id => account %>
-    <%= link_to 'Destroy', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
+    <%= link_to_image '/images/show.gif', :action => 'show', :id => account %>
+    <%= link_to_image '/images/edit.gif', :action => 'edit', :id => account %>
+    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
     </div>
     </td>
   </tr>

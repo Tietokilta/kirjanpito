@@ -12,23 +12,25 @@
 </head>
 <body>
 
-<div class="header_top">&nbsp;</div>
-<div class="header_bottom">
-  <div style="width: auto; display: block; "></div>
-  <div class="header_menu"><%= link_to "Account&nbsp;types", {:controller => :account_types}, {"class" => "header"} %></div>
-  <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
-  <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
-</div>
+<div id="container-page">
 
-<div class="content">
+  <div class="header_top"><a href="/"><img src="/images/logo_top.gif"></a></div>
+  
+  <div class="header_bottom">
+    <div class="header_menu"><%= link_to "Account&nbsp;types", {:controller => :account_types}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
+  </div>
+  
+  <div id="content">
+    <p style="color: green"><%= flash[:notice] %></p>
+    <%= yield %>
+  </div>
+  
+  <div id="footer">
+  Copyright Tietokilta ry 2007
+  </div>
 
-<p style="color: green"><%= flash[:notice] %></p>
-
-  <%= yield %>
-</div>
-
-<div class="footer">
-Copyright Tietokilta ry 2007
 </div>
 
 </body>

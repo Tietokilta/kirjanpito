@@ -1,131 +1,182 @@
+/**
+ *  Required styles for page formatting
+ */
+html, body {
+  height: 100%; /* Required */
+  width: 100%; /* Required */
+}
 body {
   font-family:        verdana, arial, helvetica, sans-serif;
   font-size:          13px;
   padding:            0px;
   margin:             0px;
   border:             0px;
-  margin-bottom:      22px;
   background:         #F7F6F2 url("/images/tausta.png") repeat-x top;
 }
 
+div {}
+
+#container-page {
+  margin:             0 auto;
+  background:         #fff;
+  text-align:         left;
+  position:           relative;
+  min-height:         100%; /* For Modern Browsers */
+  height:             auto !important; /* For Modern Browsers */
+  height:             100%; /* For IE */
+  width:              100%; /* Required */
+  padding-bottom:     22px;
+}
+#footer {
+  border-top:         #42782d 2px;
+  background:         #71a24d;
+  color:              #ffffff;
+  font-weight:        bold;
+  
+  clear:              both;
+  text-align:         center;
+  margin:             0;
+  padding:            .5em;
+  position:           absolute;
+  bottom:             0 !important;
+  bottom:             -1px; /* For Certain IE widths */
+  border-top:         2px solid #ddeafe;
+  background:         #eff8ff;
+  color:              #888;
+  left:               0px;
+  right:              0px;
+}
+#content {
+  background:         none;
+  padding:            20px;
+}
 .header_top {
-  background:          #71a24d url("/images/logo_top.gif") no-repeat top left;
-  height:              64px;
+  background:         #71a24d url("/images/logo_top.gif") no-repeat top left;
+  height:             64px;
 }
 .header_bottom {
-  background:          #42782d url("/images/logo_bottom.gif") no-repeat top left;
-  height:              38px;
-  vertical-align:      bottom;
-  text-align:          right;
+  background:         #42782d url("/images/logo_bottom.gif") no-repeat top left;
+  height:             38px;
+  vertical-align:     bottom;
+  text-align:         right;
 }
-.footer {
-  border-top:          #42782d 2px;
-  background:          #71a24d;
-  position:            fixed;
-  bottom:              0px;
-  height:              22px;
-  width:               100%;
-  text-align:          center;
-  color:               #ffffff;
-  font-weight:         bold;
+img {
+  border:             none;
 }
 
-.content {
-  background:          none;
-  padding:             20px;
+
+/**
+ *  Text styles
+ */
+h1 {
+  padding:            5px 0px 5px 0px;
+  font-size:          25px;
 }
 
+
+/**
+ *  Table styles
+ */
 table {
-  border-right:        1px solid;
-  border-bottom:       1px solid;
-  border-color:        #000;
+  margin:             20px 0px 20px 0px;
+  padding:            0px;
+  border-right:       1px solid;
+  border-bottom:      1px solid;
+  border-top:         1px solid;
+  border-color:       #000;
+  border-spacing:     0px;
+  empty-cells:        show;
 }
 tr {
 }
 td.heading {
-  background-color:    #777;
-  font-weight:         bold;
-  color:               #fff;
-  font-size:           120%;
-  padding:             6px;
+  background-color:   #777;
+  font-weight:        bold;
+  color:              #fff;
+  font-size:          120%;
+  padding:            6px;
 }
 th {
-  padding:             3px 6px 3px 6px;
-  margin:              0px;
-  border-left:         1px solid;
-  border-color:        #000;
-  background-color:    #e7ebdb;
-  font-size:           110%;
+  padding:            3px 6px 3px 6px;
+  margin:             0px;
+  border-left:        1px solid;
+  border-color:       #000;
+  background-color:   #e7ebdb;
+  font-size:          110%;
 }
 td {
-  padding:             3px 6px 3px 6px;
-  margin:              0px;
-  border-left:         1px solid;
-  border-color:        #000;
+  padding:            3px 6px 3px 6px;
+  margin:             0px;
+  border-left:        1px solid;
+  border-color:       #000;
 }
 
 tr.even_row {
-  background-color:    #e7ebdb;
+  background-color:   #e7ebdb;
 }
 
 tr.odd_row {
-  background-color:    #fff;
+  background-color:   #fff;
 }
 
-img {
-  border:              none;
-}
 
+/**
+ *  General anchor styles
+ */
 a:link, a:active
 {
-  color:               #000;
+  color:              #000;
 }
 
 a:visited
 {
-  color:               #666;
+  color:              #666;
 }
 
 a:hover, a:focus
 {
-  color:               #fff;
-  background:          #000;
+  color:              #000;
+  text-decoration:    none;
 }
 
+
+/**
+ *  Header menu anchor styles
+ */
 div.header_menu {
-	width: 			         140px;  /* May be defined if you wish to have constant size */
-	background:		       #42782d;
-	float:               right;
-	text-align:          center;
-	margin: 		         0px;
-	padding: 		         0px;
+	width: 			        150px;  /* TODO: Make this dynamic with firefox and IE. */
+	background:		      #42782d;
+	text-align:         center;
+	margin: 		        0px;
+/*	padding: 		        0px 20px 0px 20px;*/
+  float:              right;
 }
 div.header_menu:hover {
-	background:		       #000;
+	background:		      #000;
 }
 
 a.header, a.header:active
 {
-  font-size:           16px;
-  color:               #fff;
-  font-weight:         bold;
-  line-height:         38px;
-  text-decoration:     none;
-	display:				     block;
-	height:					     38px;
-	margin: 				     0px;
-	padding: 				     0px;
-	text-align:          center;
+  font-size:          16px;
+  color:              #fff;
+  font-weight:        bold;
+  line-height:        38px;
+  text-decoration:    none;
+	display:				    block;
+	height:					    38px;
+	margin: 				    0px;
+	padding: 				    0px;
+	text-align:         center;
 }
 
 a.header:visited
 {
-  color:               #fff;
+  color:              #fff;
 }
 
 a.header:hover, a.header:focus
 {
-  color:               #fff;
-  background:          #000;
+  color:              #fff;
+  background:         #000;
 }
 
