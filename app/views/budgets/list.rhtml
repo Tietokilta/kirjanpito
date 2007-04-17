@@ -1,0 +1,45 @@
+<h1>Listing budgets</h1>
+
+<table>
+  <tr>
+  <% for column in Budget.columns 
+		next unless column.human_name != "Id"
+	%>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for budget in @budgets %>
+  <tr>
+  <% for column in Budget.columns
+		next unless column.human_name != "Id"
+	%>
+    <td><%=
+	
+		case column.human_name
+			when "Fiscal period"
+				fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', budget.send(column.name)])
+				if fiscal_period
+						fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
+						fiscal_period
+				else
+						"&nbsp;"
+				end
+			else
+				h	budget.send(column.name)
+		end
+		%></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => budget %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => budget %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => budget }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @budget_pages.current.previous } if @budget_pages.current.previous %>
+<%= link_to 'Next page', { :page => @budget_pages.current.next } if @budget_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New budget', :action => 'new' %>

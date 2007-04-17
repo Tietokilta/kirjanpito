@@ -1,0 +1,38 @@
+<style>
+  div.auto_complete {
+    width: 350px;
+    background: #fff;
+  }
+  div.auto_complete ul {
+    border:1px solid #888;
+    margin:0;
+    padding:0;
+    width:100%;
+    list-style-type:none;
+  }
+  div.auto_complete ul li {
+    margin:0;
+    padding:3px;
+  }
+  div.auto_complete ul li.selected {
+    background-color: #ffb;
+  }
+  div.auto_complete ul strong.highlight {
+    color: #800;
+    margin:0;
+    padding:0;
+  }
+</style>
+<%= error_messages_for 'budget' %>
+
+<!--[form:budget]-->
+<p><label for="budget_description">Description</label><br/>
+<%= text_field 'budget', 'description'  %></p>
+
+<p><label for="budget_fiscal_period_id">Fiscal period</label><br/>
+<input id="budget_fiscal_period_id" name="budget[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + @fiscal_period.enddate.strftime("%d.%m.%Y") unless @fiscal_period.nil? %>" /></p>
+<div class="auto_complete" id="budget_fiscal_period_id_auto_complete"></div>
+<%= auto_complete_field 'budget_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
+
+<!--[eoform:budget]-->
+
