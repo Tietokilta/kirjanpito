@@ -1,9 +1,11 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  #include AuthenticatedSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie
+  #before_filter :login_from_cookie
+
+  skip_before_filter :login_required
 
   # render new.rhtml
   def new
@@ -16,7 +18,7 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
-      redirect_back_or_default('/')
+      redirect_back_or_default('/accounts')
       flash[:notice] = "Logged in successfully"
     else
       render :action => 'new'

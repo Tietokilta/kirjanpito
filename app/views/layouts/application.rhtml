@@ -14,13 +14,28 @@
 
 <div id="container-page">
 
-  <div class="header_top"><a href="/"><img src="/images/logo_top.gif"></a></div>
+  <div class="header_top">
+  <div style="float: right;">
+    <% if logged_in? %>
+    <%= link_to "Logout", :controller => :sessions, :action => :destroy %>
+    <% end %>
+  </div>
+  <a href="/"><img src="/images/logo_top.gif"></a>
+  </div>
   
   <div class="header_bottom">
+    <% if logged_in? %>
+    <div class="header_menu"><%= link_to "B.Accounts", {:controller => :budget_accounts}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Account&nbsp;types", {:controller => :account_types}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
-    <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Budgets", {:controller => :budgets}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
+    <% else %>
+    <div class="header_menu"><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Sign-up", {:controller => :users, :action => :new}, {"class" => "header"} %></div>
+    <% end %>
   </div>
   
   <div id="content">

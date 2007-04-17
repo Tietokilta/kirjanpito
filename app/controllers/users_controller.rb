@@ -18,4 +18,13 @@ class UsersController < ApplicationController
     render :action => 'new'
   end
 
+  protected
+    # Check if the user is authorized.
+    #
+    # Override this method in your controllers if you want to restrict access
+    # to only a few actions or if you want to check if the user
+    # has the correct rights.
+    def authorize?
+      current_user.login == "Admin"
+    end
 end

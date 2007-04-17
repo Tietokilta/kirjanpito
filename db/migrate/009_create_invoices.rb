@@ -6,14 +6,14 @@ class CreateInvoices < ActiveRecord::Migration
   def self.up
     create_table :invoices do |t|
 			# TODO: add more fields as required
-			t.column "date", :date
+			t.column "date", :date   # laskun päiväys
 			t.column "fiscal_period_id", :integer
 			t.column "description", :string
 			t.column "sum", :decimal, :precision => 15, :scale => 2
 			t.column "payer", :string
 			t.column "payer_contact", :string
 			t.column "target_account_id", :integer
-			t.column "paymentdate", :date
+			t.column "paymentdate", :date  # eräpäivä
 			t.column "source_account_id", :integer
     end
 

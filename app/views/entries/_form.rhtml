@@ -1,0 +1,16 @@
+<%= error_messages_for 'entry' %>
+
+<!--[form:entry]-->
+<p><label for="entry_receipt_number">Receipt number</label><br/>
+<%= text_field 'entry', 'receipt_number'  %></p>
+
+<p><label for="entry_description">Description</label><br/>
+<%= text_field 'entry', 'description'  %></p>
+
+<p><label for="entry_sum">Sum</label><br/>
+<%= text_field 'entry', 'sum'  %></p>
+
+<p><label for="entry_date">Date</label><br/>
+<%= date_select 'entry', 'date'  %></p>
+<!--[eoform:entry]-->
+

@@ -1,0 +1,22 @@
+<div class="errors"><%= error_messages_for 'invoice' %></div>
+
+<!--[form:invoice]-->
+<p><label for="invoice_date">Date</label><br/>
+<%= date_select 'invoice', 'date'  %></p>
+
+<p><label for="invoice_description">Description</label><br/>
+<%= text_field 'invoice', 'description'  %></p>
+
+<p><label for="invoice_sum">Sum</label><br/>
+<%= text_field 'invoice', 'sum'  %></p>
+
+<p><label for="invoice_payer">Payer</label><br/>
+<%= text_field 'invoice', 'payer'  %></p>
+
+<p><label for="invoice_payer_contact">Payer contact</label><br/>
+<%= text_field 'invoice', 'payer_contact'  %></p>
+
+<p><label for="invoice_paymentdate">Paymentdate</label><br/>
+<%= date_select 'invoice', 'paymentdate'  %></p>
+<!--[eoform:invoice]-->
+
