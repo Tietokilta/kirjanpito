@@ -6,7 +6,7 @@
 Select fiscal period:
 <%= 
 select_tag("query", 
-           options_for_select(@fp_options, @fiscal_period_id.to_i))
+           options_for_select(@fp_options, @fiscal_period_id))
 %>
 </form>
 <%= image_tag("spinner.gif",

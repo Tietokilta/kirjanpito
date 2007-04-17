@@ -25,9 +25,11 @@
   
   <div class="header_bottom">
     <% if logged_in? %>
+<% if false %>
     <div class="header_menu"><%= link_to "B.Accounts", {:controller => :budget_accounts}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Account&nbsp;types", {:controller => :account_types}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
+<% end %>
     <div class="header_menu"><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Budgets", {:controller => :budgets}, {"class" => "header"} %></div>

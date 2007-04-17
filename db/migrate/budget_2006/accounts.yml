@@ -2,12 +2,14 @@
 
 - 0020:
     id: 20060020
+    number: 20
     name: Vastaavaa
     fiscal_period_id: 2006
     type_id: 1
 
 - 2000:
     id: 20062000
+    number: 2000
     parent_id: 20060020
     name: Käteiskassa
     fiscal_period_id: 2006
@@ -15,6 +17,7 @@
 
 - 2010:
     id: 20062010
+    number: 2010
     parent_id: 20060020
     name: Käyttörahatili
     fiscal_period_id: 2006
@@ -22,6 +25,7 @@
 
 - 2040:
     id: 20062040
+    number: 2040
     parent_id: 20060020
     name: Suorakäyttötili
     fiscal_period_id: 2006
@@ -29,6 +33,7 @@
 
 - 2050:
     id: 20062050
+    number: 2050
     parent_id: 20060020
     name: Handelsbanken
     fiscal_period_id: 2006
@@ -36,6 +41,7 @@
 
 - 2100:
     id: 20062100
+    number: 2100
     parent_id: 20060020
     name: Siirtosaamiset
     fiscal_period_id: 2006
@@ -43,6 +49,7 @@
 
 - 2200:
     id: 20062200
+    number: 2200
     parent_id: 20060020
     name: Lainat
     fiscal_period_id: 2006
@@ -50,6 +57,7 @@
 
 - 2300:
     id: 20062300
+    number: 2300
     parent_id: 20060020
     name: Kalusto
     fiscal_period_id: 2006
@@ -57,6 +65,7 @@
 
 - 2310:
     id: 20062310
+    number: 2310
     parent_id: 20060020
     name: TiK-rinta ja kunniamerkit
     fiscal_period_id: 2006
@@ -64,6 +73,7 @@
 
 - 2320:
     id: 20062320
+    number: 2320
     parent_id: 20060020
     name: Postimerkit
     fiscal_period_id: 2006
@@ -71,6 +81,7 @@
 
 - 2400:
     id: 20062400
+    number: 2400
     parent_id: 20060020
     name: Kangasmerkit
     fiscal_period_id: 2006
@@ -78,6 +89,7 @@
 
 - 2500:
     id: 20062500
+    number: 2500
     parent_id: 20060020
     name: Kiltatuotteet
     fiscal_period_id: 2006
@@ -85,6 +97,7 @@
 
 - 2600:
     id: 20062600
+    number: 2600
     parent_id: 20060020
     name: Verkkotunnukset
     fiscal_period_id: 2006
@@ -93,12 +106,14 @@
        
 - 0030:
     id: 20060030
+    number: 30
     name: Vastattavaa
     fiscal_period_id: 2006
     type_id: 1
        
 - 3000:
     id: 20063000
+    number: 3000
     parent_id: 20060030
     name: Siirtovelat
     fiscal_period_id: 2006
@@ -106,6 +121,7 @@
 
 - 3005:
     id: 20063005
+    number: 3005
     parent_id: 20060030
     name: Lainasaamiset
     fiscal_period_id: 2006
@@ -113,6 +129,7 @@
 
 - 3010:
     id: 20063010
+    number: 3010
     parent_id: 20060030
     name: Oma pääoma
     fiscal_period_id: 2006
@@ -120,6 +137,7 @@
 
 - 3020:
     id: 20063020
+    number: 3020
     parent_id: 20060030
     name: Käyttörahasto
     fiscal_period_id: 2006
@@ -127,6 +145,7 @@
 
 - 3030:
     id: 20063030
+    number: 3030
     parent_id: 20060030
     name: Varaukset
     fiscal_period_id: 2006
@@ -134,6 +153,7 @@
 
 - 3040:
     id: 20063040
+    number: 3040
     parent_id: 20060030
     name: Tuloennakot
     fiscal_period_id: 2006
@@ -141,6 +161,7 @@
 
 - 3050:
     id: 20063050
+    number: 3050
     parent_id: 20060030
     name: Edellisen tilikauden voitto/tappio
     fiscal_period_id: 2006
@@ -149,12 +170,14 @@
        
 - 0001:
     id: 20060001
+    number: 1
     name: Yleinen toiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0100:
     id: 20060100
+    number: 100
     parent_id: 20060001
     name: Hallituksen käyttökulut
     fiscal_period_id: 2006
@@ -162,6 +185,7 @@
 
 - 0105:
     id: 20060105
+    number: 105
     parent_id: 20060001
     name: Hallituksen vaihtokulut
     fiscal_period_id: 2006
@@ -169,6 +193,7 @@
 
 - 0110:
     id: 20060110
+    number: 110
     parent_id: 20060001
     name: Toimistokulut
     fiscal_period_id: 2006
@@ -176,6 +201,7 @@
 
 - 0115:
     id: 20060115
+    number: 115
     parent_id: 20060001
     name: Puhelin
     fiscal_period_id: 2006
@@ -183,6 +209,7 @@
 
 - 0120:
     id: 20060120
+    number: 120
     parent_id: 20060001
     name: Kaluston hankinta
     fiscal_period_id: 2006
@@ -190,6 +217,7 @@
 
 - 0130:
     id: 20060130
+    number: 130
     parent_id: 20060001
     name: Kaluston ylläpito ja korjaus
     fiscal_period_id: 2006
@@ -197,6 +225,7 @@
 
 - 0135:
     id: 20060135
+    number: 135
     parent_id: 20060001
     name: Kiltahuoneen remontti
     fiscal_period_id: 2006
@@ -204,6 +233,7 @@
 
 - 0140:
     id: 20060140
+    number: 140
     parent_id: 20060001
     name: Urheilutoiminta
     fiscal_period_id: 2006
@@ -211,6 +241,7 @@
 
 - 0150:
     id: 20060150
+    number: 150
     parent_id: 20060001
     name: Lehtitilaukset
     fiscal_period_id: 2006
@@ -218,6 +249,7 @@
 
 - 0170:
     id: 20060170
+    number: 170
     parent_id: 20060001
     name: Kilta- ja kuukausikokoukset
     fiscal_period_id: 2006
@@ -225,6 +257,7 @@
 
 - 0171:
     id: 20060171
+    number: 171
     parent_id: 20060001
     name: Powerkähmyt
     fiscal_period_id: 2006
@@ -232,6 +265,7 @@
 
 - 0175:
     id: 20060175
+    number: 175
     parent_id: 20060001
     name: Kunniavartiosto
     fiscal_period_id: 2006
@@ -239,6 +273,7 @@
 
 - 0176:
     id: 20060176
+    number: 176
     parent_id: 20060001
     name: Kunnianosoitukset & palkinnot
     fiscal_period_id: 2006
@@ -246,6 +281,7 @@
 
 - 0177:
     id: 20060177
+    number: 177
     parent_id: 20060001
     name: Juhlavuositoimikunta
     fiscal_period_id: 2006
@@ -253,6 +289,7 @@
 
 - 0178:
     id: 20060178
+    number: 178
     parent_id: 20060001
     name: Juhlavuoden tapahtumat
     fiscal_period_id: 2006
@@ -260,6 +297,7 @@
 
 - 0180:
     id: 20060180
+    number: 180
     parent_id: 20060001
     name: Tilintarkastus
     fiscal_period_id: 2006
@@ -267,6 +305,7 @@
 
 - 0190:
     id: 20060190
+    number: 190
     parent_id: 20060001
     name: Kiltahuonetoimikunta
     fiscal_period_id: 2006
@@ -274,6 +313,7 @@
 
 - 0195:
     id: 20060195
+    number: 195
     parent_id: 20060001
     name: Yhdistysrekisterimaksut
     fiscal_period_id: 2006
@@ -281,6 +321,7 @@
 
 - 0199:
     id: 20060199
+    number: 199
     parent_id: 20060001
     name: Muu yleinen toiminta
     fiscal_period_id: 2006
@@ -289,12 +330,14 @@
        
 - 0002:
     id: 20060002
+    number: 2
     name: Hupitoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0200:
     id: 20060200
+    number: 200
     parent_id: 20060002
     name: Muistinnollaus
     fiscal_period_id: 2006
@@ -302,6 +345,7 @@
 
 - 0202:
     id: 20060202
+    number: 202
     parent_id: 20060002
     name: Välimuistinnollaus
     fiscal_period_id: 2006
@@ -309,6 +353,7 @@
 
 - 0205:
     id: 20060205
+    number: 205
     parent_id: 20060002
     name: Muistinnollaustoimikunta
     fiscal_period_id: 2006
@@ -316,6 +361,7 @@
 
 - 0210:
     id: 20060210
+    number: 210
     parent_id: 20060002
     name: TiKkujoulu
     fiscal_period_id: 2006
@@ -323,6 +369,7 @@
 
 - 0220:
     id: 20060220
+    number: 220
     parent_id: 20060002
     name: Maisteluillat
     fiscal_period_id: 2006
@@ -330,6 +377,7 @@
 
 - 0225:
     id: 20060225
+    number: 225
     parent_id: 20060002
     name: Muut juhlat
     fiscal_period_id: 2006
@@ -337,6 +385,7 @@
 
 - 0230:
     id: 20060230
+    number: 230
     parent_id: 20060002
     name: Kiltaristeily
     fiscal_period_id: 2006
@@ -344,6 +393,7 @@
 
 - 0240:
     id: 20060240
+    number: 240
     parent_id: 20060002
     name: Lettukestit
     fiscal_period_id: 2006
@@ -351,6 +401,7 @@
 
 - 0245:
     id: 20060245
+    number: 245
     parent_id: 20060002
     name: Kesäkokous
     fiscal_period_id: 2006
@@ -358,6 +409,7 @@
 
 - 0250:
     id: 20060250
+    number: 250
     parent_id: 20060002
     name: Saunaillat
     fiscal_period_id: 2006
@@ -365,6 +417,7 @@
 
 - 0260:
     id: 20060260
+    number: 260
     parent_id: 20060002
     name: TKY tilavuokrat
     fiscal_period_id: 2006
@@ -372,6 +425,7 @@
 
 - 0280:
     id: 20060280
+    number: 280
     parent_id: 20060002
     name: Sitsit
     fiscal_period_id: 2006
@@ -379,6 +433,7 @@
 
 - 0285:
     id: 20060285
+    number: 285
     parent_id: 20060002
     name: Toimihenkilösitsit
     fiscal_period_id: 2006
@@ -386,6 +441,7 @@
 
 - 0290:
     id: 20060290
+    number: 290
     parent_id: 20060002
     name: Sisätoimikunta
     fiscal_period_id: 2006
@@ -393,6 +449,7 @@
 
 - 0295:
     id: 20060295
+    number: 295
     parent_id: 20060002
     name: Ulkkaritoiminta
     fiscal_period_id: 2006
@@ -400,6 +457,7 @@
 
 - 0299:
     id: 20060299
+    number: 299
     parent_id: 20060002
     name: Muu hupitoiminta
     fiscal_period_id: 2006
@@ -408,12 +466,14 @@
        
 - 0003:
     id: 20060003
+    number: 3
     name: Kulttuuritoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0300:
     id: 20060300
+    number: 300
     parent_id: 20060003
     name: Teatteri, ooppera jne.
     fiscal_period_id: 2006
@@ -421,6 +481,7 @@
 
 - 0310:
     id: 20060310
+    number: 310
     parent_id: 20060003
     name: Kulttuuritoimikunta
     fiscal_period_id: 2006
@@ -428,6 +489,7 @@
 
 - 0320:
     id: 20060320
+    number: 320
     parent_id: 20060003
     name: Elokuvatoiminta
     fiscal_period_id: 2006
@@ -435,6 +497,7 @@
 
 - 0330:
     id: 20060330
+    number: 330
     parent_id: 20060003
     name: Lukkaritoimikunta
     fiscal_period_id: 2006
@@ -442,6 +505,7 @@
 
 - 0399:
     id: 20060399
+    number: 399
     parent_id: 20060003
     name: Muu kulttuuritoiminta
     fiscal_period_id: 2006
@@ -450,12 +514,14 @@
        
 - 0004:
     id: 20060004
+    number: 4
     name: Phuksitoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0400:
     id: 20060400
+    number: 400
     parent_id: 20060004
     name: Phuksimatrikkeli
     fiscal_period_id: 2006
@@ -463,6 +529,7 @@
 
 - 0410:
     id: 20060410
+    number: 410
     parent_id: 20060004
     name: Wappu
     fiscal_period_id: 2006
@@ -470,6 +537,7 @@
 
 - 0420:
     id: 20060420
+    number: 420
     parent_id: 20060004
     name: Kevään phuksitapahtumat
     fiscal_period_id: 2006
@@ -477,6 +545,7 @@
 
 - 0430:
     id: 20060430
+    number: 430
     parent_id: 20060004
     name: Syksyn phuksitapahtumat
     fiscal_period_id: 2006
@@ -484,6 +553,7 @@
 
 - 0440:
     id: 20060440
+    number: 440
     parent_id: 20060004
     name: Isohenkilötoiminta
     fiscal_period_id: 2006
@@ -491,6 +561,7 @@
 
 - 0450:
     id: 20060450
+    number: 450
     parent_id: 20060004
     name: Phuksitoimikunta
     fiscal_period_id: 2006
@@ -498,6 +569,7 @@
 
 - 0460:
     id: 20060460
+    number: 460
     parent_id: 20060004
     name: Phuksibiletoimikunta
     fiscal_period_id: 2006
@@ -505,6 +577,7 @@
 
 - 0470:
     id: 20060470
+    number: 470
     parent_id: 20060004
     name: Phuksipistekortit
     fiscal_period_id: 2006
@@ -512,6 +585,7 @@
 
 - 0499:
     id: 20060499
+    number: 499
     parent_id: 20060004
     name: Muu phuksitoiminta
     fiscal_period_id: 2006
@@ -520,12 +594,14 @@
        
 - 0005:
     id: 20060005
+    number: 5
     name: Excursio- ja yrityssuhdetoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0500:
     id: 20060500
+    number: 500
     parent_id: 20060005
     name: Excursiot
     fiscal_period_id: 2006
@@ -533,6 +609,7 @@
 
 - 0510:
     id: 20060510
+    number: 510
     parent_id: 20060005
     name: Excursio- ja yrityslahjat
     fiscal_period_id: 2006
@@ -540,6 +617,7 @@
 
 - 0520:
     id: 20060520
+    number: 520
     parent_id: 20060005
     name: Yrityssuhdetoimikunta
     fiscal_period_id: 2006
@@ -547,6 +625,7 @@
 
 - 0530:
     id: 20060530
+    number: 530
     parent_id: 20060005
     name: Yritystapahtumat
     fiscal_period_id: 2006
@@ -554,6 +633,7 @@
 
 - 0599:
     id: 20060599
+    number: 599
     parent_id: 20060005
     name: Muu ekskursiotoiminta
     fiscal_period_id: 2006
@@ -562,12 +642,14 @@
        
 - 0006:
     id: 20060006
+    number: 6
     name: Ulkosuhdetoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0600:
     id: 20060600
+    number: 600
     parent_id: 20060006
     name: Vuosijuhlaedustus
     fiscal_period_id: 2006
@@ -575,6 +657,7 @@
 
 - 0610:
     id: 20060610
+    number: 610
     parent_id: 20060006
     name: Yhteydet muihin järjestöihin
     fiscal_period_id: 2006
@@ -582,6 +665,7 @@
 
 - 0620:
     id: 20060620
+    number: 620
     parent_id: 20060006
     name: Ulko- ja ekskursiokokoukset
     fiscal_period_id: 2006
@@ -589,6 +673,7 @@
 
 - 0630:
     id: 20060630
+    number: 630
     parent_id: 20060006
     name: Senioriklubi
     fiscal_period_id: 2006
@@ -596,6 +681,7 @@
 
 - 0650:
     id: 20060650
+    number: 650
     parent_id: 20060006
     name: Titeenien Taisto
     fiscal_period_id: 2006
@@ -603,6 +689,7 @@
 
 - 0699:
     id: 20060699
+    number: 699
     parent_id: 20060006
     name: Muu ulkosuhdetoiminta
     fiscal_period_id: 2006
@@ -611,12 +698,14 @@
        
 - 0007:
     id: 20060007
+    number: 7
     name: Tiedotustoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0700:
     id: 20060700
+    number: 700
     parent_id: 20060007
     name: Historia ja dokumentointi
     fiscal_period_id: 2006
@@ -624,6 +713,7 @@
 
 - 0710:
     id: 20060710
+    number: 710
     parent_id: 20060007
     name: Alkorytmi
     fiscal_period_id: 2006
@@ -631,6 +721,7 @@
 
 - 0720:
     id: 20060720
+    number: 720
     parent_id: 20060007
     name: Rytmiryhmä
     fiscal_period_id: 2006
@@ -638,6 +729,7 @@
 
 - 0730:
     id: 20060730
+    number: 730
     parent_id: 20060007
     name: Propagandatoimikunta
     fiscal_period_id: 2006
@@ -645,6 +737,7 @@
 
 - 0740:
     id: 20060740
+    number: 740
     parent_id: 20060007
     name: Tietokilta.fi -verkkotunnus
     fiscal_period_id: 2006
@@ -652,6 +745,7 @@
 
 - 0799:
     id: 20060799
+    number: 799
     parent_id: 20060007
     name: Muu tiedotustoiminta
     fiscal_period_id: 2006
@@ -660,12 +754,14 @@
        
 - 0008:
     id: 20060008
+    number: 8
     name: Opintotoiminta
     fiscal_period_id: 2006
     type_id: 1
        
 - 0800:
     id: 20060800
+    number: 800
     parent_id: 20060008
     name: Opintotoimikunta
     fiscal_period_id: 2006
@@ -673,6 +769,7 @@
 
 - 0810:
     id: 20060810
+    number: 810
     parent_id: 20060008
     name: Osastokahvitukset
     fiscal_period_id: 2006
@@ -680,6 +777,7 @@
 
 - 0899:
     id: 20060899
+    number: 899
     parent_id: 20060008
     name: Muu opintotoiminta
     fiscal_period_id: 2006
@@ -688,12 +786,14 @@
        
 - 0010:
     id: 20060010
+    number: 10
     name: Muut kulut
     fiscal_period_id: 2006
     type_id: 1
        
 - 1000:
     id: 20061000
+    number: 1000
     parent_id: 20060010
     name: Rintamerkit
     fiscal_period_id: 2006
@@ -701,6 +801,7 @@
 
 - 1020:
     id: 20061020
+    number: 1020
     parent_id: 20060010
     name: Kangasmerkit
     fiscal_period_id: 2006
@@ -708,6 +809,7 @@
 
 - 1030:
     id: 20061030
+    number: 1030
     parent_id: 20060010
     name: Virheelliset tilitapahtumat
     fiscal_period_id: 2006
@@ -715,6 +817,7 @@
 
 - 1040:
     id: 20061040
+    number: 1040
     parent_id: 20060010
     name: Pankkipalvelumaksut
     fiscal_period_id: 2006
@@ -722,6 +825,7 @@
 
 - 1050:
     id: 20061050
+    number: 1050
     parent_id: 20060010
     name: Haalarit
     fiscal_period_id: 2006
@@ -729,6 +833,7 @@
 
 - 1060:
     id: 20061060
+    number: 1060
     parent_id: 20060010
     name: Kiltatuotteet
     fiscal_period_id: 2006
@@ -736,6 +841,7 @@
 
 - 1099:
     id: 20061099
+    number: 1099
     parent_id: 20060010
     name: Muut kulut
     fiscal_period_id: 2006
@@ -744,12 +850,14 @@
        
 - 0011:
     id: 20060011
+    number: 11
     name: Varainhankinta
     fiscal_period_id: 2006
     type_id: 1
        
 - 1100:
     id: 20061100
+    number: 1100
     parent_id: 20060011
     name: "TKY:n avustukset"
     fiscal_period_id: 2006
@@ -757,6 +865,7 @@
 
 - 1110:
     id: 20061110
+    number: 1110
     parent_id: 20060011
     name: Jäsenmaksut
     fiscal_period_id: 2006
@@ -764,6 +873,7 @@
 
 - 1120:
     id: 20061120
+    number: 1120
     parent_id: 20060011
     name: Korot
     fiscal_period_id: 2006
@@ -771,6 +881,7 @@
 
 - 1130:
     id: 20061130
+    number: 1130
     parent_id: 20060011
     name: Haalarimerkkimyynti
     fiscal_period_id: 2006
@@ -778,6 +889,7 @@
 
 - 1140:
     id: 20061140
+    number: 1140
     parent_id: 20060011
     name: Haalarimyynti
     fiscal_period_id: 2006
@@ -785,6 +897,7 @@
 
 - 1150:
     id: 20061150
+    number: 1150
     parent_id: 20060011
     name: Kiltatuotteiden myynti
     fiscal_period_id: 2006
@@ -792,6 +905,7 @@
 
 - 1160:
     id: 20061160
+    number: 1160
     parent_id: 20060011
     name: Riipparit
     fiscal_period_id: 2006
@@ -799,6 +913,7 @@
 
 - 1170:
     id: 20061170
+    number: 1170
     parent_id: 20060011
     name: Virvoitusjuoma-automaatit
     fiscal_period_id: 2006
@@ -806,6 +921,7 @@
 
 - 1171:
     id: 20061171
+    number: 1171
     parent_id: 20060011
     name: Karkkiautomaatti
     fiscal_period_id: 2006
@@ -813,6 +929,7 @@
 
 - 1180:
     id: 20061180
+    number: 1180
     parent_id: 20060011
     name: Yritysyhteistyö
     fiscal_period_id: 2006
@@ -820,6 +937,7 @@
 
 - 1185:
     id: 20061185
+    number: 1185
     parent_id: 20060011
     name: Alkorytmin mainokset
     fiscal_period_id: 2006
@@ -827,6 +945,7 @@
 
 - 1199:
     id: 20061199
+    number: 1199
     parent_id: 20060011
     name: Muu varainhankinta
     fiscal_period_id: 2006
@@ -835,12 +954,14 @@
        
 - 0012:
     id: 20060012
+    number: 12
     name: Varausten muutokset
     fiscal_period_id: 2006
     type_id: 1
 
 - 1200:
     id: 20061200
+    number: 1200
     parent_id: 20060012
     name: Varausten muutos
     fiscal_period_id: 2006
@@ -849,12 +970,14 @@
        
 - 0013:
     id: 20060013
+    number: 13
     name: Inhimilliset virheet
     fiscal_period_id: 2006
     type_id: 1
 
 - 1300:
     id: 20061300
+    number: 1300
     parent_id: 20060013
     name: Virheelliset tilitapahtumat
     fiscal_period_id: 2006

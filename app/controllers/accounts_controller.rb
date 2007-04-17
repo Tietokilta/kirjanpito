@@ -10,10 +10,10 @@ class AccountsController < ApplicationController
 
   def list
     if params[:query].nil?
-      if session[:fiscal_period_id] != nil
+      if session[:fiscal_period_id].nil?
         @fiscal_period_id = session[:fiscal_period_id]
       else
-        @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id")
+        @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
       end
     else
       @fiscal_period_id = params[:query]
