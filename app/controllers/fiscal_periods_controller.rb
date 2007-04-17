@@ -9,7 +9,7 @@ class FiscalPeriodsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @fiscal_period_pages, @fiscal_periods = paginate :fiscal_periods, :per_page => 10
+    @fiscal_period_pages, @fiscal_periods = paginate :fiscal_periods, :per_page => 10, :order => "startdate"
   end
 
   def show
