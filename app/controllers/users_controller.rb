@@ -25,6 +25,6 @@ class UsersController < ApplicationController
     # to only a few actions or if you want to check if the user
     # has the correct rights.
     def authorize?
-      current_user.login == "admin"
+      current_user.level >= 2
     end
 end
