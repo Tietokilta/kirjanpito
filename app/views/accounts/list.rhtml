@@ -5,7 +5,8 @@
 <form name="sform" action="" style="display:inline;">
 Select fiscal period:
 <%= 
-select_tag "query", options_for_select(@fp_options, :selected => @fiscal_period_id)
+select_tag("query", 
+           options_for_select(@fp_options, @fiscal_period_id.to_i))
 %>
 </form>
 <%= image_tag("spinner.gif",

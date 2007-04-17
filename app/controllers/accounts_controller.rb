@@ -10,10 +10,16 @@ class AccountsController < ApplicationController
 
   def list
     if params[:query].nil?
-      @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id")
-    elsif
+      if session[:fiscal_period_id] != nil
+        @fiscal_period_id = session[:fiscal_period_id]
+      else
+        @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id")
+      end
+    else
       @fiscal_period_id = params[:query]
     end
+    session[:fiscal_period_id] = @fiscal_period_id
+    logger.info @fiscal_period_id
     @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @accounts = Hash.new

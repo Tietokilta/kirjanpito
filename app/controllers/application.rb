@@ -12,4 +12,23 @@ class ApplicationController < ActionController::Base
   before_filter :login_from_cookie
   before_filter :login_required
 
+  protected
+    def authorized?
+      if(request.path_parameters[:action] == "edit" ||
+         request.path_parameters[:action] == "new" ||
+         request.path_parameters[:action] == "create" ||
+         request.path_parameters[:action] == "destroy")
+        if @current_user != nil
+          return @current_user.level >= 2
+        end
+        return false
+      end
+      
+      true
+    end
+
+    def access_denied
+      flash[:notice] = "You are not authorized to do that!"
+      redirect_back_or_default('/accounts')
+    end
 end
