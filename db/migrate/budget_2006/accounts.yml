@@ -1,0 +1,863 @@
+--- !!omap
+
+- 0020:
+    id: 20060020
+    name: Vastaavaa
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2000:
+    id: 20062000
+    parent_id: 20060020
+    name: Käteiskassa
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2010:
+    id: 20062010
+    parent_id: 20060020
+    name: Käyttörahatili
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2040:
+    id: 20062040
+    parent_id: 20060020
+    name: Suorakäyttötili
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2050:
+    id: 20062050
+    parent_id: 20060020
+    name: Handelsbanken
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2100:
+    id: 20062100
+    parent_id: 20060020
+    name: Siirtosaamiset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2200:
+    id: 20062200
+    parent_id: 20060020
+    name: Lainat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2300:
+    id: 20062300
+    parent_id: 20060020
+    name: Kalusto
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2310:
+    id: 20062310
+    parent_id: 20060020
+    name: TiK-rinta ja kunniamerkit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2320:
+    id: 20062320
+    parent_id: 20060020
+    name: Postimerkit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2400:
+    id: 20062400
+    parent_id: 20060020
+    name: Kangasmerkit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2500:
+    id: 20062500
+    parent_id: 20060020
+    name: Kiltatuotteet
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 2600:
+    id: 20062600
+    parent_id: 20060020
+    name: Verkkotunnukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0030:
+    id: 20060030
+    name: Vastattavaa
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 3000:
+    id: 20063000
+    parent_id: 20060030
+    name: Siirtovelat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3005:
+    id: 20063005
+    parent_id: 20060030
+    name: Lainasaamiset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3010:
+    id: 20063010
+    parent_id: 20060030
+    name: Oma pääoma
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3020:
+    id: 20063020
+    parent_id: 20060030
+    name: Käyttörahasto
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3030:
+    id: 20063030
+    parent_id: 20060030
+    name: Varaukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3040:
+    id: 20063040
+    parent_id: 20060030
+    name: Tuloennakot
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 3050:
+    id: 20063050
+    parent_id: 20060030
+    name: Edellisen tilikauden voitto/tappio
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0001:
+    id: 20060001
+    name: Yleinen toiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0100:
+    id: 20060100
+    parent_id: 20060001
+    name: Hallituksen käyttökulut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0105:
+    id: 20060105
+    parent_id: 20060001
+    name: Hallituksen vaihtokulut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0110:
+    id: 20060110
+    parent_id: 20060001
+    name: Toimistokulut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0115:
+    id: 20060115
+    parent_id: 20060001
+    name: Puhelin
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0120:
+    id: 20060120
+    parent_id: 20060001
+    name: Kaluston hankinta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0130:
+    id: 20060130
+    parent_id: 20060001
+    name: Kaluston ylläpito ja korjaus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0135:
+    id: 20060135
+    parent_id: 20060001
+    name: Kiltahuoneen remontti
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0140:
+    id: 20060140
+    parent_id: 20060001
+    name: Urheilutoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0150:
+    id: 20060150
+    parent_id: 20060001
+    name: Lehtitilaukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0170:
+    id: 20060170
+    parent_id: 20060001
+    name: Kilta- ja kuukausikokoukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0171:
+    id: 20060171
+    parent_id: 20060001
+    name: Powerkähmyt
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0175:
+    id: 20060175
+    parent_id: 20060001
+    name: Kunniavartiosto
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0176:
+    id: 20060176
+    parent_id: 20060001
+    name: Kunnianosoitukset & palkinnot
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0177:
+    id: 20060177
+    parent_id: 20060001
+    name: Juhlavuositoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0178:
+    id: 20060178
+    parent_id: 20060001
+    name: Juhlavuoden tapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0180:
+    id: 20060180
+    parent_id: 20060001
+    name: Tilintarkastus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0190:
+    id: 20060190
+    parent_id: 20060001
+    name: Kiltahuonetoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0195:
+    id: 20060195
+    parent_id: 20060001
+    name: Yhdistysrekisterimaksut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0199:
+    id: 20060199
+    parent_id: 20060001
+    name: Muu yleinen toiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0002:
+    id: 20060002
+    name: Hupitoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0200:
+    id: 20060200
+    parent_id: 20060002
+    name: Muistinnollaus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0202:
+    id: 20060202
+    parent_id: 20060002
+    name: Välimuistinnollaus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0205:
+    id: 20060205
+    parent_id: 20060002
+    name: Muistinnollaustoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0210:
+    id: 20060210
+    parent_id: 20060002
+    name: TiKkujoulu
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0220:
+    id: 20060220
+    parent_id: 20060002
+    name: Maisteluillat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0225:
+    id: 20060225
+    parent_id: 20060002
+    name: Muut juhlat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0230:
+    id: 20060230
+    parent_id: 20060002
+    name: Kiltaristeily
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0240:
+    id: 20060240
+    parent_id: 20060002
+    name: Lettukestit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0245:
+    id: 20060245
+    parent_id: 20060002
+    name: Kesäkokous
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0250:
+    id: 20060250
+    parent_id: 20060002
+    name: Saunaillat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0260:
+    id: 20060260
+    parent_id: 20060002
+    name: TKY tilavuokrat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0280:
+    id: 20060280
+    parent_id: 20060002
+    name: Sitsit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0285:
+    id: 20060285
+    parent_id: 20060002
+    name: Toimihenkilösitsit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0290:
+    id: 20060290
+    parent_id: 20060002
+    name: Sisätoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0295:
+    id: 20060295
+    parent_id: 20060002
+    name: Ulkkaritoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0299:
+    id: 20060299
+    parent_id: 20060002
+    name: Muu hupitoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0003:
+    id: 20060003
+    name: Kulttuuritoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0300:
+    id: 20060300
+    parent_id: 20060003
+    name: Teatteri, ooppera jne.
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0310:
+    id: 20060310
+    parent_id: 20060003
+    name: Kulttuuritoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0320:
+    id: 20060320
+    parent_id: 20060003
+    name: Elokuvatoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0330:
+    id: 20060330
+    parent_id: 20060003
+    name: Lukkaritoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0399:
+    id: 20060399
+    parent_id: 20060003
+    name: Muu kulttuuritoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0004:
+    id: 20060004
+    name: Phuksitoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0400:
+    id: 20060400
+    parent_id: 20060004
+    name: Phuksimatrikkeli
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0410:
+    id: 20060410
+    parent_id: 20060004
+    name: Wappu
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0420:
+    id: 20060420
+    parent_id: 20060004
+    name: Kevään phuksitapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0430:
+    id: 20060430
+    parent_id: 20060004
+    name: Syksyn phuksitapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0440:
+    id: 20060440
+    parent_id: 20060004
+    name: Isohenkilötoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0450:
+    id: 20060450
+    parent_id: 20060004
+    name: Phuksitoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0460:
+    id: 20060460
+    parent_id: 20060004
+    name: Phuksibiletoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0470:
+    id: 20060470
+    parent_id: 20060004
+    name: Phuksipistekortit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0499:
+    id: 20060499
+    parent_id: 20060004
+    name: Muu phuksitoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0005:
+    id: 20060005
+    name: Excursio- ja yrityssuhdetoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0500:
+    id: 20060500
+    parent_id: 20060005
+    name: Excursiot
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0510:
+    id: 20060510
+    parent_id: 20060005
+    name: Excursio- ja yrityslahjat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0520:
+    id: 20060520
+    parent_id: 20060005
+    name: Yrityssuhdetoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0530:
+    id: 20060530
+    parent_id: 20060005
+    name: Yritystapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0599:
+    id: 20060599
+    parent_id: 20060005
+    name: Muu ekskursiotoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0006:
+    id: 20060006
+    name: Ulkosuhdetoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0600:
+    id: 20060600
+    parent_id: 20060006
+    name: Vuosijuhlaedustus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0610:
+    id: 20060610
+    parent_id: 20060006
+    name: Yhteydet muihin järjestöihin
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0620:
+    id: 20060620
+    parent_id: 20060006
+    name: Ulko- ja ekskursiokokoukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0630:
+    id: 20060630
+    parent_id: 20060006
+    name: Senioriklubi
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0650:
+    id: 20060650
+    parent_id: 20060006
+    name: Titeenien Taisto
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0699:
+    id: 20060699
+    parent_id: 20060006
+    name: Muu ulkosuhdetoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0007:
+    id: 20060007
+    name: Tiedotustoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0700:
+    id: 20060700
+    parent_id: 20060007
+    name: Historia ja dokumentointi
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0710:
+    id: 20060710
+    parent_id: 20060007
+    name: Alkorytmi
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0720:
+    id: 20060720
+    parent_id: 20060007
+    name: Rytmiryhmä
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0730:
+    id: 20060730
+    parent_id: 20060007
+    name: Propagandatoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0740:
+    id: 20060740
+    parent_id: 20060007
+    name: Tietokilta.fi -verkkotunnus
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0799:
+    id: 20060799
+    parent_id: 20060007
+    name: Muu tiedotustoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0008:
+    id: 20060008
+    name: Opintotoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 0800:
+    id: 20060800
+    parent_id: 20060008
+    name: Opintotoimikunta
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0810:
+    id: 20060810
+    parent_id: 20060008
+    name: Osastokahvitukset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 0899:
+    id: 20060899
+    parent_id: 20060008
+    name: Muu opintotoiminta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0010:
+    id: 20060010
+    name: Muut kulut
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 1000:
+    id: 20061000
+    parent_id: 20060010
+    name: Rintamerkit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1020:
+    id: 20061020
+    parent_id: 20060010
+    name: Kangasmerkit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1030:
+    id: 20061030
+    parent_id: 20060010
+    name: Virheelliset tilitapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1040:
+    id: 20061040
+    parent_id: 20060010
+    name: Pankkipalvelumaksut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1050:
+    id: 20061050
+    parent_id: 20060010
+    name: Haalarit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1060:
+    id: 20061060
+    parent_id: 20060010
+    name: Kiltatuotteet
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1099:
+    id: 20061099
+    parent_id: 20060010
+    name: Muut kulut
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0011:
+    id: 20060011
+    name: Varainhankinta
+    fiscal_period_id: 2006
+    type_id: 1
+       
+- 1100:
+    id: 20061100
+    parent_id: 20060011
+    name: "TKY:n avustukset"
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1110:
+    id: 20061110
+    parent_id: 20060011
+    name: Jäsenmaksut
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1120:
+    id: 20061120
+    parent_id: 20060011
+    name: Korot
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1130:
+    id: 20061130
+    parent_id: 20060011
+    name: Haalarimerkkimyynti
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1140:
+    id: 20061140
+    parent_id: 20060011
+    name: Haalarimyynti
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1150:
+    id: 20061150
+    parent_id: 20060011
+    name: Kiltatuotteiden myynti
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1160:
+    id: 20061160
+    parent_id: 20060011
+    name: Riipparit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1170:
+    id: 20061170
+    parent_id: 20060011
+    name: Virvoitusjuoma-automaatit
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1171:
+    id: 20061171
+    parent_id: 20060011
+    name: Karkkiautomaatti
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1180:
+    id: 20061180
+    parent_id: 20060011
+    name: Yritysyhteistyö
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1185:
+    id: 20061185
+    parent_id: 20060011
+    name: Alkorytmin mainokset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1199:
+    id: 20061199
+    parent_id: 20060011
+    name: Muu varainhankinta
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0012:
+    id: 20060012
+    name: Varausten muutokset
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1200:
+    id: 20061200
+    parent_id: 20060012
+    name: Varausten muutos
+    fiscal_period_id: 2006
+    type_id: 1
+
+       
+- 0013:
+    id: 20060013
+    name: Inhimilliset virheet
+    fiscal_period_id: 2006
+    type_id: 1
+
+- 1300:
+    id: 20061300
+    parent_id: 20060013
+    name: Virheelliset tilitapahtumat
+    fiscal_period_id: 2006
+    type_id: 1
+
+
