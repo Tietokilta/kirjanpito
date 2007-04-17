@@ -14,15 +14,18 @@ class AddDefaultData < ActiveRecord::Migration
 		fp.save!
 
     user = User.new()
-    user.name = "admin"
-    user.password = "admin"
+    user.login = "rahis"
+    user.password = "pahis"
+    user.password_confirmation = "pahis"
+    user.email = "lholsti@niksula.hut.fi"
+    user.level = 2
     user.save!
 
 
   end
 
   def self.down
-    User.delete(User.find(:all, :conditions => ["name in (?)", ["admin"] ]))
+    User.delete(User.find(:all, :conditions => ["login in (?)", ["rahis"] ]))
 		AccountType.delete(AccountType.find(:all, :conditions => ["description in (?)", ["Tulos", "Tase"] ]))
 		FiscalPeriod.delete(FiscalPeriod.find(:all, :conditions => ["startdate in (?)", ["2006-01-01", "2007-01-01"] ]))
   end
