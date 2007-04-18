@@ -45,6 +45,23 @@ class BudgetsController < ApplicationController
     @budget = Budget.find(params[:id])
     @fiscal_period = FiscalPeriod.find(@budget[:fiscal_period_id]) unless @budget[:fiscal_period_id].nil?
   end
+  
+	def update_accounts
+    @budget = Budget.find(params[:id])
+
+		BudgetAccount.delete(BudgetAccount.find(:all, :conditions => ['budget_id = ?', @budget.id]))
+
+
+		params[:budgetaccounts].each { |x|
+				ba = BudgetAccount.new
+				ba.budget_id = @budget.id
+				ba.account_id = x[0]
+				ba.sum = params[:accountsum][x[0].to_s]
+				ba.save!
+		}
+
+		render :action => 'show'
+	end
 
   def update
     @budget = Budget.find(params[:id])

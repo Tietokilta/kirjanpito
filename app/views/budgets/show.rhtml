@@ -6,3 +6,47 @@
 
 <%= link_to 'Edit', :action => 'edit', :id => @budget %> |
 <%= link_to 'Back', :action => 'list' %>
+
+<%
+@headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @budget.fiscal_period_id])
+@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
+@accounts = Hash.new
+for h in @headings
+	@accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
+end
+
+@ba = BudgetAccount.find(:all, :conditions => ['budget_id = ?', @budget.id]);
+@selacc = Hash.new
+@ba.each { |a| 
+	@selacc[a.account_id] = a
+}
+%>
+
+<h1>Budget accounts</h1>
+
+<% form_tag :action => 'update_accounts', :id => @budget do %>
+
+<%= error_messages_for 'budget' %>
+
+<% @headings.each { |h| %>
+	<h2><%=h.name%></h2>
+
+	<%	@accounts[h.id].each { |a|
+		sel = false
+		sum = ""
+		if @selacc[a.id]
+			sel = true
+			sum = @selacc[a.id].sum
+		end
+		%>
+		<%=check_box_tag("budgetaccounts[" + a.id.to_s + "]", 1, sel)%>
+		<%=a.number%> - <%=a.name%>
+		<%=text_field_tag("accountsum[" + a.id.to_s + "]", sum, {:size => 5})%>e
+		
+		<br />
+	<% } %>
+<% } %>
+  
+	<%= render :partial => 'form' %>
+<%= submit_tag 'Save' %>
+<% end %>
