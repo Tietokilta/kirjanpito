@@ -31,8 +31,6 @@ class ApplicationController < ActionController::Base
     def access_denied
       if session[:return_to].nil?
         flash[:notice] = "You are not logged in!"
-#      if session.nil?
-#        flash[:notice] = "You are not logged in!"
       else
         flash[:notice] = "You are not authorized to do that!"
       end

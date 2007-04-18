@@ -56,7 +56,12 @@ class UsersController < ApplicationController
     # Override this method in your controllers if you want to restrict access
     # to only a few actions or if you want to check if the user
     # has the correct rights.
-    def authorize?
+    def authorized?
       current_user.level >= 2
+    end
+    
+    def access_denied
+      flash[:notice] = "You are not authorized to do that!"
+      redirect_to '/accounts'
     end
 end
