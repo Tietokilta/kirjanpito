@@ -20,9 +20,13 @@ class AccountsController < ApplicationController
     @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @accounts = Hash.new
-    for h in @headings
-      @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
-    end
+#    if !session[:visible_accounts].nil?
+      for h in @headings
+#        if session[:visible_accounts][h.id]
+          @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
+ #       end
+      end
+ #   end
 
     if request.xml_http_request?
       render :partial => "list", :layout => false

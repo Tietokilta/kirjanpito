@@ -45,6 +45,11 @@ body {
   background:         none;
   padding:            20px;
 }
+
+div #table {
+  margin-top: 20px;
+}
+
 .header_top {
   background:         #71a24d url("/images/logo_top.gif") no-repeat top left;
   height:             64px;
@@ -76,7 +81,8 @@ h1 {
  *  Table styles
  */
 table {
-  margin:             20px 0px 20px 0px;
+  width:              100%;
+  margin:             0px 0px 0px 0px;
   padding:            0px;
   border-right:       1px solid;
   border-bottom:      1px solid;
@@ -91,11 +97,12 @@ td.heading {
   background-color:   #777;
   font-weight:        bold;
   color:              #fff;
-  font-size:          120%;
+  font-size:          110%;
   padding:            6px;
 }
 th {
   padding:            3px 6px 3px 6px;
+  font-weight:        bold;
   margin:             0px;
   border-left:        1px solid;
   border-color:       #000;
