@@ -1,6 +1,5 @@
 <h1>Listing accounts</h1>
 
-
 <p>
 <form name="sform" action="" style="display:inline;">
 Select fiscal period:
@@ -9,6 +8,7 @@ select_tag("query",
            options_for_select(@fp_options, @fiscal_period_id))
 %>
 </form>
+
 <%= image_tag("spinner.gif",
     :align => 'absmiddle',
     :border=> 0,

@@ -9,17 +9,15 @@ class AccountsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    if params[:query].nil?
-      if session[:fiscal_period_id].nil?
-        @fiscal_period_id = session[:fiscal_period_id]
-      else
-        @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
-      end
-    else
+    if !params[:query].nil?
       @fiscal_period_id = params[:query]
+    elsif !session[:fiscal_period_id].nil?
+      @fiscal_period_id = session[:fiscal_period_id]
+    else
+      @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
     end
     session[:fiscal_period_id] = @fiscal_period_id
-    logger.info @fiscal_period_id
+    flash[:notice] = session[:fiscal_period_id].to_s
     @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @accounts = Hash.new
@@ -31,7 +29,7 @@ class AccountsController < ApplicationController
       render :partial => "list", :layout => false
     end
 
-    @fp_options = FiscalPeriod.find(:all, :order => "id DESC").map {|fp| [[fp.startdate.strftime("%d.%m.%Y"), " - ", fp.enddate.strftime("%d.%m.%Y")], fp.id] }
+    @fp_options = FiscalPeriod.find(:all, :order => "id DESC").map {|fp| [[fp.startdate.strftime("%d.%m.%Y"), " - ", fp.enddate.strftime("%d.%m.%Y")], fp.id.to_s] }
 
   end
 
@@ -117,8 +115,8 @@ class AccountsController < ApplicationController
       :parent_id => @parent
       })
     
-      flash[:notice] = 'Account was successfully updated.'
-      redirect_to :action => 'show', :id => @account
+      flash[:notice] = 'Account ' +@account.send("name") +' was successfully updated.'
+      redirect_to :action => 'list'
     else
       render :action => 'edit'
     end
