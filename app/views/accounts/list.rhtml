@@ -1,3 +1,14 @@
+<javascript type="text/javascript">
+<!--
+function CollapseAll()
+{
+<% for heading in @headings %>
+  $('<%= heading.id %>').toggle()
+<%end%>
+}
+-->
+</javascript>
+
 <h1>Listing accounts</h1>
 
 <p>
@@ -7,6 +18,8 @@ Select fiscal period:
 select_tag("query", 
            options_for_select(@fp_options, @fiscal_period_id))
 %>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>">Collapse all</a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
 </form>
 
 <%= image_tag("spinner.gif",
@@ -26,3 +39,4 @@ select_tag("query",
 <div id="table">
     <%= render :partial => "list" %>
 </div>
+

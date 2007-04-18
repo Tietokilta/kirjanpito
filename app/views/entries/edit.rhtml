@@ -1,9 +1,11 @@
 <h1>Editing entry</h1>
 
 <% form_tag :action => 'update', :id => @entry do %>
+<%= submit_tag 'Edit' %>
+<table class="details">
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
 <% end %>
+</table>
 
 <%= link_to 'Show', :action => 'show', :id => @entry %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to 'Back', session[:return_to] %>

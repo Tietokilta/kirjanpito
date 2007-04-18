@@ -1,8 +1,18 @@
+<table class="details">
+<% i = 0; %>
 <% for column in Entry.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @entry.send(column.name) %>
-</p>
+    <% i += 1; %>
+    <tr class="<%= if i % 2 == 0
+        "even_row"
+    else
+        "odd_row"
+    end    
+    %>">
+  <th class="details"><%= column.human_name %>:</th>
+  <td class="details"><%=h @entry.send(column.name) %></td>
+</tr>
 <% end %>
+</table>
 
 <%= link_to 'Edit', :action => 'edit', :id => @entry %> |
 <%= link_to 'Back', :action => 'list' %>

@@ -1,38 +1,52 @@
 <%= error_messages_for 'entry' %>
+<% if false %>
+<tr class="even_row">
+  <th class="details"></th>
+  <td class="details"></td>
+</tr>
+<tr class="odd_row">
+  <th class="details"></th>
+  <td class="details"></td>
+</tr>
+<% end %>
 
 <!--[form:entry]-->
-<p><label for="entry_receipt_number">Receipt number</label><br/>
-<%= text_field 'entry', 'receipt_number'  %></p>
-
-<p><label for="entry_description">Description</label><br/>
-<%= text_field 'entry', 'description'  %></p>
-
-<p><label for="entry_sum">Sum</label><br/>
-<%= text_field 'entry', 'sum'  %></p>
-
-<p><label for="entry_date">Date</label><br/>
-<%= date_select 'entry', 'date'  %></p>
-
+<tr class="even_row">
+  <th class="details"><label for="entry_receipt_number">Receipt number</label></th>
+  <td class="details"><%= text_field 'entry', 'receipt_number'  %></td>
+</tr>
+<tr class="odd_row">
+  <th class="details"><label for="entry_description">Description</label></th>
+  <td class="details"><%= text_field 'entry', 'description'  %></td>
+</tr>
+<tr class="even_row">
+  <th class="details"><label for="entry_sum">Sum</label></th>
+  <td class="details"><%= text_field 'entry', 'sum'  %></td>
+</tr>
+<tr class="odd_row">
+  <th class="details"><label for="entry_date">Date</label></th>
+  <td class="details"><%= date_select 'entry', 'date'  %></td>
+</tr>
 
 <%
 e = Entry.find(params[:id])
 %>
-
-<p><label for="entry_credit_account">Credit account</label><br/>
-<%= text_field_tag 'credit_account', e.credit_account  %></p>
-<div class="auto_complete" id="credit_account_auto_complete"></div>
-<%= auto_complete_field 'credit_account', {:url => {:action => 'autocomplete_credit_account'}, :after_update_element => 'auto_complete_on_select' } %>
-<%= hidden_field 'entry', 'credit_account_id' %>
-
-<p><label for="entry_debet_account">Debet account</label><br/>
-<%= text_field_tag 'debet_account', e.debet_account  %></p>
+<tr class="even_row">
+  <th class="details"><label for="entry_credit_account">Credit account</label></th>
+  <td class="details"><%= text_field_tag 'credit_account', e.credit_account  %>
+  <div class="auto_complete" id="credit_account_auto_complete"></div>
+  <%= auto_complete_field 'credit_account', {:url => {:action => 'autocomplete_credit_account'}, :after_update_element => 'auto_complete_on_select' } %>
+  <%= hidden_field 'entry', 'credit_account_id' %>
+  </td>
+</tr>
+<tr class="odd_row">
+  <th class="details"><label for="entry_debet_account">Debet account</label></th>
+  <td class="details"><%= text_field_tag 'debet_account', e.debet_account  %>
 <div class="auto_complete" id="debet_account_auto_complete"></div>
 <%= auto_complete_field 'debet_account', {:url => {:action => 'autocomplete_debet_account'}, :after_update_element => 'auto_complete_on_select' } %>
 <%= hidden_field 'entry', 'debet_account_id' %>
-
-
-
-
+  </td>
+</tr>
 
 <!--[eoform:entry]-->
 
