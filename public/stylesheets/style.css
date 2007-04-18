@@ -95,6 +95,8 @@ tr {
 }
 td.heading {
   background-color:   #777;
+  border-bottom:      1px solid;
+  border-color:       #000;
   font-weight:        bold;
   color:              #fff;
   font-size:          110%;
@@ -156,6 +158,11 @@ td.details {
   margin:             0px;
   border-bottom:      1px solid;
   border-color:       #000;
+}
+td.total {
+  border-top:         1px solid;
+  font-size:          110%;
+  font-weight:        bold;
 }
 
 

@@ -1,11 +1,12 @@
-    <% for heading in @headings %>
-    <table cellspacing="0">
-    <tr>
-    <td onClick="javascript:$('<%= heading.id %>').toggle()" class="heading" colspan=<%= Account.columns.length+2 %>>
-        <%=  heading.name.to_s + ": " + heading.description.to_s %>
-    </td></tr>
-    </table>
-    <table cellspacing="0" id="<%= heading.id %>">
+<table cellspacing="0">
+  <% for heading in @headings %>
+  <tr>
+  <td onClick="javascript:$('<%= heading.id %>').toggle()" class="heading" colspan=<%= Account.columns.length+2 %>>
+      <%=  heading.name.to_s + ": " + heading.description.to_s %>
+  </td>
+  </tr>
+  
+  <tbody id="<%= heading.id %>">
     <% if !@accounts[heading.id].nil? %>
     <tr>
       <% for column in Account.columns
@@ -80,7 +81,7 @@
   </tr>
     <% end %>
     <% end %>
-    </table>
+    </tbody>
   <% end %>
-
+</table>
 <%= link_to 'New account', {:action => 'new', :fiscal_period_id => @fiscal_period_id} %>

@@ -5,8 +5,9 @@
   <% for column in Budget.columns 
 		next unless column.human_name != "Id"
 	%>
-    <th><%= column.human_name %></th>
+  <th><%= column.human_name %></th>
   <% end %>
+  <th>Actions</th>
   </tr>
   
 <% for budget in @budgets %>
@@ -30,9 +31,13 @@
 		end
 		%></td>
   <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => budget %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => budget %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => budget }, :confirm => 'Are you sure?', :method => :post %></td>
+    <td>
+    <div>
+    <%= link_to_image '/images/show.gif', :action => 'show', :id => budget %>
+    <%= link_to_image '/images/edit.gif', :action => 'edit', :id => budget %>
+    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => budget }, :confirm => 'Are you sure?', :method => :post %>
+    </div>
+    </td>
   </tr>
 <% end %>
 </table>

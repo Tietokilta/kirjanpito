@@ -23,29 +23,43 @@ end
 %>
 
 <h1>Budget accounts</h1>
-
 <% form_tag :action => 'update_accounts', :id => @budget do %>
-
 <%= error_messages_for 'budget' %>
+<%= submit_tag 'Save' %>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>">Collapse all</a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
 
+<table style="width:auto;">
 <% @headings.each { |h| %>
-	<h2><%=h.name%></h2>
+  <tr>
+  	<td onClick="javascript:$('<%= h.id %>').toggle()" class="heading" colspan="3"><%=h.name%></td>
+  </tr>
 
-	<%	@accounts[h.id].each { |a|
-		sel = false
-		sum = ""
-		if @selacc[a.id]
-			sel = true
-			sum = @selacc[a.id].sum
-		end
-		%>
-		<%=check_box_tag("budgetaccounts[" + a.id.to_s + "]", 1, sel)%>
-		<%=a.number%> - <%=a.name%>
-		<%=text_field_tag("accountsum[" + a.id.to_s + "]", sum, {:size => 5})%>e
-		
-		<br />
-	<% } %>
+  <tbody id="<%= h.id %>">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Number - Description</th>
+      <th>Amount</th>
+    </tr>
+    
+    <% i = 0; %>
+  	<%	@accounts[h.id].each { |a|
+  		sel = false
+  		sum = ""
+  		if @selacc[a.id]
+  			sel = true
+  			sum = @selacc[a.id].sum
+  		end
+  		%>
+    <% i += 1; %>
+    <tr class="<%= i%2==0 ? 'even_row' : 'odd_row' %>">
+    	<td><%= check_box_tag("budgetaccounts[" + a.id.to_s + "]", 1, sel) %></td>
+    	<td><%= a.number%> - <%=a.name %></td>
+    	<td><%= text_field_tag("accountsum[" + a.id.to_s + "]", sum, {:size => 5}) %>&euro;</td>
+    </tr>
+  	<% } %>
+	</tbody>
 <% } %>
-  
+</table>
 <%= submit_tag 'Save' %>
 <% end %>
