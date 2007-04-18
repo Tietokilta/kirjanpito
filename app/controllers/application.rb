@@ -28,12 +28,13 @@ class ApplicationController < ActionController::Base
     end
 
     def access_denied
-      if @current_user != nil
-        flash[:notice] = "You are not authorized to do that!"
-        redirect_back_or_default('/accounts')
-      else
-        flash[:notice] = "You are not logged in!"
-        redirect_back_or_default('/')
-      end
+      flash[:notice] = "You are not logged in!"
+#      if session.nil?
+#        flash[:notice] = "You are not logged in!"
+#      else
+#        flash[:notice] = "You are not authorized to do that!"
+#      end
+
+      redirect_back_or_default('')
     end
 end

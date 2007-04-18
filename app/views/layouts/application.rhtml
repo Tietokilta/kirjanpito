@@ -29,6 +29,7 @@
     <div class="header_menu"><%= link_to "B.Accounts", {:controller => :budget_accounts}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Account&nbsp;types", {:controller => :account_types}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
+    <div class="header_menu"><%= link_to "Sign-up", {:controller => :users, :action => :new}, {"class" => "header"} %></div>
 <% end %>
     <div class="header_menu"><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
@@ -36,7 +37,6 @@
     <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
     <% else %>
     <div class="header_menu"><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div>
-    <div class="header_menu"><%= link_to "Sign-up", {:controller => :users, :action => :new}, {"class" => "header"} %></div>
     <% end %>
   </div>
   

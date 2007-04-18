@@ -17,7 +17,6 @@ class AccountsController < ApplicationController
       @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
     end
     session[:fiscal_period_id] = @fiscal_period_id
-    flash[:notice] = session[:fiscal_period_id].to_s
     @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @accounts = Hash.new
