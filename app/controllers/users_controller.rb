@@ -61,7 +61,13 @@ class UsersController < ApplicationController
     end
     
     def access_denied
-      flash[:notice] = "You are not authorized to do that!"
-      redirect_to '/accounts'
+      if session[:return_to].nil?
+        flash[:notice] = "You are not logged in!"
+      else
+        flash[:notice] = "You are not authorized to do that!"
+      end
+
+      session[:return_to] = nil
+      redirect_to '/'
     end
 end
