@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
   before_filter :login_required
+  after_filter :store_location
 
   protected
     def authorized?
@@ -28,12 +29,13 @@ class ApplicationController < ActionController::Base
     end
 
     def access_denied
-      flash[:notice] = "You are not logged in!"
+      if session[:return_to].nil?
+        flash[:notice] = "You are not logged in!"
 #      if session.nil?
 #        flash[:notice] = "You are not logged in!"
-#      else
-#        flash[:notice] = "You are not authorized to do that!"
-#      end
+      else
+        flash[:notice] = "You are not authorized to do that!"
+      end
 
       redirect_back_or_default('')
     end

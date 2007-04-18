@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
   #before_filter :login_from_cookie
 
   skip_before_filter :login_required
+  after_filter :new
 
   # render new.rhtml
   def new
+    session[:return_to] = nil
   end
 
   def create
