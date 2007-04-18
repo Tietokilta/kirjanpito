@@ -1,7 +1,9 @@
 class Entry < ActiveRecord::Base
   belongs_to  :fiscal_period
   belongs_to  :debet_account,
-              :foreign_key  => "fk_entries_debet_account_id"
-  belongs_to  :kredit_account,
-              :foreign_key  => "fk_entries_kredit_account_id"
+							:class_name => "Account",
+              :foreign_key  => "debet_account_id"
+  belongs_to  :credit_account,
+							:class_name => "Account",
+              :foreign_key  => "credit_account_id"
 end

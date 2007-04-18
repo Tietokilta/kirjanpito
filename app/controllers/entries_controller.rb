@@ -22,6 +22,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(params[:entry])
+
     if @entry.save
       flash[:notice] = 'Entry was successfully created.'
       redirect_to :action => 'list'
@@ -48,4 +49,19 @@ class EntriesController < ApplicationController
     Entry.find(params[:id]).destroy
     redirect_to :action => 'list'
   end
+
+	def autocomplete_debet_account
+		data = params[:debet_account]
+		@accounts = Account.find(:all,
+				:conditions => [ 'number LIKE ? OR name LIKE ?', '%'+data+'%', '%'+data+'%'] )
+		render :inline => "<%= indexed_auto_complete_result @accounts, 'entry_debet_account_id', 'name', 'id' %>" 
+	end
+
+	def autocomplete_credit_account
+		data = params[:credit_account]
+		@accounts = Account.find(:all,
+				:conditions => [ 'number LIKE ? OR name LIKE ?', '%'+data+'%', '%'+data+'%'] )
+		render :inline => "<%= indexed_auto_complete_result @accounts, 'entry_credit_account_id', 'name', 'id' %>" 
+	end
+
 end

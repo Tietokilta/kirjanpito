@@ -35,3 +35,45 @@
 <% end %>
 <%= link_to 'Edit', :action => 'edit', :id => @account %> |
 <%= link_to 'Back', :action => 'list' %>
+
+<%
+deb = Entry.find(:all, :conditions => ['debet_account_id = ?', @account.id])
+cred = Entry.find(:all, :conditions => ['credit_account_id = ?', @account.id])
+totd = 0
+totc = 0
+
+%>
+<h1>Debet</h1>
+<%
+deb.each { |e| 
+	totd += e.sum
+%>
+	<%=e.receipt_number%> - <%=e.description%>, <%=e.sum%>e
+	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
+	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
+	<br />
+<% } %>
+Total: <%=totd%>e
+<h1>Kredit</h1>
+<%
+cred.each { |e| 
+	totc += e.sum
+%>
+	<%=e.receipt_number%> - <%=e.description%>, <%=e.sum%>e
+	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
+	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
+	<br />
+<% } %>
+Total: <%=totc%>e
+
+<h1>Budget</h1>
+Status now: <%=totc-totd%>e<br />
+<%
+BudgetAccount.find(:all, :conditions => ['account_id = ?', @account.id]).each { |a| 
+	sum = 0 unless sum = a.sum
+%>
+	<%=Budget.find(a.budget_id).description%> :
+	<%=sum%>e allocated =&gt; 
+	<%=sum + totc - totd%>e left<br />
+
+<% } %>

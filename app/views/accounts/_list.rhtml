@@ -7,12 +7,16 @@
     </td></tr>
     <tr>
       <% for column in Account.columns
-        case column.human_name
-            when "Id"
+        case column.name
+            when "id"
+            when "parent_id"
+            when "type_id"
+            when "fiscal_period_id"
             else
                 %><th><%= column.human_name %></th>
         <% end %>
       <% end %>
+			<th>Balance</th>
       <th>Actions</th>
     </tr>
     <% i = 0; %>
@@ -25,13 +29,13 @@
         end    
         %>">
         <% for column in Account.columns %>
-        <% if column.human_name == "Id" 
+        <% if column.name == "id" || column.name == "parent_id" || column.name == "type_id" || column.name ==  "fiscal_period_id"
             else %>
             <td>
             <%=
-            case column.human_name
-                when "Id"
-                when "Fiscal period"
+            case column.name
+                when "id"
+                when "fiscal_period_id"
                     fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', account.send(column.name)])
                     if fiscal_period
                         fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
@@ -39,22 +43,22 @@
                     else
                         "&nbsp;"
                     end
-                when "Type"
-                    type = AccountType.find(:first, :conditions => ['id = ?', account.send(column.name)])
-                    if type
-                        type.description
-                    else
-                        "&nbsp;"
-                    end
-                when "Parent"
-                    parent = Account.find(:first, :conditions => ['id = ?', account.send(column.name)])
-                    if parent
-                        parent = parent.number.to_s +  " " + parent.name
-                        parent
-                     else
-                        "&nbsp;"
-                    end
-                 when "Number"
+#                when "type_id"
+#                    type = AccountType.find(:first, :conditions => ['id = ?', account.send(column.name)])
+#                    if type
+#                        type.description
+#                    else
+#                        "&nbsp;"
+#                    end
+#                when "parent_id"
+#                    parent = Account.find(:first, :conditions => ['id = ?', account.send(column.name)])
+#                    if parent
+#                        parent = parent.number.to_s +  " " + parent.name
+#                        parent
+#                     else
+#                        "&nbsp;"
+#                    end
+                 when "number"
                     "%04d" % account.number
                  else
                     h account.send(column.name)
@@ -62,6 +66,8 @@
             </td>
         <% end %>
         <% end %>
+
+		<td><%=account.balance%>e</td>
     <td>
     <div>
     <%= link_to_image '/images/show.gif', :action => 'show', :id => account %>

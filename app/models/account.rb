@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
   has_many    :budget_accounts
   has_many    :debet_entries,
               :class_name   => "entry"
-  has_many    :kredit_entries,
+  has_many    :credit_entries,
               :class_name   => "entry"
   has_many    :source_invoice,
               :class_name   => "invoice"
@@ -33,5 +33,22 @@ class Account < ActiveRecord::Base
     end
     return sc
   end
+
+	def balance
+		bal = 0
+		Entry.find(:all, :conditions => ['credit_account_id = ? OR debet_account_id = ?', self.id, self.id]).each { |e|
+			if (e.credit_account_id == self.id)
+				bal += e.sum
+			else
+				bal -= e.sum
+			end
+		}
+
+		return bal
+	end
+
+	def to_s
+		return number.to_s + " " + name
+	end
 
 end
