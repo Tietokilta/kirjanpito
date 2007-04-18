@@ -1,0 +1,63 @@
+<h1>Listing users</h1>
+
+<table>
+<tr>
+<% for column in User.columns
+     case column.human_name
+        when "Id"
+        when "Crypted password"
+        when "Salt"
+        when "Remember token"
+        when "Remember token expires at"
+        when "Updated at"%>
+        <th>Last logon at</th>
+      <%else%>
+        <th><%= column.human_name %></th>
+      <%end%>
+<% end %>
+        <th>Actions</th>
+</tr>
+
+<% i = 0; %>
+<% for user in @users %>
+  <% i += 1; %>
+  <tr class="<%= if i % 2 == 0
+      "even_row"
+  else
+      "odd_row"
+  end    
+  %>">
+  <% for column in User.columns
+    case column.name
+        when "id"
+        when "crypted_password"
+        when "salt"
+        when "remember_token"
+        when "remember_token_expires_at"
+        when "level"
+          case user.level
+            when 0%><td>Toimihenkil&ouml;</td><%
+            when 1%><td>Hallituslainen</td><%
+            when 2%><td>Rahastonhoitaja</td><%
+          end
+        else %>
+      <td><%=h user.send(column.name)%></td>
+    <% end %>
+  <% end %>
+  <td>
+    <div>
+    <%= link_to_image '/images/show.gif', :action => 'show', :id => user %>
+    <%= link_to_image '/images/edit.gif', :action => 'edit', :id => user %>
+    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => user }, :confirm => 'Are you sure?', :method => :post %>
+    </div>
+  </td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @user_pages.current.previous } if @user_pages.current.previous %>
+<%= link_to 'Next page', { :page => @user_pages.current.next } if @user_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New user', :action => 'new' %>

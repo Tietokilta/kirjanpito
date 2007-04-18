@@ -18,7 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/service.wsdl', :action => 'wsdl'
 
   # RESTful routes
-  map.resources :users, :sessions
+  #map.resources :users, :sessions
+  map.resources :sessions
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
 
   map.signup '/signup', :controller => 'users', :action => 'new'

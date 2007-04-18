@@ -5,10 +5,18 @@
   <% for column in Invoice.content_columns %>
     <th><%= column.human_name %></th>
   <% end %>
+    <th>Actions</th>
   </tr>
   
+<% i = 0; %>
 <% for invoice in @invoices %>
-  <tr>
+  <% i += 1; %>
+  <tr class="<%= if i % 2 == 0
+      "even_row"
+  else
+      "odd_row"
+  end    
+  %>">
   <% for column in Invoice.content_columns %>
     <td><%=h invoice.send(column.name) %></td>
   <% end %>
