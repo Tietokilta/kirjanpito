@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
 
   belongs_to  :fiscal_period
   belongs_to  :account
-  belongs_to  :account_type
+  belongs_to  :account_type, :foreign_key => "type_id"
 
   validates_presence_of :name, :fiscal_period_id, :type_id
 #  validates_numericality_of :number, :only_integer => true, 

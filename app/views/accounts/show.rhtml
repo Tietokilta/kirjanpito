@@ -13,7 +13,8 @@
   <%=
     case column.human_name
         when "Fiscal period"
-            fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            #fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+						fiscal_period = @account.fiscal_period
             if fiscal_period
                 fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
                 fiscal_period
@@ -21,14 +22,17 @@
                 "&nbsp;"
             end
         when "Type"
-            type = AccountType.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            #type = AccountType.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+						type = @account.account_type
+
             if type
                 type.description
             else
                 "&nbsp;"
             end
         when "Parent"
-            parent = Account.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+            #parent = Account.find(:first, :conditions => ['id = ?', @account.send(column.name)])
+						parent = @account.parent
             if parent
                 parentnmbr = "%04d" % parent.number 
                 parent = parentnmbr +" " +parent.name
@@ -110,7 +114,7 @@ BudgetAccount.find(:all, :conditions => ['account_id = ?', @account.id]).each { 
 </tr>
 <tr>
   <td class="total" colspan="2" align="right"><%=Budget.find(a.budget_id).description%> allocated:</td>
-  <td class="total" colspan="2"><%=Budget.find(a.budget_id).description%>&euro;</td>
+  <td class="total" colspan="2"><%=sum%>&euro;</td>
 </tr>
 <tr>
   <td class="total" colspan="2" align="right">Left:</td>
