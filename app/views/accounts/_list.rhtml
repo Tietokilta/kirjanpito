@@ -69,13 +69,16 @@
             </td>
         <% end %>
         <% end %>
-
-		<td><%=account.balance%>e</td>
+		<%
+		b = @account_balance[account.id]
+		b = 0 unless b
+		%>
+		<td><%="%0.2f e" % b %></td>
     <td>
     <div>
-    <%= link_to_image '/images/show.gif', :action => 'show', :id => account %>
-    <%= link_to_image '/images/edit.gif', :action => 'edit', :id => account %>
-    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
+    <%= link_to image_tag('/images/show.gif'), :action => 'show', :id => account %>
+    <%= link_to image_tag('/images/edit.gif'), :action => 'edit', :id => account %>
+    <%= link_to image_tag('/images/cancel.gif'), { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
     </div>
     </td>
   </tr>

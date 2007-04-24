@@ -3,7 +3,7 @@
 login: &login
   adapter: mysql
   host: localhost
-<% if `uname -n`.strip == "ampere.aketzu.net" %>
+<% if `uname -n`.strip == "ampere.aketzu.net" || `uname -n`.strip == "kelvin.aketzu.net" %>
   username: tikki
   password: D.uMJK4pjxnrE9uH
 <% elsif `uname -n`.strip == "kjue" %>
