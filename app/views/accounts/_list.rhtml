@@ -57,7 +57,7 @@
 		b = @account_balance[account.id]
 		b = 0 unless b
 		%>
-        <td class="alignright"><%= number_to_currency(b, :separator => ',', :delimiter => '') %></td>
+        <td class="alignright"><%= number_to_currency(b, :unit => '', :separator => ',', :delimiter => '') %></td>
     <td>
     <div>
     <%= link_to image_tag('/images/show.gif'), :action => 'show', :id => account %>
