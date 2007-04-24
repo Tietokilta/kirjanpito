@@ -113,15 +113,12 @@ class AccountsController < ApplicationController
       @parent = @parent.id
     end
     
-    if @account.update_attributes({
-      :name => params[:account][:name],
-      :fiscal_period_id => @fiscal_period_id,
-      :number => params[:account][:number],
-      :description => params[:account][:description],
-      :type_id => @type,
-      :parent_id => @parent
-      })
-    
+    if @account.update_attributes({ :name => params[:account][:name],
+                                    :fiscal_period_id => @fiscal_period_id,
+                                    :number => params[:account][:number],
+                                    :description => params[:account][:description],
+                                    :type_id => @type,
+                                    :parent_id => @parent})
       flash[:notice] = 'Account ' +@account.send("name") +' was successfully updated.'
       redirect_to :action => 'list'
     else

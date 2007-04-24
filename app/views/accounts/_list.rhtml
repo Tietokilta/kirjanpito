@@ -1,3 +1,7 @@
+<% if !@headings.nil? && @headings.length > 0 %>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>">Collapse all</a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
+<% end %>
 <table cellspacing="0">
   <% for heading in @headings %>
   <tr>
@@ -25,12 +29,7 @@
     <% i = 0; %>
     <% for account in @accounts[heading.id] %>
         <% i += 1; %>
-        <tr class="<%= if i % 2 == 0
-            "even_row"
-        else
-            "odd_row"
-        end    
-        %>">
+        <tr class="<%= (i % 2 == 0) ? "even_row" : "odd_row" %>" id="account_<%=account.id%>">
         <% for column in Account.columns %>
         <% if column.name == "id" || column.name == "parent_id" || column.name == "type_id" || column.name ==  "fiscal_period_id"
             else %>
@@ -61,10 +60,31 @@
 #                     else
 #                        "&nbsp;"
 #                    end
-                 when "number"
-                    "%04d" % account.number
-                 else
-                    h account.send(column.name)
+                when "number"
+                  "%04d" % account.number
+#                when "description"
+#                  h account.description
+#                  editable_content(
+#                    :content => {
+#                      :element => 'span',
+#                      :text => account.description,
+#                      :options => {
+#                        :id => "account_#{account.id}",
+#                        :class => 'editable-content'
+#                      }
+#                    },
+#                    :url => {
+#                      :controller => 'account',
+#                      :action => 'update',
+#                      :id => account.id
+#                    },
+#                    :ajax => {
+#                      :okText => "'Save'",
+#                      :cancelText => "'Cancel'"
+#                    }
+#                  )
+                else
+                  h account.send(column.name)
             end %>
             </td>
         <% end %>
@@ -82,6 +102,17 @@
     </div>
     </td>
   </tr>
+  <script type="text/javascript">
+  //<![CDATA[
+    new Ajax.InPlaceEditor(
+      'account_<%=account.id%>',
+      '/account/update/<%=account.id%>',
+      {
+    okText: 'Save', cancelText: 'Cancel'
+      }
+    )
+  //]]>
+  </script>
     <% end %>
     <% end %>
     </tbody>
