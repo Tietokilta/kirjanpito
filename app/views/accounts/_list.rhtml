@@ -45,44 +45,8 @@
                     else
                         "&nbsp;"
                     end
-#                when "type_id"
-#                    type = AccountType.find(:first, :conditions => ['id = ?', account.send(column.name)])
-#                    if type
-#                        type.description
-#                    else
-#                        "&nbsp;"
-#                    end
-#                when "parent_id"
-#                    parent = Account.find(:first, :conditions => ['id = ?', account.send(column.name)])
-#                    if parent
-#                        parent = parent.number.to_s +  " " + parent.name
-#                        parent
-#                     else
-#                        "&nbsp;"
-#                    end
                 when "number"
                   "%04d" % account.number
-#                when "description"
-#                  h account.description
-#                  editable_content(
-#                    :content => {
-#                      :element => 'span',
-#                      :text => account.description,
-#                      :options => {
-#                        :id => "account_#{account.id}",
-#                        :class => 'editable-content'
-#                      }
-#                    },
-#                    :url => {
-#                      :controller => 'account',
-#                      :action => 'update',
-#                      :id => account.id
-#                    },
-#                    :ajax => {
-#                      :okText => "'Save'",
-#                      :cancelText => "'Cancel'"
-#                    }
-#                  )
                 else
                   h account.send(column.name)
             end %>
@@ -102,17 +66,6 @@
     </div>
     </td>
   </tr>
-  <script type="text/javascript">
-  //<![CDATA[
-    new Ajax.InPlaceEditor(
-      'account_<%=account.id%>',
-      '/account/update/<%=account.id%>',
-      {
-    okText: 'Save', cancelText: 'Cancel'
-      }
-    )
-  //]]>
-  </script>
     <% end %>
     <% end %>
     </tbody>
