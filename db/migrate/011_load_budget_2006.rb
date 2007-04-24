@@ -17,12 +17,15 @@ class LoadBudget2006 < ActiveRecord::Migration
 		#execute "UNLOCK TABLES;"
 
 		Fixtures.create_fixtures(dir, "entries")
+		Fixtures.create_fixtures(dir, "budgets")
+		Fixtures.create_fixtures(dir, "budget_accounts")
   end
 
   def self.down
 		Entry.delete_all
 		Account.delete_all
 		AccountType.delete_all
+		BudgetAccount.delete_all
 		Budget.delete_all
 		FiscalPeriod.delete_all
   end
