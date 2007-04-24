@@ -10,13 +10,18 @@
 </tr>
 <% end %>
 
+
 <!--[form:entry]-->
+
+<table>
 <tr class="even_row">
   <th class="details"><label for="entry_receipt_number">Receipt number</label></th>
+<!-- TODO: automatically next number -->
   <td class="details"><%= text_field 'entry', 'receipt_number'  %></td>
 </tr>
 <tr class="odd_row">
   <th class="details"><label for="entry_description">Description</label></th>
+<!-- TODO: previous entry -->
   <td class="details"><%= text_field 'entry', 'description'  %></td>
 </tr>
 <tr class="even_row">
@@ -29,11 +34,11 @@
 </tr>
 
 <%
-e = Entry.find(params[:id])
+e = Entry.find(params[:id]) if params[:id]
 %>
 <tr class="even_row">
   <th class="details"><label for="entry_credit_account">Credit account</label></th>
-  <td class="details"><%= text_field_tag 'credit_account', e.credit_account  %>
+  <td class="details"><%= text_field_tag 'credit_account', (e.credit_account if e)  %>
   <div class="auto_complete" id="credit_account_auto_complete"></div>
   <%= auto_complete_field 'credit_account', {:url => {:action => 'autocomplete_credit_account'}, :after_update_element => 'auto_complete_on_select' } %>
   <%= hidden_field 'entry', 'credit_account_id' %>
@@ -41,12 +46,12 @@ e = Entry.find(params[:id])
 </tr>
 <tr class="odd_row">
   <th class="details"><label for="entry_debet_account">Debet account</label></th>
-  <td class="details"><%= text_field_tag 'debet_account', e.debet_account  %>
+  <td class="details"><%= text_field_tag 'debet_account', (e.debet_account if e)  %>
 <div class="auto_complete" id="debet_account_auto_complete"></div>
 <%= auto_complete_field 'debet_account', {:url => {:action => 'autocomplete_debet_account'}, :after_update_element => 'auto_complete_on_select' } %>
 <%= hidden_field 'entry', 'debet_account_id' %>
   </td>
 </tr>
-
+</table>
 <!--[eoform:entry]-->
 

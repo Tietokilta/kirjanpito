@@ -54,20 +54,23 @@
 <br>
 
 <%
-deb = Entry.find(:all, :conditions => ['debet_account_id = ?', @account.id])
-cred = Entry.find(:all, :conditions => ['credit_account_id = ?', @account.id])
+deb = Entry.find(:all, :conditions => ['debet_account_id = ?', @account.id], :order => 'date asc')
+cred = Entry.find(:all, :conditions => ['credit_account_id = ?', @account.id], :order => 'date asc')
 totd = 0
 totc = 0
 %>
 
+TODO: sorting (by date, credit+debet in same mess)
+
 
 <table style="width:auto;">
-<tr><td class="heading" colspan="4">Debet</td></tr>
+<tr><td class="heading" colspan="5">Debet</td></tr>
 <%
 deb.each { |e| 
 	totd += e.sum
 %>
 <tr>
+	<td><%=e.date%></td>
 	<td><%=e.receipt_number%></td>
 	<td><%=e.description%></td>
 	<td><%=e.sum%>&euro;</td>
@@ -83,12 +86,13 @@ deb.each { |e|
 </tr>
 
 
-<tr><td class="heading" colspan="4">Credit</td></tr>
+<tr><td class="heading" colspan="5">Credit</td></tr>
 <%
 cred.each { |e| 
 	totc += e.sum
 %>
 <tr>
+	<td><%=e.date%></td>
 	<td><%=e.receipt_number%></td>
 	<td><%=e.description%></td>
 	<td><%=e.sum%>&euro;</td>
@@ -103,7 +107,7 @@ cred.each { |e|
   <td class="total" colspan="2"><%=totc%>&euro;</td>
 </tr>
 
-<tr><td class="heading" colspan="4">Budget</td></tr>
+<tr><td class="heading" colspan="5">Budget</td></tr>
 <tr>
   <td class="total" colspan="2" align="right">Status now:</td>
   <td class="total" colspan="2"><%="%0.2f" % (totc - totd)%>&euro;</td>

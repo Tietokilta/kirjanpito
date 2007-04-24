@@ -17,7 +17,10 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
+		#TODO: fetch fiscal period from somewhere
+		@entry = Entry.find(:first, :order => "id desc", :conditions => ['fiscal_period_id = ?', 2006])
+		@entry.id += 1
+		@entry.receipt_number += 1
   end
 
   def create
@@ -25,7 +28,8 @@ class EntriesController < ApplicationController
 
     if @entry.save
       flash[:notice] = 'Entry was successfully created.'
-      redirect_to :action => 'list'
+      #redirect_to :action => 'list'
+      redirect_to :action => 'new'
     else
       render :action => 'new'
     end

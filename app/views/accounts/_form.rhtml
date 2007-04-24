@@ -1,6 +1,7 @@
 <div style="float: right;"><%= error_messages_for 'account' %></div>
 
 <!--[form:account]-->
+<table>
 <tr class="even_row">
   <th class="details"><label for="account_name">Name</label></th>
   <td class="details"><%= text_field 'account', 'name'  %></td>
@@ -39,6 +40,7 @@
   <%= auto_complete_field 'parent_id', :url => {:action => 'autocomplete_parent_id'} %>
   </td>
 </tr>
+</table>
 
 <!--[eoform:account]-->
 
