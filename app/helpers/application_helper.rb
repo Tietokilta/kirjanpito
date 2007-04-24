@@ -6,3 +6,17 @@ module ApplicationHelper
 		content_tag("ul", items.uniq)
 	end
 end
+
+module ActionView
+   module Helpers
+      module NumberHelper
+         def number_to_currency_with_euro(number, options = {})
+            defaults = {:unit => ''}
+            s = nil
+            s = number_to_currency_without_euro(number, defaults.merge(options))
+            s << ' &euro;' unless options[:unit]
+         end
+         alias_method_chain :number_to_currency, :euro
+      end
+   end
+end

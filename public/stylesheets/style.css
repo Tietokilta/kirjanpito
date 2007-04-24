@@ -165,6 +165,13 @@ td.total {
   font-weight:        bold;
 }
 
+td.positive {
+}
+
+.negative {
+  color: #ff0000;
+}
+
 
 
 /**
