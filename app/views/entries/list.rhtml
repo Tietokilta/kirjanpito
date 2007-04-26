@@ -22,7 +22,7 @@ TODO: "show all"<br />
   %>">
   <% for column in Entry.content_columns %>
   <% if column.name == "sum" %>
-    <td class="alignright"><%=h number_to_currency(entry.send(column.name), :unit => '', :separator => ',', :delimiter => '') %></td>
+    <td class="alignright"><%=h number_to_euro(entry.send(column.name)) %></td>
   <% else %>
     <td><%=h entry.send(column.name) %></td>
   <% end %>
