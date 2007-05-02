@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  layout nil, :only => :pdftest
+
   def index
     list
     render :action => 'list'
@@ -7,6 +9,10 @@ class AccountsController < ApplicationController
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
+
+  def pdftest
+    @time = Time.now
+  end
 
   def list
     if !params[:query].nil?
