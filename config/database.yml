@@ -17,6 +17,8 @@ login: &login
   socket: /var/run/mysqld/mysqld.sock
 <% elsif File.exist? "/var/lib/mysql/mysql.sock" %>
   socket: /var/lib/mysql/mysql.sock
+<% else %>
+  socket: /var/run/mysqld/mysqld.sock
 <% end %>
 
 development:

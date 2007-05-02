@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
-  layout nil, :only => :pdftest
+  layout nil
+  layout "application", :except => :pdftest
 
   def index
     list
