@@ -84,9 +84,11 @@ table {
   width:              100%;
   margin:             0px 0px 0px 0px;
   padding:            0px;
+/*
   border-right:       1px solid;
   border-bottom:      1px solid;
   border-top:         1px solid;
+*/
   border-color:       #000;
   border-spacing:     0px;
   empty-cells:        show;
@@ -103,10 +105,12 @@ td.heading {
   padding:            6px;
 }
 th {
+/*
   padding:            3px 6px 3px 6px;
+  border-left:        1px solid;
+*/
   font-weight:        bold;
   margin:             0px;
-  border-left:        1px solid;
   border-color:       #000;
   background-color:   #e7ebdb;
   font-size:          110%;
