@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-  belongs_to  :fiscal_period
+  belongs_to  :fiscal_period, :polymorphic => false
   belongs_to  :debet_account,
 							:class_name => "Account",
               :foreign_key  => "debet_account_id"

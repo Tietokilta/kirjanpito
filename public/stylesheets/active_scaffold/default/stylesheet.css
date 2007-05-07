@@ -172,7 +172,7 @@ background: #333 url(../../../images/active_scaffold/default/indicator-small.gif
    ============================= */
 
 .active-scaffold td {
-/*padding: 5px 4px;*/
+padding: 5px 4px;
 color: #333;
 font-family: Verdana, sans-serif;
 font-size: 11px;
@@ -751,4 +751,3 @@ font-weight: bold;
 font-size: 12px;
 padding: 0;
 }
-

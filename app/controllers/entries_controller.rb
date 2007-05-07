@@ -1,25 +1,8 @@
 class EntriesController < ApplicationController
 
   active_scaffold :entry do |config|
-    config.columns = [:receipt_number, :description, :sum, :date, :fiscal_period.to_s, :debet_account, :credit_account]
-#    config.columns[:phone_number].description = "(Format: ###-###-####)"
-#    config.columns[:phone_number].label = "Phone"
-
-    config.create.columns.exclude :receipt_number
-    config.update.columns.exclude :receipt_number
-#    config.list.columns.exclude :first_name, :middle_name, :last_name
-#    config.subform.columns = [:first_name, :last_name, :login, :password]
-
-    config.list.sorting = {:date => 'ASC'}
-
-#    config.nested.add_link "Names", [:aliases]
-
-#    config.create.columns.exclude(:first_name, :middle_name, :last_name, :phone_number)
-#    config.create.columns.add_subgroup "Optional" do |group|
-#      group.add(:first_name, :middle_name, :last_name, :phone_number)
-#    end
+	config.create.columns = [:receipt_number, :sum, :description, :fiscal_period]
   end
-
 #  def index
 #    list
 #    render :action => 'list'

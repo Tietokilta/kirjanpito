@@ -9,7 +9,7 @@ class Invoice < ActiveRecord::Base
               
 #  before_validation :fix_decimal_separator
 
-  validates_presence_of :description, :fiscal_period_id, :type_id, :payer
+  validates_presence_of :description, :fiscal_period_id, :payer
   validates_numericality_of :sum
   
 #  def fix_decimal_separator
