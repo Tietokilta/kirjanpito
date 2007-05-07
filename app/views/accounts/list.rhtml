@@ -1,3 +1,8 @@
+<h1>Listing accounts</h1>
+
+TODO: use commas in numbers<br />
+
+<p>
 <form name="sform" action="" style="display:inline;">
 Select fiscal period:
 <%= 
@@ -14,30 +19,13 @@ select_tag("query",
 </p>
 
 <%= observe_field 'query',
-    :update => active_scaffold_id,
+    :update => 'table',
     :before => "Element.show('spinner')",
     :success => "Element.hide('spinner')",
     :url => {:action => 'list'},
     :with => 'query' %>
 
-<div id="<%= active_scaffold_id -%>" class="active-scaffold active-scaffold-<%= controller_id %>">
-  <div class="active-scaffold-header">
-    <%= render :partial => 'list_header', :locals => { :headings => @headings } %>
-  </div>
-  <table cellpadding="0" cellspacing="0"><tbody class="before_header" id="<%= before_header_id -%>"></tbody></table>
-  <div id="<%= active_scaffold_content_id -%>">
-    <%= render :partial => 'list' %>
-  </div>
+<div id="table">
+    <%= render :partial => "list" %>
 </div>
 
-<script type="text/javascript">
-//Rico.Corner.round($$('#<%= active_scaffold_id %> div.active-scaffold-header').first(), {color: 'fromElement', bgColor: 'fromParent', corners: 'top', compact: true});
-//Rico.Corner.round($$('#<%= active_scaffold_id %> div.active-scaffold-footer').first(), {color: 'fromElement', bgColor: 'fromParent', corners: 'bottom', compact: true});
-new ActiveScaffold.Actions.Table($$('#<%= active_scaffold_id -%> div.active-scaffold-header a.action'), $('<%= before_header_id -%>'), $('<%= loading_indicator_id(:action => :table) -%>'))
-ActiveScaffold.server_error_response = '<p class="error-message message">'
-  + <%= as_('Request Failed (code 500, Internal Error)').to_json %>
-  + '<a href="#" onclick="Element.remove(this.parentNode); return false;">'
-  + <%= as_('Close').to_json %>
-  + '</a>'
-  + '</p>';
-</script>

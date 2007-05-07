@@ -4,14 +4,17 @@ class Account < ActiveRecord::Base
   has_and_belongs_to_many :users
   
   has_many    :budget_accounts
-  has_many    :debet_entries, :class_name   => "entry"
-  has_many    :credit_entries, :class_name   => "entry"
-  has_many    :source_invoice, :class_name   => "invoice"
-  has_many    :target_invoice, :class_name   => "invoice"
-
-  has_and_belongs_to_many :account
+  has_many    :debet_entries,
+              :class_name   => "entry"
+  has_many    :credit_entries,
+              :class_name   => "entry"
+  has_many    :source_invoice,
+              :class_name   => "invoice"
+  has_many    :target_invoice,
+              :class_name   => "invoice"
 
   belongs_to  :fiscal_period
+  belongs_to  :account
   belongs_to  :account_type, :foreign_key => "type_id"
 
   validates_presence_of :name, :fiscal_period_id, :type_id
@@ -44,15 +47,8 @@ class Account < ActiveRecord::Base
 		return bal
 	end
 
-	def parent_account
-    Account.find(:first, :conditions => ['name LIKE ?', params[:account][:parent_id][5..-1]])
-	end
-
 	def to_s
 		return number.to_s + " " + name
 	end
 
-	def to_label
-		return "%04d" % self.number + " " + self.name
-	end
 end

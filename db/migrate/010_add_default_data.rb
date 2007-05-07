@@ -8,6 +8,11 @@ class AddDefaultData < ActiveRecord::Migration
 		at = AccountType.create(:description => "Tase")
 		at.save!
 
+		fp = FiscalPeriod.create(:startdate => "2006-01-01", :enddate => "2006-12-31")
+		fp.save!
+		fp = FiscalPeriod.create(:startdate => "2007-01-01", :enddate => "2007-12-31")
+		fp.save!
+
     user = User.new()
     user.login = "rahis"
     user.password = "pahis"
@@ -15,6 +20,8 @@ class AddDefaultData < ActiveRecord::Migration
     user.email = "lholsti@niksula.hut.fi"
     user.level = 2
     user.save!
+
+
   end
 
   def self.down

@@ -13,7 +13,7 @@ class CreateInvoices < ActiveRecord::Migration
 			t.column "payer", :string
 			t.column "payer_contact", :string
 			t.column "target_account_id", :integer
-			t.column "paymentdate", :date  # erÃ¤pÃ¤ivÃ¤
+			t.column "paymentdate", :date  # eräpäivä
 			t.column "source_account_id", :integer
     end
 
