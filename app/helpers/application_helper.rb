@@ -7,14 +7,14 @@ module ApplicationHelper
 	end
 
 	def sort_td_class_helper(param)
-		result = 'class="sortup"' if @params[:sort] == param
-		result = 'class="sortdown"' if @params[:sort] == param + " desc"
+		result = 'class="sortup"' if params[:sort] == param
+		result = 'class="sortdown"' if params[:sort] == param + " desc"
 		return result
 	end
 
 	def sort_link_helper(text, param)
 		key = param
-		key += " desc" if @params[:sort] == param
+		key += " desc" if params[:sort] == param
 		options = {
 			:url => {:action => 'list', :params => params.merge({:sort => key, :page => nil})},
 			:update => 'table',

@@ -33,14 +33,21 @@ class AccountsController < ApplicationController
 		sort = "number"
 		sort = params['sort'] if params['sort']
 
+
+		if params[:search]
+			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sort, :include => :budget_accounts)
+
+		else
+			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2 ', @fiscal_period_id], :order => sort, :include => :budget_accounts)
+		end
+
     @accounts = Hash.new
-#    if !session[:visible_accounts].nil?
-      for h in @headings
-#        if session[:visible_accounts][h.id]
-          @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ? AND type_id = 2', h.id], :order => sort, :include => :budget_accounts)
- #       end
-      end
- #   end
+		@tmp_accounts.each { |x| 
+			@accounts[x.parent.id] = Array.new unless @accounts[x.parent.id]
+			@accounts[x.parent.id].push x	
+		}
+		@headings.delete_if { |h| !@accounts[h.id] }
+		
 	
 		@account_balance = Entry.getbalances @fiscal_period_id
 
