@@ -257,8 +257,6 @@ a.header:visited
 
 a.header:hover, a.header:focus
 {
-  color:              #fff;
-  background:         #000;
 }
 
 div.auto_complete {
