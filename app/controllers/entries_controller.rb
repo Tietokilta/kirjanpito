@@ -1,7 +1,12 @@
 class EntriesController < ApplicationController
   def index
     list
-    render :action => 'list'
+		if request.xml_http_request?
+			render :partial => "list", :layout => false
+		else
+	    render :action => 'list'
+		end
+
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -9,7 +14,13 @@ class EntriesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @entry_pages, @entries = paginate :entries, :per_page => 10
+		conditions = nil
+		conditions = ["receipt_number LIKE '%' ? '%' OR entries.description  LIKE '%' ? '%' OR sum LIKE '%' ? '%' OR date LIKE '%' ? '%' OR debet_account_id LIKE '%' ? '%' OR credit_account_id LIKE '%' ? '%'", params[:search], params[:search], params[:search], params[:search], params[:search], params[:search]] if params[:search]
+
+		order = "receipt_number"
+		order = params[:sort] if params[:sort]
+
+    @entry_pages, @entries = paginate :entries, :per_page => 20, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
   end
 
   def show

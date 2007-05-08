@@ -43,8 +43,8 @@ class AccountsController < ApplicationController
 
     @accounts = Hash.new
 		@tmp_accounts.each { |x| 
-			@accounts[x.parent.id] = Array.new unless @accounts[x.parent.id]
-			@accounts[x.parent.id].push x	
+			@accounts[x.parent_id] = Array.new unless @accounts[x.parent_id]
+			@accounts[x.parent_id].push x	
 		}
 		@headings.delete_if { |h| !@accounts[h.id] }
 		

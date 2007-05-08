@@ -48,7 +48,7 @@ class Account < ActiveRecord::Base
 	end
 
 	def to_s
-		return number.to_s + " " + name
+		return "%04d" % number.to_s + " " + name
 	end
 
 end
