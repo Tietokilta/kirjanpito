@@ -60,6 +60,7 @@ div #table {
   height:             38px;
   vertical-align:     bottom;
   text-align:         right;
+  border-bottom:      1px solid #000;
 }
 img {
   border:             none;
@@ -208,19 +209,35 @@ a:hover, a:focus
 div.header_menu {
 	width: 			        150px;  /* TODO: Make this dynamic with firefox and IE. */
 /*	background:		      #42782d;*/
+    background:           #eee;
+    height: 37px;
+    border: 1px solid #000;
 	text-align:         center;
 	margin: 		        0px;
 /*	padding: 		        0px 20px 0px 20px;*/
-  float:              right;
+    float:              right;
+}
+div.header_menu_selected {
+    width: 150px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    margin: 0px;
+    height: 37px;
+    float: right;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #fff;
 }
 div.header_menu:hover {
-	background:		      #000;
+	background:		      #fff;
 }
 
 a.header, a.header:active
 {
   font-size:          16px;
-  color:              #fff;
+  color:              #000;
   font-weight:        bold;
   line-height:        38px;
   text-decoration:    none;
@@ -233,7 +250,7 @@ a.header, a.header:active
 
 a.header:visited
 {
-  color:              #fff;
+  color:              #000;
 }
 
 a.header:hover, a.header:focus

@@ -47,13 +47,15 @@
     <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Sign-up", {:controller => :users, :action => :new}, {"class" => "header"} %></div>
 <% end %>
-    <% if !@current_user.nil? && @current_user.level >= 2 %><div class="header_menu"><%= link_to "Users", {:controller => :users}, {"class" => "header"} %></div><%end%>
-    <div class="header_menu"><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
-    <div class="header_menu"><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
-    <div class="header_menu"><%= link_to "Budgets", {:controller => :budgets}, {"class" => "header"} %></div>
-    <div class="header_menu"><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
+    <% sel = 'class="header_menu_selected"'-%>
+    <% unsel = 'class="header_menu"'-%>
+    <% if !@current_user.nil? && @current_user.level >= 2 %><div <%= if params[:controller] == "users" then sel else unsel end-%>><%= link_to "Users", {:controller => :users}, {"class" => "header"} %></div><%end%>
+    <div <%= if params[:controller] == "entries" then sel else unsel end-%>><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
+    <div <%= if params[:controller] == "invoices" then sel else unsel end-%>><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
+    <div <%= if params[:controller] == "budgets" then sel else unsel end-%>><%= link_to "Budgets", {:controller => :budgets}, {"class" => "header"} %></div>
+    <div <%= if params[:controller] == "accounts" then sel else unsel end-%>><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
     <% else %>
-    <div class="header_menu"><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div>
+    <!-- <div><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
     <% end %>
   </div>
   
