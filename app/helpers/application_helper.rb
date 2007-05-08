@@ -28,4 +28,22 @@ module ApplicationHelper
 		link_to_remote(text, options, html_options)
 	end
 
+			
+
+
+end
+ActiveRecord::Base.after_save :restore_date_format
+ActiveRecord::Base.before_save :change_date_format
+
+module ActiveRecord
+			
+	class Base
+		def restore_date_format
+			ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = '%d.%m.%Y'
+		end
+		def change_date_format
+			#@prevformat = ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default]
+			ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = "%Y-%m-%d"
+		end
+	end
 end

@@ -7,7 +7,6 @@ class Entry < ActiveRecord::Base
 							:class_name => "Account",
               :foreign_key  => "credit_account_id"
 
-
 	def self.getbalances(fiscal_period_id)
 		debs = Entry.find(:all, :select => 'debet_account_id, sum(sum) as balance', :group => 'debet_account_id', :conditions => ['fiscal_period_id = ?', fiscal_period_id])
 		creds = Entry.find(:all, :select => 'credit_account_id, sum(sum) as balance', :group => 'credit_account_id', :conditions => ['fiscal_period_id = ?', fiscal_period_id])

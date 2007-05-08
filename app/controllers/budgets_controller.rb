@@ -56,7 +56,7 @@ class BudgetsController < ApplicationController
 				ba = BudgetAccount.new
 				ba.budget_id = @budget.id
 				ba.account_id = x[0]
-				ba.sum = params[:accountsum][x[0].to_s]
+				ba.sum = params[:accountsum][x[0].to_s].tr ",", "."
 				ba.save!
 		}
 

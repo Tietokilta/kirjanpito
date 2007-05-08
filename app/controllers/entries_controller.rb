@@ -35,6 +35,8 @@ class EntriesController < ApplicationController
   end
 
   def create
+		params[:entry][:sum].tr! ",", "."
+
     @entry = Entry.new(params[:entry])
 
     if @entry.save
@@ -51,6 +53,8 @@ class EntriesController < ApplicationController
   end
 
   def update
+		params[:entry][:sum].tr! ",", "."
+
     @entry = Entry.find(params[:id])
     if @entry.update_attributes(params[:entry])
       flash[:notice] = 'Entry was successfully updated.'
