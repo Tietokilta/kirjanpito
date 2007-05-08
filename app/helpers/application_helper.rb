@@ -32,11 +32,11 @@ module ApplicationHelper
 
 
 end
+
+#SQL Dates
 ActiveRecord::Base.after_save :restore_date_format
 ActiveRecord::Base.before_save :change_date_format
-
 module ActiveRecord
-			
 	class Base
 		def restore_date_format
 			ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = '%d.%m.%Y'

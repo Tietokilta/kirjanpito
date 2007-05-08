@@ -5,9 +5,8 @@
 <%= text_field 'budget', 'description'  %></p>
 
 <p><label for="budget_fiscal_period_id">Fiscal period</label><br/>
-<input id="budget_fiscal_period_id" name="budget[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + @fiscal_period.enddate.strftime("%d.%m.%Y") unless @fiscal_period.nil? %>" /></p>
-<div class="auto_complete" id="budget_fiscal_period_id_auto_complete"></div>
-<%= auto_complete_field 'budget_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
+<%=select 'budget', 'fiscal_period_id', FiscalPeriod.find(:all).collect {|p| [p.startdate.to_s + " - " + p.enddate.to_s, p.id ]} %><br />
+
 
 <!--[eoform:budget]-->
 

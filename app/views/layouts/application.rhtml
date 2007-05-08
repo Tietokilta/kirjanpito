@@ -20,6 +20,22 @@
     <%= link_to "Logout", "/logout" %>
     <% end %>
   </div>
+	<!--
+  <div style="float: right;">
+		<div style="padding: 0.6em">
+		<%=form_tag request.path, :method => :get %>
+		Fiscal period:
+		<%=select_tag "new_fiscal_period", 
+			FiscalPeriod.find(:all).collect{ |f|
+				"<option id='"+f.id.to_s+"'"+
+				(session[:fiscal_period_id] == f.id.to_s ? " selected='selected'" : "" )+
+				">"+f.startdate.year.to_s+"</option>"},
+			:onchange => "this.form.submit()"%>
+		<%=submit_tag "Change" %>
+		</form>
+		</div>
+  </div>
+	-->
   <a href="/"><img src="/images/logo_top.gif"></a>
   </div>
   

@@ -28,10 +28,10 @@ class EntriesController < ApplicationController
   end
 
   def new
-		#TODO: fetch fiscal period from somewhere
-		@entry = Entry.find(:first, :order => "id desc", :conditions => ['fiscal_period_id = ?', 2006])
+		@entry = Entry.find(:first, :order => "receipt_number desc, id desc", :conditions => ['fiscal_period_id = ?', session[:fiscal_period_id]])
 		@entry.id += 1
 		@entry.receipt_number += 1
+		@entry.fiscal_period_id = session[:fiscal_period_id]
   end
 
   def create

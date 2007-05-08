@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   before_filter :login_required
   after_filter :store_location
 
+	before_filter :check_fiscal_period_change
+
   protected
     def authorized?
       if(request.path_parameters[:action] == "edit" ||
@@ -37,4 +39,9 @@ class ApplicationController < ActionController::Base
 
       redirect_back_or_default('')
     end
+
+		def check_fiscal_period_change
+			session[:fiscal_period_id] = params[:new_fiscal_period] if params[:new_fiscal_period]
+		end
+
 end

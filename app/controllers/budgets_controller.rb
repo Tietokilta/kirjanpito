@@ -18,20 +18,12 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = Budget.new
+		@budget.fiscal_period_id = session[:fiscal_period_id]
+
   end
 
   def create
-    @dates = params[:budget][:fiscal_period_id].split(" - ")
-    @dates[0] = Date.strptime(@dates[0], "%d.%m.%Y")
-    @dates[1] = Date.strptime(@dates[1], "%d.%m.%Y")
-    @fiscal_period_id = FiscalPeriod.find(:first,
-      :conditions => ['startdate LIKE ? AND enddate LIKE ?', @dates[0], @dates[1] ])
-    if @fiscal_period_id
-      @fiscal_period_id = @fiscal_period_id.id
-    end
-
     @budget = Budget.new(params[:budget])
-		@budget.fiscal_period_id = @fiscal_period_id
 
     if @budget.save
       flash[:notice] = 'Budget was successfully created.'
@@ -43,14 +35,12 @@ class BudgetsController < ApplicationController
 
   def edit
     @budget = Budget.find(params[:id])
-    @fiscal_period = FiscalPeriod.find(@budget[:fiscal_period_id]) unless @budget[:fiscal_period_id].nil?
   end
   
 	def update_accounts
     @budget = Budget.find(params[:id])
 
 		BudgetAccount.delete(BudgetAccount.find(:all, :conditions => ['budget_id = ?', @budget.id]))
-
 
 		params[:budgetaccounts].each { |x|
 				ba = BudgetAccount.new
@@ -65,15 +55,6 @@ class BudgetsController < ApplicationController
 
   def update
     @budget = Budget.find(params[:id])
-    @dates = params[:budget][:fiscal_period_id].split(" - ")
-    @dates[0] = Date.strptime(@dates[0], "%d.%m.%Y")
-    @dates[1] = Date.strptime(@dates[1], "%d.%m.%Y")
-    @fiscal_period_id = FiscalPeriod.find(:first,
-      :conditions => ['startdate LIKE ? AND enddate LIKE ?', @dates[0], @dates[1] ])
-    if @fiscal_period_id
-      @fiscal_period_id = @fiscal_period_id.id
-    end
-		params[:budget][:fiscal_period_id] = @fiscal_period_id
 
     if @budget.update_attributes(params[:budget])
       flash[:notice] = 'Budget was successfully updated.'
@@ -88,12 +69,4 @@ class BudgetsController < ApplicationController
     redirect_to :action => 'list'
   end
   
-	def autocomplete_fiscal_period_id
-      @fiscal_period_ids = FiscalPeriod.find(:all,
-        :conditions => [ 'startdate LIKE ? OR enddate LIKE ?', '%'+params[:budget][:fiscal_period_id]+'%', '%'+params[:budget][:fiscal_period_id]+'%'] )
-      @fiscal_period_id = params[:budget][:fiscal_period_id]
-      render :layout => false
-  end
-
-
 end

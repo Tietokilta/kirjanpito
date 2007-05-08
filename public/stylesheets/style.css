@@ -51,9 +51,10 @@ div #table {
 }
 
 .header_top {
-  background:         #71a24d url("/images/logo_top.gif") no-repeat top left;
+  background:         #71a24d  no-repeat top left;
   height:             64px;
 }
+
 .header_bottom {
   background:         #42782d url("/images/logo_bottom.gif") no-repeat top left;
   height:             38px;

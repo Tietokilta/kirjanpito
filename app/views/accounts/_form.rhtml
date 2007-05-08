@@ -16,10 +16,7 @@
 </tr>
 <tr class="odd_row">
   <th class="details"><label for="account_fiscal_period_id">Fiscal period</label></th>
-  <td class="details"><input id="account_fiscal_period_id" name="account[fiscal_period_id]" size="30" type="text" value="<%= @fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + @fiscal_period.enddate.strftime("%d.%m.%Y") unless @fiscal_period.nil? %>" />
-  <div class="auto_complete" id="account_fiscal_period_id_auto_complete"></div>
-  <%= auto_complete_field 'account_fiscal_period_id', :url => {:action => 'autocomplete_fiscal_period_id'} %>
-  </td>
+  <td class="details"><%=select 'account', 'fiscal_period_id', FiscalPeriod.find(:all).collect {|p| [p.startdate.to_s + " - " + p.enddate.to_s, p.id ]} %></td>
 </tr>
 <tr class="even_row">
   <th class="details"><label for="type_id">Account type</label></th>
