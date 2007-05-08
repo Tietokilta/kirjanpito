@@ -35,3 +35,40 @@ Search: <%=text_field_tag("search", @params['search'] )%>
     <%= render :partial => "list" %>
 </div>
 
+<!--
+<br>
+Filter with client side JavaScript:
+<input id="filterField" type="text" value=""/>
+<input id="filterButton" type="submit" onClick="javascript:filterPage();" value="set"/>
+-->
+
+<script type="text/javascript">
+<!--
+var rows = $$('tbody tr.odd_row', 'tbody tr.even_row');
+
+function filterPage()
+{
+	var searchString = $('filterField').value.toLowerCase();
+	var clear = (searchString.length < 1);
+
+	for (ii=0; ii<rows.size(); ii++)
+	{
+		if(clear)
+		{
+			rows[ii].show();
+		}
+		else
+		{
+			var cols = rows[ii].descendants() //.getElementsBySelector('td');
+			
+			rows[ii].show();
+			var show = true;
+			show = (rows[ii].innerHTML.stripTags().gsub(/\s+/, ' ').toLowerCase().include(searchString));
+			
+			if(!show)
+				rows[ii].hide();
+		}
+	}
+}
+-->
+</script>
