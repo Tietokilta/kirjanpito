@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
 		order = "receipt_number"
 		order = params[:sort] if params[:sort]
 
-    @entry_pages, @entries = paginate :entries, :per_page => 20, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
+    @entry_pages, @entries = paginate :entries, :per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
   end
 
   def show

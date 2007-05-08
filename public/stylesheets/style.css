@@ -128,6 +128,11 @@ tr.odd_row {
 }
 
 /**
+ *  Plain table styles
+ */
+table.plain, tr.plain, td.plain { border-width: 0px; }
+
+/**
  *  Table styles for formatting details
  */
 table.details {
@@ -192,10 +197,10 @@ a:visited
 
 a:hover, a:focus
 {
-  color:              #000;
-  text-decoration:    none;
+  color:              #42782d;
+	background:					transparent;
+	text-decoration:		underline;
 }
-
 
 /**
  *  Header menu anchor styles
