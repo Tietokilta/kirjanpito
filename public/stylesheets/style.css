@@ -214,6 +214,7 @@ div.header_menu {
     border: 1px solid #000;
 	text-align:         center;
 	margin: 		        0px;
+    margin-right: 2px;
 /*	padding: 		        0px 20px 0px 20px;*/
     float:              right;
 }
@@ -225,6 +226,7 @@ div.header_menu_selected {
     margin: 0px;
     height: 37px;
     float: right;
+    margin-right: 2px;
     border-top: 1px solid #000;
     border-left: 1px solid #000;
     border-right: 1px solid #000;
