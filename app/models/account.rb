@@ -46,6 +46,18 @@ class Account < ActiveRecord::Base
 
 		return bal
 	end
+	
+	def budget
+		if self.budget_accounts.last
+			self.budget_accounts.last.sum
+		else
+			0.0
+		end
+	end
+	
+	def status
+		self.budget - self.balance
+	end
 
 	def to_s
 		return "%04d" % number.to_s + " " + name

@@ -32,13 +32,20 @@ class AccountsController < ApplicationController
 
 		sort = "number"
 		sort = params['sort'] if params['sort']
+		sqlsort = nil
 
-
+		case sort.scan(/\w+/)[0]
+			when 'number':
+			when 'name':
+			when 'description':
+				sqlsort = sort
+		end
+			
 		if params[:search]
-			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sort, :include => :budget_accounts)
+			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sqlsort, :include => :budget_accounts)
 
 		else
-			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2 ', @fiscal_period_id], :order => sort, :include => :budget_accounts)
+			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2 ', @fiscal_period_id], :order => sqlsort, :include => :budget_accounts)
 		end
 
     @accounts = Hash.new
@@ -49,8 +56,46 @@ class AccountsController < ApplicationController
 		@headings.delete_if { |h| !@accounts[h.id] }
 		
 	
-		@account_balance = Entry.getbalances @fiscal_period_id
+		@account_balance = Entry.getbalances session[:fiscal_period_id]
 
+		case sort.scan(/\w+/)[0]
+			when 'balance':
+				@accounts.each { |a|
+					next unless @accounts[a[0]]
+					@accounts[a[0]].each { |b|
+						@account_balance[b.id] = 0 unless @account_balance[b.id]
+					}
+					
+					@accounts[a[0]].sort! {|a,b| @account_balance[a.id] <=> @account_balance[b.id] }
+				}
+			# TODO: propably some optimization available.
+			when 'budget':
+				@accounts.each { |a|
+					next unless @accounts[a[0]]
+					
+					@accounts[a[0]].sort! {|a,b|
+						a.budget <=> b.budget
+					}
+				}
+			when 'status':
+				@accounts.each { |a|
+					next unless @accounts[a[0]]
+					
+					@accounts[a[0]].sort! {|a,b|
+						a.status <=> b.status
+					}
+				}
+		end
+
+		if sort.scan(/\w+/)[1] == 'desc'
+			@accounts.each { |a|
+				next unless @accounts[a[0]]
+				
+				@accounts[a[0]].reverse!
+			}
+		end
+		
+		
     if request.xml_http_request?
       render :partial => "list", :layout => false
     end

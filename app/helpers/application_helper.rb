@@ -15,6 +15,7 @@ module ApplicationHelper
 	def sort_link_helper(text, param)
 		key = param
 		key += " desc" if params[:sort] == param
+		key = nil if params[:sort] == param + " desc"
 		options = {
 			:url => {:action => 'list', :params => params.merge({:sort => key, :page => nil})},
 			:update => 'table',

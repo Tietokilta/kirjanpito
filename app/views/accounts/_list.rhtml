@@ -23,9 +23,9 @@
                 %><th <%=sort_td_class_helper(column.name)%>><%= sort_link_helper column.human_name, column.name %></th>
         <% end %>
       <% end %>
-			<th>Balance</th>
-			<th>Budget</th>
-			<th>Status</th>
+			<th <%=sort_td_class_helper("balance")%>><%= sort_link_helper "Balance", "balance" %></th>
+			<th <%=sort_td_class_helper("budget")%>><%= sort_link_helper "Budget", "budget" %></th>
+			<th <%=sort_td_class_helper("status")%>><%= sort_link_helper "Status", "status" %></th>
       <th>Actions</th>
     </tr>
 		
