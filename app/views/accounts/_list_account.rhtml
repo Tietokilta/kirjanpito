@@ -1,0 +1,44 @@
+<% for account in @accounts[@heading.id] %>
+	<% classAttr = cycle("class=\"odd_row\"", "class=\"even_row\"") -%>
+	<tr  <%= classAttr %> id="account_<%=account.id%>">
+	<% for column in Account.columns %>
+		<% if column.name == "id" || column.name == "parent_id" || column.name == "type_id" || column.name ==  "fiscal_period_id"
+				else %>
+			<td>
+			<%=
+				case column.name
+						when "id"
+						when "fiscal_period_id"
+								fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', account.send(column.name)])
+								if fiscal_period
+										fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
+										fiscal_period
+								else
+										"&nbsp;"
+								end
+						when "number"
+							"%04d" % account.number
+						else
+							h account.send(column.name)
+				end %>
+			</td>
+		<% end %>
+	<% end %>
+
+	<% b  = @account_balance[account.id] %>
+	<% b  = 0 unless b %>
+	<% bs = 0 %>
+	<% bs = account.budget_accounts.last.sum if account.budget_accounts.last %>
+	<td class="alignright"><%= number_to_currency(b) %></td>
+	<td class="alignright"><%= number_to_currency(bs)%></td>
+	<td class="sum_<%=(b-bs)>=0 ? "positive" : "negative"%>"><%= number_to_currency(b-bs)%></td>
+
+	<td>
+		<div>
+			<%= link_to image_tag('/images/show.gif'), :action => 'show', :id => account %>
+			<%= link_to image_tag('/images/edit.gif'), :action => 'edit', :id => account %>
+			<%= link_to image_tag('/images/cancel.gif'), { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
+		</div>
+	</td>
+	</tr>
+<% end %>
