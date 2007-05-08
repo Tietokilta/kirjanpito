@@ -4,7 +4,9 @@ class AccountsController < ApplicationController
 
   def index
     list
-    render :action => 'list'
+		if ! request.xml_http_request?
+	    render :action => 'list'
+		end
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
@@ -24,15 +26,18 @@ class AccountsController < ApplicationController
       @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
     end
     session[:fiscal_period_id] = @fiscal_period_id
-    @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
+    @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND type_id = 2 AND fiscal_period_id = ?', @fiscal_period_id])
     #@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @headings.sort! {|a,b| a.id <=> b.id }
+
+		sort = "number"
+		sort = params['sort'] if params['sort']
 
     @accounts = Hash.new
 #    if !session[:visible_accounts].nil?
       for h in @headings
 #        if session[:visible_accounts][h.id]
-          @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ?', h.id])
+          @accounts[h.id] = Account.find(:all, :conditions => ['parent_id = ? AND type_id = 2', h.id], :order => sort, :include => :budget_accounts)
  #       end
       end
  #   end
@@ -48,7 +53,10 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = Account.find(params[:id])
+    @account = Account.find(params[:id], :include => [:budget_accounts, :parent])
+		@deb = Entry.find(:all, :conditions => ['debet_account_id = ?', @account.id], :order => 'date asc')
+		@cred = Entry.find(:all, :conditions => ['credit_account_id = ?', @account.id], :order => 'date asc')
+
   end
 
   def new

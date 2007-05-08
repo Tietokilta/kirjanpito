@@ -259,3 +259,19 @@ div.auto_complete ul strong.highlight {
 	margin:0;
 	padding:0;
 }
+
+.sortup {
+	background: #BBF;
+}
+.sortdown {
+	background: #AAF;
+}
+
+.sum_positive {
+	text-align: right;
+	background: #AFA;
+}
+.sum_negative {
+	text-align: right;
+	background: #FAA;
+}

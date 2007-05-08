@@ -20,10 +20,12 @@
             when "type_id"
             when "fiscal_period_id"
             else
-                %><th><%= column.human_name %></th>
+                %><th <%=sort_td_class_helper(column.name)%>><%= sort_link_helper column.human_name, column.name %></th>
         <% end %>
       <% end %>
 			<th>Balance</th>
+			<th>Budget</th>
+			<th>Status</th>
       <th>Actions</th>
     </tr>
     <% i = 0; %>
@@ -56,8 +58,14 @@
 		<%
 		b = @account_balance[account.id]
 		b = 0 unless b
+
+		bs=0
+		bs = account.budget_accounts.last.sum if account.budget_accounts.last
+
 		%>
         <td class="alignright"><%= number_to_currency(b) %></td>
+				<td class="alignright"><%= number_to_currency(bs)%></td>
+				<td class="sum_<%=(b-bs)>=0 ? "positive" : "negative"%>"><%= number_to_currency(b-bs)%></td>
     <td>
     <div>
     <%= link_to image_tag('/images/show.gif'), :action => 'show', :id => account %>

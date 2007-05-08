@@ -1,61 +1,10 @@
-<table class="details">
-<% i = 0; %>
-<% for column in Account.columns %>
-    <% i += 1; %>
-    <tr class="<%= if i % 2 == 0
-        "even_row"
-    else
-        "odd_row"
-    end    
-    %>">
-  <th class="details"><%= column.human_name %>:</th>
-  <td class="details">
-  <%=
-    case column.human_name
-        when "Fiscal period"
-            #fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', @account.send(column.name)])
-						fiscal_period = @account.fiscal_period
-            if fiscal_period
-                fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
-                fiscal_period
-            else
-                "&nbsp;"
-            end
-        when "Type"
-            #type = AccountType.find(:first, :conditions => ['id = ?', @account.send(column.name)])
-						type = @account.account_type
-
-            if type
-                type.description
-            else
-                "&nbsp;"
-            end
-        when "Parent"
-            #parent = Account.find(:first, :conditions => ['id = ?', @account.send(column.name)])
-						parent = @account.parent
-            if parent
-                parentnmbr = "%04d" % parent.number 
-                parent = parentnmbr +" " +parent.name
-                parent
-            else
-                "&nbsp;"
-            end
-        else
-            h @account.send(column.name)
-    end
-   %>
-  </td>
-</tr>
-<% end %>
-</table>
+<h2><%="%04d" % @account.number%> - <%=@account.name%></h2>
 <%= link_to 'Edit', :action => 'edit', :id => @account %> |
-<%= link_to 'Back', :action => 'list' %>
-<br>
-<br>
+<%= link_to 'Back', :action => 'list' %> <br />
+Parent: <%="%04d" % @account.parent.number %> - <%=@account.parent.name %> <br />
+<%=@account.description%> <br />
 
 <%
-deb = Entry.find(:all, :conditions => ['debet_account_id = ?', @account.id], :order => 'date asc')
-cred = Entry.find(:all, :conditions => ['credit_account_id = ?', @account.id], :order => 'date asc')
 totd = 0
 totc = 0
 %>
@@ -64,7 +13,7 @@ totc = 0
 <table style="width:auto;">
 <tr><td class="heading" colspan="5">Debet</td></tr>
 <%
-deb.each { |e| 
+@deb.each { |e| 
 	totd += e.sum
 %>
 <tr>
@@ -80,13 +29,13 @@ deb.each { |e|
 <% } %>
 <tr>
   <td class="total" colspan="2" align="right">Total:</td>
-  <td class="total" colspan="2"><%=number_to_currency(totd)%></td>
+  <td class="total" colspan="3"><%=number_to_currency(totd)%></td>
 </tr>
 
 
 <tr><td class="heading" colspan="5">Credit</td></tr>
 <%
-cred.each { |e| 
+@cred.each { |e| 
 	totc += e.sum
 %>
 <tr>
@@ -102,21 +51,21 @@ cred.each { |e|
 <% } %>
 <tr>
   <td class="total" colspan="2" align="right">Total:</td>
-  <td class="total" colspan="2"><%=number_to_currency(totc)%></td>
+  <td class="total" colspan="3"><%=number_to_currency(totc)%></td>
 </tr>
 
 <tr><td class="heading" colspan="5">Budget</td></tr>
 <tr>
   <td class="total" colspan="2" align="right">Status now:</td>
-  <td class="total" colspan="2"><%=number_to_currency(totc - totd)%></td>
+  <td class="total" colspan="3"><%=number_to_currency(totc - totd)%></td>
 </tr>
 <%
-BudgetAccount.find(:all, :conditions => ['account_id = ?', @account.id]).each { |a| 
+@account.budget_accounts.each { |a|
 	sum = 0 unless sum = a.sum
 %>
 <tr>
   <td class="total" colspan="2" align="right"><%=a.budget.description%>:</td>
-  <td class="total" colspan="2"><%=number_to_currency(sum)%>, balance: <%=number_to_currency(-sum +totc-totd)%></td>
+  <td class="total" colspan="3"><%=number_to_currency(sum)%>, balance: <%=number_to_currency(-sum +totc-totd)%></td>
 </tr>
 <% } %>
 
