@@ -28,8 +28,8 @@
   <% for column in Entry.content_columns %>
     <th <%=sort_td_class_helper column.name%>><%= sort_link_helper column.human_name, column.name %></th>
   <% end %>
+        <th>Debet</th>
 		<th>Credit</th>
-		<th>Debet</th>
     <th style="width: 80px;">Actions</th>
   </tr>
   
@@ -49,8 +49,8 @@
     <td><%=h entry.send(column.name) %></td>
   <% end %>
   <% end %>
+        <td><%=entry.debet_account%></td>
 		<td><%=entry.credit_account%></td>
-		<td><%=entry.debet_account%></td>
     <td>
     <div>
     <%= link_to_image '/images/show.gif', :action => 'show', :id => entry %>
