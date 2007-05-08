@@ -4,7 +4,7 @@ class CreateAccounts < ActiveRecord::Migration
   extend MigrationHelpers
 
   def self.up
-    create_table :accounts do |t|
+    create_table :accounts, :options => "DEFAULT CHARSET=utf8"  do |t|
       t.column "number",            :integer
       t.column "name",              :string
       t.column "description",       :string

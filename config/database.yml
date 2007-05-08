@@ -2,6 +2,7 @@
 
 login: &login
   adapter: mysql
+  encoding: utf8
   host: localhost
 <% if `uname -n`.strip == "ampere.aketzu.net" || `uname -n`.strip == "kelvin.aketzu.net" %>
   username: tikki

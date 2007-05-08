@@ -4,7 +4,7 @@ class CreateInvoices < ActiveRecord::Migration
   extend MigrationHelpers
 
   def self.up
-    create_table :invoices do |t|
+    create_table :invoices, :options => "DEFAULT CHARSET=utf8"  do |t|
 			# TODO: add more fields as required
 			t.column "date", :date   # laskun päiväys
 			t.column "fiscal_period_id", :integer

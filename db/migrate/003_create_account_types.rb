@@ -2,7 +2,7 @@ require 'migration_helpers'
 
 class CreateAccountTypes < ActiveRecord::Migration
   def self.up
-    create_table :account_types do |t|
+    create_table :account_types, :options => "DEFAULT CHARSET=utf8"  do |t|
       t.column "description",       :string
     end
 

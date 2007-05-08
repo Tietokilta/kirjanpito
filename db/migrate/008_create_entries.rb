@@ -4,7 +4,7 @@ class CreateEntries < ActiveRecord::Migration
   extend MigrationHelpers
 
   def self.up
-    create_table :entries do |t|
+    create_table :entries, :options => "DEFAULT CHARSET=utf8"  do |t|
 			t.column "receipt_number",    :integer
 			t.column "description",    :string
 			t.column "sum",    :decimal, :precision => 15, :scale => 2

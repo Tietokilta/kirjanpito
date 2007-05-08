@@ -6,15 +6,3 @@ module ApplicationHelper
 		content_tag("ul", items.uniq)
 	end
 end
-module ActionView
-  module Helpers
-    module NumberHelper
-      def number_to_euro(number)
-        defaults = {:unit => '', :delimiter => '', :separator => ','}
-        s = number_to_currency(number, defaults)
-        return s
-      end
-    end
-  end
-end
-

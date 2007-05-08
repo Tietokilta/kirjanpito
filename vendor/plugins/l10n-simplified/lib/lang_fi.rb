@@ -69,7 +69,7 @@ module LocalizationSimplified
     # These are sent to strftime that Ruby's date and time handlers use internally
     # Same options as php (that has a better list: http://www.php.net/strftime )    
     DateFormats = {
-      :default  => "%e.%m.%Y",
+      :default  => "%d.%m.%Y",
       :short    => "%d.%m.",
       :long     => "%e. %Bta %Y"
     }
@@ -90,10 +90,10 @@ module LocalizationSimplified
     # CurrencyOptions are used as default for +Number#to_currency()+
     # http://api.rubyonrails.org/classes/ActionView/Helpers/NumberHelper.html#M000449
     CurrencyOptions = {
-      :unit      => "€",
-      :separator => " ",             #unit separator (between integer part and fraction part)
-      :delimiter => ",",             #delimiter between each group of thousands. Example: 1.234.567 
-      :order     => [:unit, :number] #order is at present unsupported in Rails
+      :unit      => "&euro;",
+      :separator => ",",             #unit separator (between integer part and fraction part)
+      :delimiter => " ",             #delimiter between each group of thousands. Example: 1.234.567 
+      :order     => [:number, :unit] #order is at present unsupported in Rails
       #to support for instance Danish format, the order is different: Unit comes last (ex. "1.234,00 dkr.")
     }
   end

@@ -71,7 +71,7 @@ deb.each { |e|
 	<td><%=e.date%></td>
 	<td><%=e.receipt_number%></td>
 	<td><%=e.description%></td>
-    <td class="alignright"><%=number_to_euro(e.sum) %></td>
+    <td class="alignright"><%=number_to_currency(e.sum) %></td>
 	<td>
 	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
 	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
@@ -80,7 +80,7 @@ deb.each { |e|
 <% } %>
 <tr>
   <td class="total" colspan="2" align="right">Total:</td>
-  <td class="total" colspan="2"><%=number_to_euro(totd)%></td>
+  <td class="total" colspan="2"><%=number_to_currency(totd)%></td>
 </tr>
 
 
@@ -93,7 +93,7 @@ cred.each { |e|
 	<td><%=e.date%></td>
 	<td><%=e.receipt_number%></td>
 	<td><%=e.description%></td>
-    <td class="alignright"><%=number_to_euro(e.sum) %></td>
+    <td class="alignright"><%=number_to_currency(e.sum) %></td>
 	<td>
 	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
 	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
@@ -102,13 +102,13 @@ cred.each { |e|
 <% } %>
 <tr>
   <td class="total" colspan="2" align="right">Total:</td>
-  <td class="total" colspan="2"><%=number_to_euro(totc)%></td>
+  <td class="total" colspan="2"><%=number_to_currency(totc)%></td>
 </tr>
 
 <tr><td class="heading" colspan="5">Budget</td></tr>
 <tr>
   <td class="total" colspan="2" align="right">Status now:</td>
-  <td class="total" colspan="2"><%=number_to_euro(totc - totd)%></td>
+  <td class="total" colspan="2"><%=number_to_currency(totc - totd)%></td>
 </tr>
 <%
 BudgetAccount.find(:all, :conditions => ['account_id = ?', @account.id]).each { |a| 
@@ -116,7 +116,7 @@ BudgetAccount.find(:all, :conditions => ['account_id = ?', @account.id]).each { 
 %>
 <tr>
   <td class="total" colspan="2" align="right"><%=a.budget.description%>:</td>
-  <td class="total" colspan="2"><%=number_to_euro(sum)%>, balance: <%=number_to_euro(-sum +totc-totd)%></td>
+  <td class="total" colspan="2"><%=number_to_currency(sum)%>, balance: <%=number_to_currency(-sum +totc-totd)%></td>
 </tr>
 <% } %>
 

@@ -4,7 +4,7 @@ class CreateBudgets < ActiveRecord::Migration
   extend MigrationHelpers
 
   def self.up
-    create_table :budgets do |t|
+    create_table :budgets, :options => "DEFAULT CHARSET=utf8"  do |t|
 			t.column "fiscal_period_id", :integer
 			t.column "description", :string
     end
