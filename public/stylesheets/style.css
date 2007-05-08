@@ -209,7 +209,7 @@ a:hover, a:focus
 div.header_menu {
 	width: 			        150px;  /* TODO: Make this dynamic with firefox and IE. */
 /*	background:		      #42782d;*/
-    background:           #eee;
+    background:          #e7ebdb; 
     height: 37px;
     border: 1px solid #000;
 	text-align:         center;
