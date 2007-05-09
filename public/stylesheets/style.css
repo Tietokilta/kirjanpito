@@ -209,7 +209,7 @@ a:hover, a:focus
 div.header_menu {
 	width: 			        150px;  /* TODO: Make this dynamic with firefox and IE. */
 /*	background:		      #42782d;*/
-    background:          #e7ebdb; 
+    background:           #fff url(/images/gradient_gray.png) repeat-x;
     height: 37px;
     border: 1px solid #000;
 	text-align:         center;
@@ -232,8 +232,9 @@ div.header_menu_selected {
     border-right: 1px solid #000;
     border-bottom: 1px solid #fff;
 }
+
 div.header_menu:hover {
-	background:		      #fff;
+    text-decoration: underline;
 }
 
 a.header, a.header:active
@@ -253,10 +254,6 @@ a.header, a.header:active
 a.header:visited
 {
   color:              #000;
-}
-
-a.header:hover, a.header:focus
-{
 }
 
 div.auto_complete {

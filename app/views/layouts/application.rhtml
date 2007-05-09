@@ -15,11 +15,6 @@
 <div id="container-page">
 
   <div class="header_top">
-  <div style="float: right;">
-    <% if logged_in? %>
-    <%= link_to "Logout", "/logout" %>
-    <% end %>
-  </div>
 	<!--
   <div style="float: right;">
 		<div style="padding: 0.6em">
@@ -56,6 +51,11 @@
     <div <%= if params[:controller] == "accounts" then sel else unsel end-%>><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
     <% else %>
     <!-- <div><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
+    <% end %>
+  </div>
+    <div style="float: right;">
+    <% if logged_in? %>
+    <%= link_to "Logout", "/logout" %>
     <% end %>
   </div>
   
