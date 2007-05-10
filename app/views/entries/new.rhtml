@@ -5,9 +5,4 @@
   <%= submit_tag "Create" %>
 <% end %>
 <%= link_to 'Back', :action => 'list' %>
-
-<script type="text/javascript">
-<!--
-document.body.onLoad=$('entry_description').focus();$('entry_description').select();
--->
-</script>
+<%= javascript_tag("document.body.onLoad=$('entry_description').focus();$('entry_description').select();") %>

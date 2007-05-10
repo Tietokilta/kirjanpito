@@ -37,19 +37,18 @@
   <td class="details"><%=select 'entry', 'fiscal_period_id', FiscalPeriod.find(:all).collect {|p| [p.startdate.to_s + " - " + p.enddate.to_s, p.id ]} %></td>
 </tr>
 <tr class="odd_row">
+  <th class="details"><label for="entry_debet_account">Debet account</label></th>
+  <td class="details"><%= text_field_tag 'debet_account', (@entry.debet_account if @entry)  %><div class="auto_complete" id="debet_account_auto_complete"></div>
+<%= auto_complete_field 'debet_account', {:url => {:action => 'autocomplete_debet_account'}, :after_update_element => 'auto_complete_on_select' } %>
+<%= hidden_field 'entry', 'debet_account_id' %>
+  </td>
+</tr>
+<tr class="even_row">
   <th class="details"><label for="entry_credit_account">Credit account</label></th>
   <td class="details"><%= text_field_tag 'credit_account', (@entry.credit_account if @entry)  %>
   <div class="auto_complete" id="credit_account_auto_complete"></div>
   <%= auto_complete_field 'credit_account', {:url => {:action => 'autocomplete_credit_account'}, :after_update_element => 'auto_complete_on_select' } %>
   <%= hidden_field 'entry', 'credit_account_id' %>
-  </td>
-</tr>
-<tr class="even_row">
-  <th class="details"><label for="entry_debet_account">Debet account</label></th>
-  <td class="details"><%= text_field_tag 'debet_account', (@entry.debet_account if @entry)  %>
-<div class="auto_complete" id="debet_account_auto_complete"></div>
-<%= auto_complete_field 'debet_account', {:url => {:action => 'autocomplete_debet_account'}, :after_update_element => 'auto_complete_on_select' } %>
-<%= hidden_field 'entry', 'debet_account_id' %>
   </td>
 </tr>
 </table>
