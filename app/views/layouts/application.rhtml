@@ -11,7 +11,7 @@
   <link rel="shortcut icon" href="/images/icon.gif" type="image/x-icon" />
 </head>
 <% if params[:controller] == "entries" && params[:action] == "new" %>
-<body onload="document.new_entry.entry[description].focus();">
+<body onload="document.new_entry.entry_description.focus(); document.new_entry.entry_description.select();">
 <% else %>
 <body>
 <% end %>
