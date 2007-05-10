@@ -4,13 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title> <%= controller.action_name %> </title>
+  <title>TiKirjanpito</title>
   <%= javascript_include_tag :defaults %>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= stylesheet_link_tag 'style' %>
   <link rel="shortcut icon" href="/images/icon.gif" type="image/x-icon" />
 </head>
+<% if params[:controller] == "entries" && params[:action] == "new" %>
+<body onload="document.new_entry.entry[description].focus();">
+<% else %>
 <body>
+<% end %>
 
 <div id="container-page">
 
