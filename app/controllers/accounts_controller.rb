@@ -40,6 +40,9 @@ class AccountsController < ApplicationController
 			when 'description':
 				sqlsort = sort
 		end
+		if sqlsort.nil?
+			sqlsort = 'number'
+		end
 			
 		if params[:search]
 			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sqlsort, :include => :budget_accounts)
