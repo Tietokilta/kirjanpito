@@ -34,16 +34,20 @@ class AccountsController < ApplicationController
 		sort = params['sort'] if params['sort']
 		sqlsort = nil
 
-		case sort.scan(/\w+/)[0]
+		field = sort.scan(/\w+/)[0]
+		case field
 			when 'number':
+				sqlsort = field
 			when 'name':
+				sqlsort = field
 			when 'description':
-				sqlsort = sort
+				sqlsort = field
 		end
-		if sqlsort.nil?
-			sqlsort = 'number'
+
+		if sort.scan(/\w+/)[1] == 'desc' then
+			sqlsort = sqlsort + " asc"
 		end
-			
+
 		if params[:search]
 			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sqlsort, :include => :budget_accounts)
 

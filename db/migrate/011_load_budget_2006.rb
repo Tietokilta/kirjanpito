@@ -2,7 +2,7 @@ require 'active_record/fixtures'
 
 class LoadBudget2006 < ActiveRecord::Migration
   def self.up
-		down
+		#down
 
 		dir = File.join(File.dirname(__FILE__), "budget_2006")
 		Fixtures.create_fixtures(dir, "account_types")
@@ -22,11 +22,11 @@ class LoadBudget2006 < ActiveRecord::Migration
   end
 
   def self.down
-		Entry.delete_all
-		Account.delete_all
+		Entry.delete(Entry.find(:all, :conditions => 'fiscal_period_id = 2006'))
+		Account.delete(Account.find(:all, :conditions => 'fiscal_period_id = 2006'))
 		AccountType.delete_all
-		BudgetAccount.delete_all
-		Budget.delete_all
-		FiscalPeriod.delete_all
+		BudgetAccount.delete(BudgetAccount.find(:all, :conditions => 'budget_id in (200601, 200602)'))
+		Budget.delete(Budget.find(:all, :conditions => 'fiscal_period_id = 2006'))
+		FiscalPeriod.delete(FiscalPeriod.find(:all, :conditions => 'id = 2006'))
   end
 end

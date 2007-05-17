@@ -1,0 +1,955 @@
+--- !!omap
+
+
+- 10:
+    id: 20070010
+    number: 10
+    name: "Tilit"
+    fiscal_period_id: 2007
+    type_id: 1
+
+- 0:
+    id: 20070000
+    number: 0
+    name: "Yleinen toiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 1:
+    id: 20070001
+    number: 1
+    name: "Tilinavaus"
+    fiscal_period_id: 2007
+    type_id: 1
+
+
+- 100:
+    id: 20070100
+    number: 100
+    name: "Hallituksen käyttökulut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 105:
+    id: 20070105
+    number: 105
+    name: "Hallituksen vaihtokulut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 110:
+    id: 20070110
+    number: 110
+    name: "Toimistokulut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 115:
+    id: 20070115
+    number: 115
+    name: "Puhelin"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 120:
+    id: 20070120
+    number: 120
+    name: "Kaluston hankinta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 130:
+    id: 20070130
+    number: 130
+    name: "Kaluston ylläpito ja korjaus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 135:
+    id: 20070135
+    number: 135
+    name: "Kiltahuoneen remontti"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 150:
+    id: 20070150
+    number: 150
+    name: "Lehtitilaukset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 170:
+    id: 20070170
+    number: 170
+    name: "Kilta- ja kuukausikokoukset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 171:
+    id: 20070171
+    number: 171
+    name: "Powerkähmyt"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 176:
+    id: 20070176
+    number: 176
+    name: "Kunnianosoitukset & palkinnot"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 180:
+    id: 20070180
+    number: 180
+    name: "Tilintarkastus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 190:
+    id: 20070190
+    number: 190
+    name: "Kiltahuonetoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 191:
+    id: 20070191
+    number: 191
+    name: "Tietokillan kiltatoiminnan kehittämistoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 195:
+    id: 20070195
+    number: 195
+    name: "Yhdistysrekisterimaksut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 199:
+    id: 20070199
+    number: 199
+    name: "Muu yleinen toiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070000
+
+- 2:
+    id: 20070002
+    number: 2
+    name: "Hupitoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 200:
+    id: 20070200
+    number: 200
+    name: "Muistinnollaus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 202:
+    id: 20070202
+    number: 202
+    name: "Välimuistinnollaus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 210:
+    id: 20070210
+    number: 210
+    name: "TiKkujoulu"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 225:
+    id: 20070225
+    number: 225
+    name: "Muut juhlat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 230:
+    id: 20070230
+    number: 230
+    name: "Kiltaristeily"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 240:
+    id: 20070240
+    number: 240
+    name: "Lettukestit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 245:
+    id: 20070245
+    number: 245
+    name: "Kesäkokous"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 250:
+    id: 20070250
+    number: 250
+    name: "Saunaillat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 260:
+    id: 20070260
+    number: 260
+    name: "TKY Tilavuokrat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 280:
+    id: 20070280
+    number: 280
+    name: "Sitsit ja muut juhlat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 285:
+    id: 20070285
+    number: 285
+    name: "Toimihenkilösitsit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 290:
+    id: 20070290
+    number: 290
+    name: "Sisätoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 299:
+    id: 20070299
+    number: 299
+    name: "Muu hupitoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070002
+
+- 3:
+    id: 20070003
+    number: 3
+    name: "Kulttuuritoiminta ja liikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 300:
+    id: 20070300
+    number: 300
+    name: "Teatteri, ooppera, jne"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 310:
+    id: 20070310
+    number: 310
+    name: "Kulttuuritoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 320:
+    id: 20070320
+    number: 320
+    name: "Elokuva- ja pelitoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 330:
+    id: 20070330
+    number: 330
+    name: "Lukkaritoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 340:
+    id: 20070340
+    number: 340
+    name: "Jediritaritoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 350:
+    id: 20070350
+    number: 350
+    name: "Maisteluillat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 360:
+    id: 20070360
+    number: 360
+    name: "Liikuntatoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 399:
+    id: 20070399
+    number: 399
+    name: "Muu kulttuuritoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070003
+
+- 4:
+    id: 20070004
+    number: 4
+    name: "Phuksitoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 400:
+    id: 20070400
+    number: 400
+    name: "Phuksimatrikkeli"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 410:
+    id: 20070410
+    number: 410
+    name: "Wappu"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 420:
+    id: 20070420
+    number: 420
+    name: "Kevään phuksitapahtumat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 430:
+    id: 20070430
+    number: 430
+    name: "Syksyn phuksitapahtumat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 440:
+    id: 20070440
+    number: 440
+    name: "Isohenkilötoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 450:
+    id: 20070450
+    number: 450
+    name: "Phuksitoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 460:
+    id: 20070460
+    number: 460
+    name: "Phuksibiletoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 470:
+    id: 20070470
+    number: 470
+    name: "Phuksipistekortit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 499:
+    id: 20070499
+    number: 499
+    name: "Muu phuksitoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070004
+
+- 5:
+    id: 20070005
+    number: 5
+    name: "Excursio- ja yrityssuhdetoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 500:
+    id: 20070500
+    number: 500
+    name: "Excursiot"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070005
+
+- 510:
+    id: 20070510
+    number: 510
+    name: "Excursio- ja yrityslahjat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070005
+
+- 520:
+    id: 20070520
+    number: 520
+    name: "Yrityssuhdetoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070005
+
+- 530:
+    id: 20070530
+    number: 530
+    name: "Yritystapahtumat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070005
+
+- 599:
+    id: 20070599
+    number: 599
+    name: "Muu excursio- ja yrityssuhdetoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070005
+
+- 6:
+    id: 20070006
+    number: 6
+    name: "Ulkosuhdetoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 600:
+    id: 20070600
+    number: 600
+    name: "Vuosijuhlaedustus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 610:
+    id: 20070610
+    number: 610
+    name: "Yhteydet muihin järjestöihin"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 620:
+    id: 20070620
+    number: 620
+    name: "Ulkotoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 630:
+    id: 20070630
+    number: 630
+    name: "Senioriklubi"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 640:
+    id: 20070640
+    number: 640
+    name: "Hallitussitsit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 699:
+    id: 20070699
+    number: 699
+    name: "Muu ulkosuhdetoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070006
+
+- 7:
+    id: 20070007
+    number: 7
+    name: "Tiedotustoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 700:
+    id: 20070700
+    number: 700
+    name: "Historia ja dokumentointi"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 710:
+    id: 20070710
+    number: 710
+    name: "Alkorytmi"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 720:
+    id: 20070720
+    number: 720
+    name: "Rytmiryhmä"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 730:
+    id: 20070730
+    number: 730
+    name: "Tiedotustoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 740:
+    id: 20070740
+    number: 740
+    name: "Tietokilta.fi-verkkotunnus"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 799:
+    id: 20070799
+    number: 799
+    name: "Muu tiedotustoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070007
+
+- 8:
+    id: 20070008
+    number: 8
+    name: "Opintotoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 800:
+    id: 20070800
+    number: 800
+    name: "Opintotoimikunta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070008
+
+- 810:
+    id: 20070810
+    number: 810
+    name: "Osastokahvitukset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070008
+
+- 820:
+    id: 20070820
+    number: 820
+    name: "Assembly"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070008
+
+- 899:
+    id: 20070899
+    number: 899
+    name: "Muu opintotoiminta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070008
+
+- 10:
+    id: 20070010
+    number: 10
+    name: "Muut kulut"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 1000:
+    id: 20071000
+    number: 1000
+    name: "Rintamerkit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1020:
+    id: 20071020
+    number: 1020
+    name: "Kangasmerkit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1030:
+    id: 20071030
+    number: 1030
+    name: "Virheelliset tilitapahtumat"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1040:
+    id: 20071040
+    number: 1040
+    name: "Pankkipalvelumaksut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1050:
+    id: 20071050
+    number: 1050
+    name: "Haalarit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1060:
+    id: 20071060
+    number: 1060
+    name: "Kiltatuotteet"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1070:
+    id: 20071070
+    number: 1070
+    name: "Sijoitusten arvonmuutos"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 1099:
+    id: 20071099
+    number: 1099
+    name: "Muut kulut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070010
+
+- 11:
+    id: 20070011
+    number: 11
+    name: "Varainhankinta"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 1100:
+    id: 20071100
+    number: 1100
+    name: "TKY:n avustukset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1110:
+    id: 20071110
+    number: 1110
+    name: "Jäsenmaksut"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1120:
+    id: 20071120
+    number: 1120
+    name: "Pankkikorot"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1125:
+    id: 20071125
+    number: 1125
+    name: "Sijoitusten arvonmuutos"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1130:
+    id: 20071130
+    number: 1130
+    name: "Haalarimerkkimyynti"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1140:
+    id: 20071140
+    number: 1140
+    name: "Haalarimyynti"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1150:
+    id: 20071150
+    number: 1150
+    name: "Kiltatuotteiden myynti"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1160:
+    id: 20071160
+    number: 1160
+    name: "Riipparit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1170:
+    id: 20071170
+    number: 1170
+    name: "Virvoitusjuoma-automaatit"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1171:
+    id: 20071171
+    number: 1171
+    name: "Karkkiautomaatti"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1180:
+    id: 20071180
+    number: 1180
+    name: "Yritysyhteistyö"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1185:
+    id: 20071185
+    number: 1185
+    name: "Alkorytmin mainokset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 1199:
+    id: 20071199
+    number: 1199
+    name: "Muu varainhankinta"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070011
+
+- 12:
+    id: 20070012
+    number: 12
+    name: "Varausten muutokset"
+    fiscal_period_id: 2007
+    type_id: 2
+
+- 1200:
+    id: 20071200
+    number: 1200
+    name: "Varausten muutos"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070012
+
+- 20:
+    id: 20070020
+    number: 20
+    name: "Vastaavaa"
+    fiscal_period_id: 2007
+    type_id: 1
+
+- 2000:
+    id: 20072000
+    number: 2000
+    name: "Käteiskassa"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2010:
+    id: 20072010
+    number: 2010
+    name: "Käyttörahatili"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2040:
+    id: 20072040
+    number: 2040
+    name: "Suorakäyttötili"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2050:
+    id: 20072050
+    number: 2050
+    name: "Handelsbanken"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2060:
+    id: 20072060
+    number: 2060
+    name: "Sijoitusrahasto"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2100:
+    id: 20072100
+    number: 2100
+    name: "Siirtosaamiset"
+    fiscal_period_id: 2007
+    type_id: 2
+    parent_id: 20070020
+
+- 2310:
+    id: 20072310
+    number: 2310
+    name: "TiK-rinta ja kunniamerkit"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2400:
+    id: 20072400
+    number: 2400
+    name: "Kangasmerkit"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2500:
+    id: 20072500
+    number: 2500
+    name: "Kiltatuotteet"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 2600:
+    id: 20072600
+    number: 2600
+    name: "Verkkotunnukset"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070020
+
+- 30:
+    id: 20070030
+    number: 30
+    name: "Vastattavaa"
+    fiscal_period_id: 2007
+    type_id: 1
+
+- 3000:
+    id: 20073000
+    number: 3000
+    name: "Siirtovelat"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+- 3010:
+    id: 20073010
+    number: 3010
+    name: "Oma pääoma"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+- 3020:
+    id: 20073020
+    number: 3020
+    name: "Käyttörahasto"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+- 3040:
+    id: 20073040
+    number: 3040
+    name: "Tuloennakot"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+- 3050:
+    id: 20073050
+    number: 3050
+    name: "Edellisten tilikausien voitto/tappio"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+- 3070:
+    id: 20073070
+    number: 3070
+    name: "Poistot"
+    fiscal_period_id: 2007
+    type_id: 1
+    parent_id: 20070030
+
+
+
+
+
+
+       

@@ -55,6 +55,7 @@
   </div>
     <div style="float: right;">
     <% if logged_in? %>
+			Fiscal period: <%=FiscalPeriod.find(session[:fiscal_period_id]).startdate.year%>
     <%= link_to "Logout", "/logout" %>
     <% end %>
   </div>
