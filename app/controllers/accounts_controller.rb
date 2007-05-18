@@ -32,7 +32,7 @@ class AccountsController < ApplicationController
 
 		sort = "number"
 		sort = params['sort'] if params['sort']
-		sqlsort = nil
+		sqlsort = "number"
 
 		field = sort.scan(/\w+/)[0]
 		case field
@@ -54,16 +54,23 @@ class AccountsController < ApplicationController
 		else
 			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2 ', @fiscal_period_id], :order => sqlsort, :include => :budget_accounts)
 		end
+		
+		@account_balance = Entry.getbalances session[:fiscal_period_id]
 
     @accounts = Hash.new
+		@account_sums = Hash.new
 		@tmp_accounts.each { |x| 
 			@accounts[x.parent_id] = Array.new unless @accounts[x.parent_id]
 			@accounts[x.parent_id].push x	
+
+			@account_sums[x.parent_id] = { :balance => 0, :budget => 0 } unless @account_sums[x.parent_id]	
+			@account_sums[x.parent_id][:balance] += @account_balance[x.id] if @account_balance[x.id]
+			@account_sums[x.parent_id][:budget] += x.budget
+			
 		}
 		@headings.delete_if { |h| !@accounts[h.id] }
 		
 	
-		@account_balance = Entry.getbalances session[:fiscal_period_id]
 
 		case sort.scan(/\w+/)[0]
 			when 'balance':
@@ -87,9 +94,14 @@ class AccountsController < ApplicationController
 			when 'status':
 				@accounts.each { |a|
 					next unless @accounts[a[0]]
+					@accounts[a[0]].each { |b|
+						@account_balance[b.id] = 0 unless @account_balance[b.id]
+					}
 					
 					@accounts[a[0]].sort! {|a,b|
-						a.status <=> b.status
+						(a.budget-@account_balance[a.id]) <=> 
+						(b.budget-@account_balance[b.id])
+
 					}
 				}
 		end

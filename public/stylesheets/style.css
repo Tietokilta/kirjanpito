@@ -127,6 +127,12 @@ tr.even_row {
 tr.odd_row {
   background-color:   #fff;
 }
+tr.sum_row {
+  background-color:   #aaf;
+	font-weight: 				bold;
+	color: 							#a00;
+	text-align: 				right;
+}
 
 /**
  *  Plain table styles

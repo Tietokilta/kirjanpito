@@ -31,6 +31,15 @@
 		
 		<%= render :partial => 'list_account' %>
 		<% end %>
+		<tr class="sum_row">
+		<td>Totals</td>
+		<td></td>
+		<td></td>
+		<td><%=number_to_currency @account_sums[@heading.id][:balance]%></td>
+		<td><%=number_to_currency @account_sums[@heading.id][:budget]%></td>
+		<td><%=number_to_currency @account_sums[@heading.id][:balance] - @account_sums[@heading.id][:budget]%></td>
+		<td></td>
+		</tr>
     </tbody>
   <% end %>
 </table>
