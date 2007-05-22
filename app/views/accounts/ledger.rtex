@@ -1,0 +1,116 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel}
+
+\usepackage{longtable}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+
+\pagestyle{myheadings}
+
+\usepackage{anysize}
+\marginsize{1cm}{1cm}{1cm}{1cm}
+
+\markright{Tietokilta ry, Pääkirja 2006}
+
+\newcommand{\account}[1]{
+	\begin{longtable}{lrl@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lrr}
+	\tablecaption{#1}
+	01.01.2006 & 1234 & Foobar & 1234 & Handelsbank... & -12345.67 &-12345.67
+	\kill
+}
+
+\newcommand{\rowcaption}{
+	Päivä & Tosite & Selitys & \multicolumn{2}{l}{Vastatili} & Debet & Kredit \\
+	\hline}
+
+\newcommand{\tablecaption}[1]{
+	\multicolumn{6}{l}{\Large{\textbf{#1}}} \\
+	\rowcaption \endhead}
+
+\newcommand{\runningsum}[6]{
+	\finalsum{#1}{#2}{#3}{#4}{#5}{#6}
+	\\
+	\rowcaption
+}
+
+\newcommand{\finalsum}[6]{
+	\nopagebreak
+	\hline 
+	\multicolumn{2}{l}{\textsf{Välisummat:}} & \hspace{2cm}\textsf{Tämä	kausi} & 
+	\textsf{Saldo:} & \hspace{\fill} \textsf{#1} \hspace{0.5cm} &
+	\textsf{#2} & \textsf{#3} \\
+	\nopagebreak
+	& & \hspace{2cm}\textsf{Alusta lähtien} & 
+	\textsf{Saldo:} & \hspace{\fill} \textsf{#4} \hspace{0.5cm} &
+	\textsf{#5} & \textsf{#6} \\
+}
+
+\title{Pääkirja}
+\author{Tietokilta ry}
+\date{1.1.2006 - 31.12.2006}
+
+\begin{document}
+
+\maketitle
+
+<%
+
+def n(n)
+	return "%0.02f" % n
+end
+
+@accounts.each { |acc| 
+	#FIXME: do it right :)
+	next if acc.number < 50
+
+	%>\account{<%=l acc.name + " (" + "%04d" % acc.number.to_s + ")"%>}<%
+	prevmonth=0
+	totalc=0
+	totald=0
+	monthc=0
+	monthd=0
+	count=0
+	acc.all_entries.each { |e| 
+		if e.debet_account_id != acc.id then
+			eacc = e.debet_account
+			cred = e.sum
+			deb = 0
+		else
+			eacc = e.credit_account
+			cred = 0
+			deb = e.sum
+		end
+		count += 1
+
+		prevmonth = e.date.month if prevmonth == 0 || count <= 5
+			
+		if e.date.month != prevmonth && count > 5 then
+			%>\runningsum{<%=n monthc-monthd%>}{<%=n -monthd%>}{<%=n monthc%>}
+				{<%=n totalc-totald%>}{<%=n -totald%>}{<%=n totalc%>}<%
+			prevmonth = e.date.month
+			monthc=0
+			monthd=0
+			count=0
+		end
+
+		totalc += cred
+		totald += deb
+		monthc += cred
+		monthd += deb
+
+		%><%=e.date%> & <%=e.receipt_number%> & <%=l e.description%> &
+		<%= "%04d" % eacc.number %> & <%=l eacc.name[0..10] %>... & 
+		<%=n deb if deb != 0 %> &
+		<%=n cred if cred != 0 %>	\\
+		<%
+	}
+	%>\finalsum{<%=n monthc-monthd%>}{<%=n -monthd%>}{<%=n monthc%>}
+		{<%=n totalc-totald%>}{<%=n -totald%>}{<%=n totalc%>}<%
+
+	%>\end{longtable}<%
+}
+%>
+
+\end{document}

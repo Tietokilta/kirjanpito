@@ -1,0 +1,88 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel}
+
+\usepackage{longtable}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+
+\pagestyle{myheadings}
+
+\usepackage{anysize}
+\marginsize{1cm}{1cm}{1cm}{1cm}
+
+\markright{Tietokilta ry, Päiväkirja 2006}
+
+\newcommand{\account}[1]{
+	\begin{longtable}{lrl@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lr@{\extracolsep{3pt}}lr}
+	\tablecaption{#1}
+	01.01.2006 & 1234 & Foobar & 1234 & Käteiska... & 5678 &
+	Handelsbank... & -12345.67 \\ \kill
+}
+
+\newcommand{\rowcaption}{
+	Päivä & Tosite & Selitys & \multicolumn{2}{l}{Tili}	& \multicolumn{2}{l}{Vastatili} & Summa \\
+	\hline}
+
+\newcommand{\tablecaption}[1]{
+%	\multicolumn{8}{l}{\Large{\textbf{#1}}} \\
+	\rowcaption \endhead}
+
+\newcommand{\runningsum}[2]{
+	\finalsum{#1}{#2}
+	\\
+	\rowcaption
+}
+
+\newcommand{\finalsum}[2]{
+	\nopagebreak
+	\hline 
+	\multicolumn{2}{l}{\textsf{Välisummat:}} & & 
+	\multicolumn{2}{l}{\textsf{Tämä kausi}} & 
+	\multicolumn{2}{r}{\textsf{Yhteensä:}} & \textsf{#1} \\
+	\nopagebreak
+	& & & \multicolumn{2}{l}{\textsf{Alusta lähtien}} & 
+	\multicolumn{2}{r}{\textsf{Yhteensä:}} & \textsf{#2} \\
+}
+
+\title{Päiväkirja}
+\author{Tietokilta ry}
+\date{1.1.2006 - 31.12.2006}
+
+\begin{document}
+
+\maketitle
+
+\account{Päiväkirja}
+<%
+prevmonth = 0
+total = 0
+totalm = 0
+
+@entries.each { |e| 
+
+	prevmonth = e.date.month if prevmonth == 0
+	
+	if prevmonth != e.date.month then
+		%>\runningsum{<%="%0.02f" % totalm%>}{<%="%0.02f" % total%>}<%
+		totalm = 0
+		prevmonth = e.date.month
+	end
+
+	total += e.sum
+	totalm += e.sum
+
+	%><%=e.date%> & <%=e.receipt_number%> & <%=l e.description%> & 
+	<%=e.debet_account.number%> & <%=l e.debet_account.name[0..10]%>... &
+	<%=e.credit_account.number%> & <%=l e.credit_account.name[0..10]%>... &
+	<%="%0.02f" % e.sum %> \\
+	<%
+}
+%>
+\finalsum{<%="%0.02f" % totalm%>}{<%="%0.02f" % total%>}<%
+
+\end{longtable}
+
+\end{document}
+

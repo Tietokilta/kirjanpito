@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   layout nil
-  layout "application", :except => :pdftest
+  layout "application", :except => :ledger
+
 
   def index
     list
@@ -16,6 +17,13 @@ class AccountsController < ApplicationController
   def pdftest
     @time = Time.now
   end
+
+	def ledger
+		@options_for_rtex = Hash.new
+		@options_for_rtex[:preprocess] = true
+
+		@accounts = Account.find(:all, :conditions => ['accounts.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'number')
+	end
 
   def list
     if !params[:query].nil?

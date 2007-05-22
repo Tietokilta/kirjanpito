@@ -2,10 +2,10 @@ class Entry < ActiveRecord::Base
   belongs_to  :fiscal_period
   belongs_to  :debet_account,
 							:class_name => "Account",
-              :foreign_key  => "debet_account_id"
+							:foreign_key => "debet_account_id"
   belongs_to  :credit_account,
 							:class_name => "Account",
-              :foreign_key  => "credit_account_id"
+							:foreign_key => "credit_account_id"
 
 	def self.getbalances(fiscal_period_id)
 		debs = Entry.find(:all, :select => 'debet_account_id, sum(sum) as balance', :group => 'debet_account_id', :conditions => ['fiscal_period_id = ?', fiscal_period_id])

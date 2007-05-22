@@ -5,13 +5,15 @@ class Account < ActiveRecord::Base
   
   has_many    :budget_accounts
   has_many    :debet_entries,
-              :class_name   => "entry"
+              :class_name   => "Entry",
+							:foreign_key => "debet_account_id"
   has_many    :credit_entries,
-              :class_name   => "entry"
+              :class_name   => "Entry",
+							:foreign_key => "credit_account_id"
   has_many    :source_invoice,
-              :class_name   => "invoice"
+              :class_name   => "Invoice"
   has_many    :target_invoice,
-              :class_name   => "invoice"
+              :class_name   => "Invoice"
 
   belongs_to  :fiscal_period
   belongs_to  :account
@@ -25,6 +27,13 @@ class Account < ActiveRecord::Base
   def validate
     errors.add_to_base('The given fiscal period does not exist.') if fiscal_period_id.nil?
   end 
+
+	def all_entries
+		data = Entry.find(:all, :conditions => ['credit_account_id = ? OR debet_account_id = ?', self.id, self.id], :order => 'date, receipt_number', :include => ['credit_account', 'debet_account'])
+
+	
+		return data
+	end
 
   def smallest_child
     sc = Account.minimum("number", :conditions => ['parent_id = ?', self.id])
