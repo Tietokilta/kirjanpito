@@ -28,10 +28,15 @@ class EntriesController < ApplicationController
   end
 
   def new
-		@entry = Entry.find(:first, :order => "receipt_number desc, id desc", :conditions => ['fiscal_period_id = ?', session[:fiscal_period_id]])
-		@entry.id += 1
-		@entry.receipt_number += 1
-		@entry.fiscal_period_id = session[:fiscal_period_id]
+		@latestEntry = Entry.find(:first, :order => "receipt_number desc, id desc", :conditions => ['fiscal_period_id = ?', session[:fiscal_period_id]])
+		@entry = Entry.new
+		
+		unless @latestEntry.nil?
+			@entry.receipt_number = @latestEntry.receipt_number + 1
+			@entry.fiscal_period_id = session[:fiscal_period_id]
+		else
+			@entry.receipt_number = 1
+		end
   end
 
   def create

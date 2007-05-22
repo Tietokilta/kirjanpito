@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
         self.current_user.remember_me
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+			set_my_fiscal_period
       redirect_back_or_default('/accounts')
       flash[:notice] = "Logged in successfully"
     else
@@ -34,4 +35,14 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default('/')
   end
+	
+	private
+		def set_my_fiscal_period
+			unless session[:fiscal_period_id].nil?
+				@fiscal_period_id = session[:fiscal_period_id]
+			else
+				@fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
+			end
+			session[:fiscal_period_id] = @fiscal_period_id
+		end
 end
