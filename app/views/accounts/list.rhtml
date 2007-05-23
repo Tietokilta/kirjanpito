@@ -33,6 +33,7 @@ Search: <%=text_field_tag("search", @params['search'] )%>
     :before => "Element.show('spinner')",
     :success => "Element.hide('spinner')",
     :url => {:action => 'list'},
+    :frequency => 2,
     :with => 'search' %>
 
 <div id="table">

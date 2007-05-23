@@ -1,21 +1,45 @@
 <h1>Listing entries</h1>
-<p>
 <form name="sform" action="" style="display:inline;">
+<p>
 Search: <%=text_field_tag("search", @params['search'] )%>
-</form>
 <%= image_tag("spinner.gif",
 		:align => 'absmiddle',
 		:border=> 0,
 		:id => "spinner",
 		:style=>"display: none;") %>
 </p>
+</form>
+
+<% form_remote_tag :url => '/entries/add_to_entries',
+		:before => 'javascript:this.commit.disabled=true' do -%>
+  <div id="entry">
+		<%= render :partial => 'entry', :object => @entry %>
+  </div>
+<% end -%>
+
+<% if false %>
+<%= form_remote_tag :url => { :action => 'add_to_entries' },
+		:before => 'javascript:this.commit.disabled=true' %>
+  <div id="entry">
+		<%= render :partial => 'entry', :object => @entry %>
+  </div>
+<%= end_form_tag %>
+<% end %>
+
+<%= render :partial => "list", :object => @entries %>
+
 <%= observe_field 'search',
-    :update => 'table',
+    :update => 'entries',
     :before => "Element.show('spinner')",
     :success => "Element.hide('spinner')",
     :url => {:action => 'list'},
+    :frequency => 2,
     :with => 'search' %>
 
-<div id="table">
-    <%= render :partial => "list" %>
-</div>
+<%= observe_field 'add_entry',
+    :update => 'entries',
+    :before => "Element.show('spinner')",
+    :success => "Element.hide('spinner')",
+    :url => {:action => 'list'},
+    :frequency => 2,
+    :with => 'search' %>

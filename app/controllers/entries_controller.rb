@@ -1,38 +1,39 @@
 class EntriesController < ApplicationController
-  layout "application", :except => :ledger
-
   def index
-    list
-		if request.xml_http_request?
-			render :partial => "list", :layout => false
-		else
-	    render :action => 'list'
-		end
-
+    redirect_to(:action => 'list')
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
-	
-	
-	def ledger
-		@options_for_rtex = Hash.new
-		@options_for_rtex[:preprocess] = true
-		@options_for_rtex[:filename] = 'dailyledger.pdf'
-
-		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
-	end
 
   def list
 		conditions = nil
 		conditions = ["receipt_number LIKE '%' ? '%' OR entries.description  LIKE '%' ? '%' OR sum LIKE '%' ? '%' OR date LIKE '%' ? '%' OR debet_account_id LIKE '%' ? '%' OR credit_account_id LIKE '%' ? '%'", params[:search], params[:search], params[:search], params[:search], params[:search], params[:search]] if params[:search]
 
-		order = "receipt_number"
+		order = "receipt_number desc"
 		order = params[:sort] if params[:sort]
 
     @entry_pages, @entries = paginate :entries, :per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
-  end
+		
+		# Call new entry for the instant entry
+		new
+
+		# If an AJAX call..
+    if request.xml_http_request?
+      render :partial => "list", :layout => false
+    end
+	end
+
+  def add_to_entries
+		params[:entry][:sum].tr! ",", "."
+
+    @entry = Entry.new(params[:entry])
+		@saved = @entry.save
+
+		list
+		redirect_to(:action => 'list') unless request.xml_http_request?
+	end
 
   def show
     @entry = Entry.find(params[:id])
@@ -45,11 +46,16 @@ class EntriesController < ApplicationController
 		unless @latestEntry.nil?
 			@entry.receipt_number = @latestEntry.receipt_number + 1
 			@entry.fiscal_period_id = session[:fiscal_period_id]
+			@entry.sum = @latestEntry.sum
+			@entry.description = @latestEntry.description
+			@entry.debet_account = @latestEntry.debet_account
+			@entry.credit_account = @latestEntry.credit_account
 		else
 			@entry.receipt_number = 1
 		end
   end
 
+	# Should not be used
   def create
 		params[:entry][:sum].tr! ",", "."
 
@@ -80,9 +86,11 @@ class EntriesController < ApplicationController
     end
   end
 
+	# TODO: New entry does not update on destroy action.
   def destroy
     Entry.find(params[:id]).destroy
-    redirect_to :action => 'list'
+#     redirect_to :action => 'list'
+    list
   end
 
 	def autocomplete_debet_account
