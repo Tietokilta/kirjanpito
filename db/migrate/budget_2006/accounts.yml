@@ -1,5 +1,13 @@
 --- !!omap
 
+- 0000:
+    id: 20060000
+    number: 0
+    name: ""
+    parent_id: 20060000
+    fiscal_period_id: 2006
+    type_id: 1
+
 - 0020:
     id: 20060020
     number: 20

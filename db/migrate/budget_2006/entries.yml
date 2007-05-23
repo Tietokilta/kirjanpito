@@ -5,7 +5,7 @@
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062000
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 9a0eba15da3b5c6ff71789ab6021f81a:
   receipt_number: 1
@@ -14,7 +14,7 @@
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062010
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 ba0738c2136e7046e3879a92208cd385:
   receipt_number: 1
@@ -23,7 +23,7 @@ ba0738c2136e7046e3879a92208cd385:
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062040
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 ea334dc56d194d461bb1c36aa22c9a01:
   receipt_number: 1
@@ -32,7 +32,7 @@ ea334dc56d194d461bb1c36aa22c9a01:
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062050
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 f2c1e7035128de1132a5785e0822c398:
   receipt_number: 1
@@ -41,7 +41,7 @@ f2c1e7035128de1132a5785e0822c398:
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062100
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 744cc2a388e9c0ae458c63cabbbe2f67:
   receipt_number: 1
@@ -50,7 +50,7 @@ f2c1e7035128de1132a5785e0822c398:
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062310
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 e02c7952dd6c8ea1c6370aa0af6e6344:
   receipt_number: 1
@@ -59,7 +59,7 @@ e02c7952dd6c8ea1c6370aa0af6e6344:
   date: "2006-01-01"
   fiscal_period_id: 2006
   debet_account_id: 20062400
-  credit_account_id: 20060002
+  credit_account_id: 20060000
 
 8121d87d2872c54ab07a4baa8676b614:
   receipt_number: 1
@@ -67,7 +67,7 @@ e02c7952dd6c8ea1c6370aa0af6e6344:
   sum: 1681.87
   date: "2006-01-01"
   fiscal_period_id: 2006
-  debet_account_id: 20060003
+  debet_account_id: 20060000
   credit_account_id: 20063000
 
 ae0b225f79e04c0218f03feba2e142ac:
@@ -76,7 +76,7 @@ ae0b225f79e04c0218f03feba2e142ac:
   sum: 13268.46
   date: "2006-01-01"
   fiscal_period_id: 2006
-  debet_account_id: 20060003
+  debet_account_id: 20060000
   credit_account_id: 20063010
 
 0ce108fafaa8dc4012cdd73aa5b1ea83:
@@ -85,7 +85,7 @@ ae0b225f79e04c0218f03feba2e142ac:
   sum: 19870.72
   date: "2006-01-01"
   fiscal_period_id: 2006
-  debet_account_id: 20060003
+  debet_account_id: 20060000
   credit_account_id: 20063020
 
 7a050d8e2b8625ca41532ee8b4ff9358:
@@ -94,7 +94,7 @@ ae0b225f79e04c0218f03feba2e142ac:
   sum: 6587.51
   date: "2006-01-01"
   fiscal_period_id: 2006
-  debet_account_id: 20060003
+  debet_account_id: 20060000
   credit_account_id: 20063050
 
 844bc6619366f0c78aa687099e2e3927:
@@ -103,7 +103,7 @@ ae0b225f79e04c0218f03feba2e142ac:
   sum: 5844.53
   date: "2006-01-01"
   fiscal_period_id: 2006
-  debet_account_id: 20060003
+  debet_account_id: 20060000
   credit_account_id: 20063040
 
 e61ce49dba078ee527590a41464112e4:
@@ -3418,7 +3418,7 @@ ccaee372a492b5a02c99fcee83701c37:
   debet_account_id: 20062050
   credit_account_id: 20060200
 
-34ab9f376bb3b4e18354ce23ae707334:
+34ab9f376bb3b4e18354ce23ae707335:
   receipt_number: 365
   description: "Palvelumaksu"
   sum: 3
@@ -10132,7 +10132,7 @@ cf3f03d3a4dd9e98c5e2fe0cbd21839c:
   debet_account_id: 20062600
   credit_account_id: 20060740
 
-f52eed0f56d1c776222ae557e0d3e2cf:
+f52eed0f56d1c776222ae557e0d3e2ce:
   receipt_number: 1108
   description: "Virheellisen maksun palautus"
   sum: 15
@@ -10159,7 +10159,7 @@ f52eed0f56d1c776222ae557e0d3e2cf:
   debet_account_id: 20061199
   credit_account_id: 20063000
 
-f52eed0f56d1c776222ae557e0d3e2cf:
+f52eed0f56d1c776222ae557e0d3e2ca:
   receipt_number: 1111
   description: "Virheellisen maksun palautus"
   sum: 15

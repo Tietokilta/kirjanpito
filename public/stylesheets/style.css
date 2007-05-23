@@ -104,6 +104,9 @@ td.heading {
   font-size:          110%;
   padding:            6px;
 }
+td.balance {
+	background-color:		#722;
+}
 th {
   padding:            3px 6px 3px 6px;
   font-weight:        bold;

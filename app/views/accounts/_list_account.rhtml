@@ -29,8 +29,8 @@
 	<% b  = 0 unless b %>
 	<% bs = 0 %>
 	<% bs = account.budget_accounts.last.sum if account.budget_accounts.last %>
-	<td class="alignright"><%= number_to_currency(b) %></td>
-	<td class="alignright"><%= number_to_currency(bs)%></td>
+	<td class="alignright"><%= number_to_currency(b) unless account.type_id == 1 %></td>
+	<td class="alignright"><%= number_to_currency(bs) unless account.type_id == 1 %></td>
 	<td class="sum_<%=(b-bs)>=0 ? "positive" : "negative"%>"><%= number_to_currency(b-bs)%></td>
 
 	<td>

@@ -22,7 +22,8 @@
 }
 
 \newcommand{\rowcaption}{
-	Päivä & Tosite & Selitys & \multicolumn{2}{l}{Tili}	& \multicolumn{2}{l}{Vastatili} & Summa \\
+	Päivä & Tosite & Selitys & \multicolumn{2}{l}{Debet-tili} &
+	 \multicolumn{2}{l}{Kredit-tili} & Summa \\
 	\hline}
 
 \newcommand{\tablecaption}[1]{
@@ -74,8 +75,10 @@ totalm = 0
 	totalm += e.sum
 
 	%><%=e.date%> & <%=e.receipt_number%> & <%=l e.description%> & 
-	<%=e.debet_account.number%> & <%=l e.debet_account.name[0..10]%>... &
-	<%=e.credit_account.number%> & <%=l e.credit_account.name[0..10]%>... &
+	<%="%04d" % e.debet_account.number unless e.debet_account.number == 0%> & 
+	<%=l e.debet_account.name[0..10] + "..." unless e.debet_account.number == 0%> &
+	<%="%04d" % e.credit_account.number unless e.credit_account.number == 0%> & 
+	<%=l e.credit_account.name[0..10] + "..." unless e.credit_account.number == 0%> &
 	<%="%0.02f" % e.sum %> \\
 	<%
 }

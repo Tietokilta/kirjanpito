@@ -14,15 +14,20 @@ class AccountsController < ApplicationController
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
 
-  def pdftest
-    @time = Time.now
-  end
-
 	def ledger
 		@options_for_rtex = Hash.new
 		@options_for_rtex[:preprocess] = true
+		@options_for_rtex[:filename] = 'generalledger.pdf'
 
 		@accounts = Account.find(:all, :conditions => ['accounts.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'number')
+	end
+
+	def balance
+		list
+		@options_for_rtex = Hash.new
+		@options_for_rtex[:preprocess] = true
+		@options_for_rtex[:filename] = 'balances.pdf'
+
 	end
 
   def list
@@ -34,7 +39,8 @@ class AccountsController < ApplicationController
       @fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
     end
     session[:fiscal_period_id] = @fiscal_period_id
-    @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND type_id = 2 AND fiscal_period_id = ?', @fiscal_period_id])
+
+    @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @fiscal_period_id])
     #@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @headings.sort! {|a,b| a.id <=> b.id }
 
@@ -57,10 +63,10 @@ class AccountsController < ApplicationController
 		end
 
 		if params[:search]
-			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2  AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sqlsort, :include => :budget_accounts)
+			@tmp_accounts = Account.find(:all, :conditions => ["parent_id IS NOT NULL AND fiscal_period_id = ? AND (number LIKE '%' ? '%' OR name LIKE '%' ? '%' OR description LIKE '%' ? '%')", @fiscal_period_id,  params[:search], params[:search], params[:search]], :order => sqlsort, :include => :budget_accounts)
 
 		else
-			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ? AND type_id = 2 ', @fiscal_period_id], :order => sqlsort, :include => :budget_accounts)
+			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ?', @fiscal_period_id], :order => sqlsort, :include => :budget_accounts)
 		end
 		
 		@account_balance = Entry.getbalances session[:fiscal_period_id]

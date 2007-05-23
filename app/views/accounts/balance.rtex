@@ -1,0 +1,79 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel}
+
+\usepackage{longtable}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+
+\pagestyle{myheadings}
+
+\usepackage{anysize}
+\marginsize{1cm}{1cm}{1cm}{1cm}
+
+\markright{Tietokilta ry, Tulos ja tase 2006}
+
+
+\title{Tuloslaskelma ja tase}
+\author{Tietokilta ry}
+\date{1.1.2006 - 31.12.2006}
+
+\begin{document}
+
+\maketitle
+
+\section{Tuloslaskelma}
+<%
+totalbal = 0
+
+@headings.each { |h|
+	next if h.type_id != 2
+
+	%>\subsection{<%=l h.name%>}
+\begin{longtable}{lr}
+\hspace{8cm} & -12345.67 \kill
+<%
+	@accounts[h.id].each { |a| 
+		next unless @account_balance[a.id]
+		%><%=l "%04d" % a.number + " " + a.name%> & 
+		<%="%0.02f" % @account_balance[a.id] if @account_balance[a.id]%> \\<%
+	}
+%>
+\textbf{Yhteensä} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance] %>} \\
+\end{longtable}
+<%
+totalbal += @account_sums[h.id][:balance]
+}
+
+%>
+
+{\large Tilikauden voitto (tappio): <%="%0.02f" % totalbal%> }
+
+\section{Tase}
+<%
+
+@headings.each { |h|
+	next if h.type_id != 1
+
+	%>\subsection{<%=l h.name%>}
+\begin{longtable}{lr}
+\hspace{8cm} & -12345.67 \kill
+<%
+	@accounts[h.id].each { |a| 
+		next unless @account_balance[a.id]
+		%><%=l "%04d" % a.number + " " + a.name%> & 
+		<%="%0.02f" % @account_balance[a.id] if @account_balance[a.id]%> \\<%
+	}
+%>
+\textbf{Yhteensä} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance] %>} \\
+\end{longtable}
+<%
+totalbal += @account_sums[h.id][:balance]
+}
+
+%>
+
+{\large Taseen loppusumma: <%="%0.02f" % totalbal%>}
+
+\end{document}

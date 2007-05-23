@@ -1,5 +1,9 @@
 <h1>Listing accounts</h1>
 
+Print: <%= link_to "General ledger", :action => :ledger %>,
+<%= link_to "Daily ledger", {:controller => :entries, :action => :ledger} %>,
+<%= link_to "Income & balance sheet", :action => :balance %>
+
 <p>
 <form name="sform" action="" style="display:inline;">
 Select fiscal period:

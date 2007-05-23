@@ -101,7 +101,7 @@ end
 		monthd += deb
 
 		%><%=e.date%> & <%=e.receipt_number%> & <%=l e.description%> &
-		<%= "%04d" % eacc.number %> & <%=l eacc.name[0..10] %>... & 
+		<%= "%04d" % eacc.number unless eacc.number == 0 %> & <%=l eacc.name[0..10]+ "..." unless eacc.number == 0 %> & 
 		<%=n deb if deb != 0 %> &
 		<%=n cred if cred != 0 %>	\\
 		<%

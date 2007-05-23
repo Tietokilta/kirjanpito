@@ -19,6 +19,7 @@ class EntriesController < ApplicationController
 	def ledger
 		@options_for_rtex = Hash.new
 		@options_for_rtex[:preprocess] = true
+		@options_for_rtex[:filename] = 'dailyledger.pdf'
 
 		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
 	end

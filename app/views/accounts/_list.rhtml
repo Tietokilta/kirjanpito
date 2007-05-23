@@ -3,9 +3,11 @@
 <a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
 <% end %>
 <table cellspacing="0">
-  <% for @heading in @headings %>
+  <% for @heading in @headings
+		#next if @heading.type_id == 1
+	%>
   <tr>
-  <td onClick="javascript:$('<%= @heading.id %>').toggle()" class="heading" colspan=<%= Account.columns.length+2 %>>
+  <td onClick="javascript:$('<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan=<%= Account.columns.length+2 %>>
       <%=  @heading.name.to_s + ": " + @heading.description.to_s %>
   </td>
   </tr>
@@ -23,8 +25,8 @@
                 %><th <%=sort_td_class_helper(column.name)%>><%= sort_link_helper column.human_name, column.name %></th>
         <% end %>
       <% end %>
-			<th <%=sort_td_class_helper("balance")%>><%= sort_link_helper "Balance", "balance" %></th>
-			<th <%=sort_td_class_helper("budget")%>><%= sort_link_helper "Budget", "budget" %></th>
+			<th <%=sort_td_class_helper("balance")%>><%= sort_link_helper "Balance", "balance" unless @heading.type_id == 1%></th>
+			<th <%=sort_td_class_helper("budget")%>><%= sort_link_helper "Budget", "budget" unless @heading.type_id == 1 %></th>
 			<th <%=sort_td_class_helper("status")%>><%= sort_link_helper "Status", "status" %></th>
       <th>Actions</th>
     </tr>
@@ -35,8 +37,8 @@
 		<td>Totals</td>
 		<td></td>
 		<td></td>
-		<td><%=number_to_currency @account_sums[@heading.id][:balance]%></td>
-		<td><%=number_to_currency @account_sums[@heading.id][:budget]%></td>
+		<td><%=number_to_currency @account_sums[@heading.id][:balance] unless @heading.type_id == 1%></td>
+		<td><%=number_to_currency @account_sums[@heading.id][:budget] unless @heading.type_id == 1%></td>
 		<td><%=number_to_currency @account_sums[@heading.id][:balance] - @account_sums[@heading.id][:budget]%></td>
 		<td></td>
 		</tr>

@@ -1,6 +1,0 @@
-\documentclass[10pt]{article}
-\begin{document}
-
-The time is <%= @time %>.
-
-\end{document}
