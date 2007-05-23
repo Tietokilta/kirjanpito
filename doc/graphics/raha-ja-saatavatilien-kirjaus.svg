@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45"
+   sodipodi:docbase="/Users/lholsti/Documents/RoR/radrails_workspaces/TiKirjanpito/doc/graphics"
+   sodipodi:docname="raha-ja-saatavatilien-kirjaus.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/Users/lholsti/Documents/RoR/radrails_workspaces/TiKirjanpito/public/help/images/raha-ja-saatavatilien-kirjaus.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:modified="true">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.84532276"
+     inkscape:cx="372.04724"
+     inkscape:cy="762.43661"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="697"
+     inkscape:window-height="581"
+     inkscape:window-x="4"
+     inkscape:window-y="22" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.54234242px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 62.494381,135.86751 L 538.25842,135.86751"
+       id="path2162" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial Rounded MT Bold"
+       x="205.11273"
+       y="133.12337"
+       id="text2166"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2168"
+         x="205.11273"
+         y="133.12337"> Raha- ja saatavatilit</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.33285797px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 297.30442,278.00209 L 297.30442,136.23292"
+       id="path2164" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial Rounded MT Bold"
+       x="94.38588"
+       y="157.19923"
+       id="text3141"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         x="94.38588"
+         y="157.19923"
+         id="tspan3173">Alkusaldo =</tspan><tspan
+         sodipodi:role="line"
+         x="94.38588"
+         y="177.19923"
+         dx="0 0 0 0 0 0 -1.4285715"
+         id="tspan3201">  jäännös edelliseltä </tspan><tspan
+         sodipodi:role="line"
+         x="94.38588"
+         y="197.19923"
+         id="tspan3177">  tilikaudelta</tspan><tspan
+         sodipodi:role="line"
+         x="94.38588"
+         y="217.19923"
+         id="tspan3179" /><tspan
+         sodipodi:role="line"
+         x="94.38588"
+         y="237.19923"
+         id="tspan3175">Lisäykset</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Arial Rounded MT Bold"
+       x="308.24191"
+       y="157.19923"
+       id="text3183"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan3185"
+         x="308.24191"
+         y="157.19923">Vähennykset</tspan><tspan
+         sodipodi:role="line"
+         x="308.24191"
+         y="177.19923"
+         id="tspan3187" /><tspan
+         sodipodi:role="line"
+         x="308.24191"
+         y="197.19923"
+         id="tspan3191">Loppusaldo =</tspan><tspan
+         sodipodi:role="line"
+         x="308.24191"
+         y="217.19923"
+         id="tspan3195">  jäännös seuraavalle</tspan><tspan
+         sodipodi:role="line"
+         x="308.24191"
+         y="237.19923"
+         id="tspan3197">  tilikaudelle</tspan></text>
+  </g>
+</svg>
