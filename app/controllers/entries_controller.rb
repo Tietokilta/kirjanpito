@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  layout "application", :except => :ledger
+
   def index
     redirect_to(:action => 'list')
   end
@@ -6,6 +8,14 @@ class EntriesController < ApplicationController
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   verify :method => :post, :only => [ :destroy, :create, :update ],
          :redirect_to => { :action => :list }
+       
+	def ledger
+		@options_for_rtex = Hash.new
+		@options_for_rtex[:preprocess] = true
+		@options_for_rtex[:filename] = 'dailyledger.pdf'
+
+		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
+	end
 
   def list
 		conditions = ["entries.fiscal_period_id = ?", session[:fiscal_period_id]]

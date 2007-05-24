@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   layout nil
-  layout "application", :except => :ledger
+  layout "application", :except => [:ledger, :balance]
 
 
   def index

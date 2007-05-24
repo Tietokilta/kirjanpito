@@ -15,7 +15,7 @@
 \markright{Tietokilta ry, Pääkirja 2006}
 
 \newcommand{\account}[1]{
-	\begin{longtable}{lrl@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lrr}
+	\begin{longtable}{lrp{8cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lrr}
 	\tablecaption{#1}
 	01.01.2006 & 1234 & Foobar & 1234 & Handelsbank... & -12345.67 &-12345.67
 	\kill
