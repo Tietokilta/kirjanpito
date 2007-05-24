@@ -8,13 +8,13 @@ class EntriesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-		conditions = nil
-		conditions = ["receipt_number LIKE '%' ? '%' OR entries.description  LIKE '%' ? '%' OR sum LIKE '%' ? '%' OR date LIKE '%' ? '%' OR debet_account_id LIKE '%' ? '%' OR credit_account_id LIKE '%' ? '%'", params[:search], params[:search], params[:search], params[:search], params[:search], params[:search]] if params[:search]
+		conditions = ["entries.fiscal_period_id = ?", session[:fiscal_period_id]]
+		conditions = ["entries.fiscal_period_id = ? AND (receipt_number LIKE '%' ? '%' OR entries.description  LIKE '%' ? '%' OR sum LIKE '%' ? '%' OR date LIKE '%' ? '%' OR debet_account_id LIKE '%' ? '%' OR credit_account_id LIKE '%' ? '%')", session[:fiscal_period_id], params[:search], params[:search], params[:search], params[:search], params[:search], params[:search]] if params[:search]
 
 		order = "receipt_number desc"
 		order = params[:sort] if params[:sort]
 
-    @entry_pages, @entries = paginate :entries, :per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
+    @entry_pages, @entries = paginate :entries, {:per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]}
 		
 		# Call new entry for the instant entry
 		new

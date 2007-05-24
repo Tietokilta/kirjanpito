@@ -216,26 +216,27 @@ a:hover, a:focus
  *  Header menu anchor styles
  */
 div.header_menu {
-	width: 			        150px;  /* TODO: Make this dynamic with firefox and IE. */
+	width: 			        auto;  /* TODO: Make this dynamic with firefox and IE. */
 /*	background:		      #42782d;*/
     background:           #fff url(/images/gradient_gray.png) repeat-x;
     height: 37px;
     border: 1px solid #000;
 	text-align:         center;
 	margin: 		        0px;
-    margin-right: 2px;
-/*	padding: 		        0px 20px 0px 20px;*/
+    margin-right: 5px;
+	padding: 		        0px 15px 0px 15px;
     float:              right;
 }
 div.header_menu_selected {
-    width: 150px;
+    width: auto;
+	padding: 		        0px 15px 0px 15px;
     background: #fff;
     color: #000;
     text-align: center;
     margin: 0px;
+    margin-right: 5px;
     height: 37px;
     float: right;
-    margin-right: 2px;
     border-top: 1px solid #000;
     border-left: 1px solid #000;
     border-right: 1px solid #000;

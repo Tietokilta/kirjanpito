@@ -6,12 +6,14 @@ Print: <%= link_to "General ledger", :action => :ledger %>,
 
 <p>
 <form name="sform" action="" style="display:inline;">
+<!--
 Select fiscal period:
 <%= 
 select_tag("query", 
            options_for_select(@fp_options, @fiscal_period_id))
 %>
 <br />
+-->
 Search: <%=text_field_tag("search", @params['search'] )%>
 </form>
 
@@ -22,7 +24,7 @@ Search: <%=text_field_tag("search", @params['search'] )%>
     :style=>"display: none;") %>
 </p>
 
-<%= observe_field 'query',
+<%#= observe_field 'query',
     :update => 'table',
     :before => "Element.show('spinner')",
     :success => "Element.hide('spinner')",

@@ -22,7 +22,7 @@
 		Fiscal period:
 		<%=select_tag "new_fiscal_period", 
 			FiscalPeriod.find(:all).collect{ |f|
-				"<option id='"+f.id.to_s+"'"+
+				"<option value='"+f.id.to_s+"'"+
 				(session[:fiscal_period_id] == f.id.to_s ? " selected='selected'" : "" )+
 				">"+f.startdate.year.to_s+"</option>"},
 			:onchange => "this.form.submit()"%>
@@ -31,7 +31,7 @@
 		</div>
   </div>
 
-  <a href="/"><img src="/images/logo_top.gif"></a>
+  <a href="/"><img src="/images/logo_top.gif" alt="Logo" /></a>
   </div>
   
   <div class="header_bottom">
@@ -42,20 +42,29 @@
     <div class="header_menu"><%= link_to "Fiscal&nbsp;Periods", {:controller => :fiscal_periods}, {"class" => "header"} %></div>
     <div class="header_menu"><%= link_to "Sign-up", {:controller => :users, :action => :new}, {"class" => "header"} %></div>
 <% end %>
-    <% sel = 'class="header_menu_selected"'-%>
-    <% unsel = 'class="header_menu"'-%>
-    <% if !@current_user.nil? && @current_user.level >= 2 %><div <%= if params[:controller] == "users" then sel else unsel end-%>><%= link_to "Users", {:controller => :users}, {"class" => "header"} %></div><%end%>
-    <div <%= if params[:controller] == "entries" then sel else unsel end-%>><%= link_to "Entries", {:controller => :entries}, {"class" => "header"} %></div>
-    <div <%= if params[:controller] == "invoices" then sel else unsel end-%>><%= link_to "Invoices", {:controller => :invoices}, {"class" => "header"} %></div>
-    <div <%= if params[:controller] == "budgets" then sel else unsel end-%>><%= link_to "Budgets", {:controller => :budgets}, {"class" => "header"} %></div>
-    <div <%= if params[:controller] == "accounts" then sel else unsel end-%>><%= link_to "Accounts", {:controller => :accounts}, {"class" => "header"} %></div>
+<%
+def top_button(link, desc)
+	return '<div ' + 
+		(params[:controller] == link.to_s ? 
+			'class="header_menu_selected"' : 
+			'class="header_menu"') + 
+		'>' + 
+		link_to(desc, {:controller => link }, {"class" => "header"}) + 
+		'</div>'
+end
+%>
+		<%=top_button(:help, "Help")%>
+		<%=top_button(:users, "Users") if !@current_user.nil? && @current_user.level >= 2 %>
+		<%=top_button(:entries, "Entries")%>
+		<%=top_button(:invoices, "Invoices")%>
+		<%=top_button(:budgets, "Budgets")%>
+		<%=top_button(:accounts, "Accounts")%>
     <% else %>
     <!-- <div><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
     <% end %>
   </div>
     <div style="float: right;">
     <% if logged_in? %>
-			Fiscal period: <%=FiscalPeriod.find(session[:fiscal_period_id]).startdate.year%>
     <%= link_to "Logout", "/logout" %>
     <% end %>
   </div>
