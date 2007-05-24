@@ -857,7 +857,7 @@
     number: 2100
     name: "Siirtosaamiset"
     fiscal_period_id: 2007
-    type_id: 2
+    type_id: 1
     parent_id: 20070020
 
 - 2310:

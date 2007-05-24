@@ -20,6 +20,7 @@ class AccountsController < ApplicationController
 		@options_for_rtex[:filename] = 'generalledger.pdf'
 
 		@accounts = Account.find(:all, :conditions => ['accounts.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'number')
+		@fp = FiscalPeriod.find session[:fiscal_period_id] 
 	end
 
 	def balance
@@ -27,6 +28,8 @@ class AccountsController < ApplicationController
 		@options_for_rtex = Hash.new
 		@options_for_rtex[:preprocess] = true
 		@options_for_rtex[:filename] = 'balances.pdf'
+
+		@fp = FiscalPeriod.find session[:fiscal_period_id] 
 
 	end
 

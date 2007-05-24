@@ -15,6 +15,7 @@ class EntriesController < ApplicationController
 		@options_for_rtex[:filename] = 'dailyledger.pdf'
 
 		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
+		@fp = FiscalPeriod.find session[:fiscal_period_id] 
 	end
 
   def list

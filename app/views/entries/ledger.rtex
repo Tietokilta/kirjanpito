@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, Päiväkirja 2006}
+\markright{Tietokilta ry, Päiväkirja <%=@fp.startdate.year%>}
 
 \newcommand{\account}[1]{
 	\begin{longtable}{lrp{6cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lr@{\extracolsep{3pt}}lr}
@@ -49,7 +49,7 @@
 
 \title{Päiväkirja}
 \author{Tietokilta ry}
-\date{1.1.2006 - 31.12.2006}
+\date{<%=@fp.startdate%> - <%=@fp.enddate%>}
 
 \begin{document}
 
