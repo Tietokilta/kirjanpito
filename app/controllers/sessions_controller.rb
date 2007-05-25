@@ -38,11 +38,6 @@ class SessionsController < ApplicationController
 	
 	private
 		def set_my_fiscal_period
-			unless session[:fiscal_period_id].nil?
-				@fiscal_period_id = session[:fiscal_period_id]
-			else
-				@fiscal_period_id = FiscalPeriod.find(:first, :order => "startdate DESC", :select => "id").id
-			end
-			session[:fiscal_period_id] = @fiscal_period_id
+			session[:fiscal_period_id] = FiscalPeriod.find(:first, :order => "startdate DESC").id
 		end
 end

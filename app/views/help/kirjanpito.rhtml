@@ -1,21 +1,3 @@
 <link href="../stylesheets/help.css" media="screen" rel="Stylesheet" type="text/css" />
 
-<span class="huomio">
-<% if @previous != -1 && !@previous.nil? %>
-    <a href="kirjanpito?page=<%= @previous %>">Edellinen: <%= @pagesarray[@previous].values[0] %></a> &nbsp;|
-<% end %>
-<% if @current != -1 && !@current.nil? %>
-    <% if @current == 0 %>
-        <b><%= @pagesarray[@current].values[0] %></b>
-    <% else %>
-        <b><a href="kirjanpito"><%= @pagesarray[0].values[0] %></a> > <%= @pagesarray[@current].values[0] %></b>
-    <% end %>
-<% else
-    @current = 0;
-%>
-<% end %>
-<% if @next != -1 && !@next.nil? %>
-    &nbsp; | &nbsp;<a href="kirjanpito?page=<%= @next %>">Seuraava: <%= @pagesarray[@next].values[0] %></a>
-<% end %>
-</span>
-<%= render :partial => @pagesarray[@current].keys[0] %>
+<%= render :partial => @subpages[@current].keys[0] %>

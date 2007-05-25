@@ -4,6 +4,7 @@ Localization.define('fi') do |l|
   l.store 'Collapse all', 'Pienennä kaikki'
   l.store 'Expand all', 'Suurenna kaikki'
   l.store 'Balance', 'Saldo'
+  l.store 'balance', 'saldo'
   l.store 'Budget', 'Budjetti'
   l.store 'Status', 'Tilanne'
   l.store 'Totals', 'Yhteensä'

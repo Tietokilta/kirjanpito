@@ -17,18 +17,25 @@
   <div class="header_top">
 
   <div style="float: right;">
+    <% if logged_in? %>
+    <%= link_to _("Logout"), "/logout" %>
+    <% end %>
+  </div>
+  <div style="float: right;">
+    <% if logged_in? %>
 		<div style="padding: 0.6em">
 		<%=form_tag request.path, :method => :get %>
 		<%=_"Fiscal period"%>:
 		<%=select_tag "new_fiscal_period", 
 			FiscalPeriod.find(:all).collect{ |f|
 				"<option value='"+f.id.to_s+"'"+
-				(session[:fiscal_period_id] == f.id.to_s ? " selected='selected'" : "" )+
+				(session[:fiscal_period_id] == f.id ? " selected='selected'" : "" )+
 				">"+f.startdate.year.to_s+"</option>"},
 			:onchange => "this.form.submit()"%>
 		<%=submit_tag _("Change") %>
 		</form>
 		</div>
+		<% end %>
   </div>
 
   <a href="/"><img src="/images/logo_top.gif" alt="Logo" /></a>
@@ -63,11 +70,27 @@ end
     <!-- <div><%= link_to _("Login"), {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
     <% end %>
   </div>
-    <div style="float: right;">
-    <% if logged_in? %>
-    <%= link_to _("Logout"), "/logout" %>
-    <% end %>
-  </div>
+	<% if @pages then %>
+		<div class="nav_bar">
+		<% f=true
+			@pages.each { |link,name| %><%="-" unless f%> <%=link_to name, {:action => link}, :class => params[:action] == link ? "active" : "" %> <% f=false } %>
+		</div>
+	<%end%>
+
+	<% if @subpages then %>
+		<div class="nav_bar">
+		<% if @previous %>
+			<%=link_to "Edellinen: " + @subpages[@previous].values[0], :page => @previous%> &nbsp; | &nbsp;
+		<% end %>
+		<% if @current %>
+			<b><%= @subpages[@current].values[0] %></b>
+		<% end %>
+		<% if @next %>
+			&nbsp; | &nbsp;<%=link_to "Seuraava: " + @subpages[@next].values[0], :page => @next%>
+		<% end %>
+		</div>
+	<% end %>
+
   
   <div id="content">
     <p style="color: green"><%= flash[:notice] %></p>

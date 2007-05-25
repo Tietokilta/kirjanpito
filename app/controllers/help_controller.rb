@@ -1,6 +1,6 @@
 class HelpController < ApplicationController
-
-	def index
+	before_filter :pages
+	def pages
 		@pages = {
 			'käytäntö' => "Käytännöt", 
 			'kirjanpito' => "Yleistä kirjanpidosta", 
@@ -9,7 +9,7 @@ class HelpController < ApplicationController
 	end
 	
 	def kirjanpito
-	  @pagesarray = [
+	  @subpages = [
 	    {'esittely' => "Kirjanpito"},
       {'kirjaamisperiaatteita' => "Kirjaamisperiaatteita"},
       {'kirjanpitotapa' => "Hyvä kirjanpitotapa"},
@@ -26,20 +26,19 @@ class HelpController < ApplicationController
       {'tositteet' => "Tositteet"},
       {'tililuettelo' => "Tililuettelo"}
 	  ]
-	  if !params[:page].nil?
-	   @previous = params[:page].to_i - 1
-	   if @previous < 0
-	     @previous = -1
-	   end
-	   @current = params[:page].to_i
-	   if (@current < 0) || (@current > (@pagesarray.size - 1))
-	     @current = -1
-	   end
-	   @next = params[:page].to_i + 1
-	   if @next >= @pagesarray.size
-	     @next = -1
-	   end
-	  end
-  end
+
+		params[:page] = 0 unless params[:page]
+		page = params[:page].to_i
+
+		@previous = page - 1
+		@previous = nil if @previous < 0
+
+		@current = page
+		@current = nil if (@current < 0) || (@current > (@subpages.size - 1))
+
+		@next = page + 1
+		@next = nil if @next >= @subpages.size
+	
+	end
 
 end

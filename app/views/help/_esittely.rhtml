@@ -20,8 +20,8 @@ yksityisten ja yrityksen varojen erill&auml;&auml;n pit&auml;minen.</p>
 </ul>
 
 <h2>Sis&auml;lt&ouml;</h2>
-<% for i in 1 .. (@pagesarray.size - 1) %>
-    <% @pagesarray[i].each {|link, name| %>
+<% for i in 1 .. (@subpages.size - 1) %>
+    <% @subpages[i].each {|link, name| %>
     	<a href="kirjanpito?page=<%= i %>"><%= name %></a><br />
     <% } %>
 <% end %>

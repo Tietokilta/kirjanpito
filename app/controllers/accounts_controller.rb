@@ -1,12 +1,21 @@
 class AccountsController < ApplicationController
   layout nil
   layout "application", :except => [:ledger, :balance]
+	
+	before_filter :pages
+	def pages
+		@pages = {
+			'list' => "Tililuettelo", 
+			'ledger' => "Pääkirja", 
+			'balance' => "Tulos ja tase"
+			}
+	end
 
 
   def index
     list
 		if ! request.xml_http_request?
-	    render :action => 'list'
+	    redirect_to :action => 'list'
 		end
   end
 
