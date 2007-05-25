@@ -1,7 +1,7 @@
-<h1>Listing entries</h1>
+<h1><%=_"Listing entries"%></h1>
 <form name="sform" action="" style="display:inline;">
 <p>
-Search: <%=text_field_tag("search", params['search'] )%>
+<%=_"Search"%>: <%=text_field_tag("search", params['search'] )%>
 <%= image_tag("spinner.gif",
 		:align => 'absmiddle',
 		:border=> 0,

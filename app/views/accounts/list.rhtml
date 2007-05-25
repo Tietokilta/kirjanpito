@@ -1,20 +1,20 @@
-<h1>Listing accounts</h1>
+<h1><%=_ "Listing accounts"%></h1>
 
-Print: <%= link_to "General ledger", :action => :ledger %>,
-<%= link_to "Daily ledger", {:controller => :entries, :action => :ledger} %>,
-<%= link_to "Income & balance sheet", :action => :balance %>
+<%=_ "Print"%>: <%= link_to _("General ledger"), :action => :ledger %>,
+<%= link_to _("Daily ledger"), {:controller => :entries, :action => :ledger} %>,
+<%= link_to _("Income & balance sheet"), :action => :balance %>
 
 <p>
 <form name="sform" action="" style="display:inline;">
 <!--
-Select fiscal period:
+<%=_"Select fiscal period"%>:
 <%= 
 select_tag("query", 
            options_for_select(@fp_options, @fiscal_period_id))
 %>
 <br />
 -->
-Search: <%=text_field_tag("search", @params['search'] )%>
+<%=_"Search"%>: <%=text_field_tag("search", @params['search'] )%>
 </form>
 
 <%= image_tag("spinner.gif",

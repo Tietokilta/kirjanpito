@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, Päiväkirja <%=@fp.startdate.year%>}
+\markright{Tietokilta ry, <%=_"Daily ledger"%> <%=@fp.startdate.year%>}
 
 \newcommand{\account}[1]{
 	\begin{longtable}{lrp{6cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lr@{\extracolsep{3pt}}lr}
@@ -22,9 +22,9 @@
 }
 
 \newcommand{\rowcaption}{
-	Päivä & Tosite & Selitys & \multicolumn{2}{l}{Debet-tili} &
-	 \multicolumn{2}{l}{Kredit-tili} & Summa \\
-	\hline}
+	<%=_"Date"%> & <%=_"Receipt"%> & <%=_"Description"%> &
+	\multicolumn{2}{l}{<%=_"Debit"%>} &
+	\multicolumn{2}{l}{<%=_"Credit"%>} & <%=_"Sum%%> \\ \hline}
 
 \newcommand{\tablecaption}[1]{
 %	\multicolumn{8}{l}{\Large{\textbf{#1}}} \\
@@ -39,15 +39,15 @@
 \newcommand{\finalsum}[2]{
 	\nopagebreak
 	\hline 
-	\multicolumn{2}{l}{\textsf{Välisummat:}} & & 
-	\multicolumn{2}{l}{\textsf{Tämä kausi}} & 
-	\multicolumn{2}{r}{\textsf{Yhteensä:}} & \textsf{#1} \\
+	\multicolumn{2}{l}{\textsf{<%=_"Running sums"%>:}} & & 
+	\multicolumn{2}{l}{\textsf{<%=_"This period"%>}} & 
+	\multicolumn{2}{r}{\textsf{<%=_"Total"%>:}} & \textsf{#1} \\
 	\nopagebreak
-	& & & \multicolumn{2}{l}{\textsf{Alusta lähtien}} & 
-	\multicolumn{2}{r}{\textsf{Yhteensä:}} & \textsf{#2} \\
+	& & & \multicolumn{2}{l}{\textsf{<%=_"From start"%>}} & 
+	\multicolumn{2}{r}{\textsf{<%=_"Total"%>:}} & \textsf{#2} \\
 }
 
-\title{Päiväkirja}
+\title{<%=_"Daily ledger"}
 \author{Tietokilta ry}
 \date{<%=@fp.startdate%> - <%=@fp.enddate%>}
 
@@ -55,7 +55,7 @@
 
 \maketitle
 
-\account{Päiväkirja}
+\account{foo}
 <%
 prevmonth = 0
 total = 0

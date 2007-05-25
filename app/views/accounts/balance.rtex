@@ -12,10 +12,10 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, Tulos ja tase <%=@fp.startdate.year%>}
+\markright{Tietokilta ry, <%=_ "Income and balance sheet"%> <%=@fp.startdate.year%>}
 
 
-\title{Tuloslaskelma ja tase}
+\title{<%=_"Income and balance sheet"%>}
 \author{Tietokilta ry}
 \date{<%=@fp.startdate%> - <%=@fp.enddate%>}
 
@@ -23,7 +23,7 @@
 
 \maketitle
 
-\section{Tuloslaskelma}
+\section{<%=_"Incomes"%>}
 <%
 totalbal = 0
 
@@ -48,7 +48,7 @@ totalbal += @account_sums[h.id][:balance]
 
 %>
 
-{\large Tilikauden voitto (tappio): <%="%0.02f" % totalbal%> }
+{\large <%=_"Net income (loss)"%>: <%="%0.02f" % totalbal%> }
 
 \section{Tase}
 <%
@@ -66,7 +66,7 @@ totalbal += @account_sums[h.id][:balance]
 		<%="%0.02f" % @account_balance[a.id] if @account_balance[a.id]%> \\<%
 	}
 %>
-\textbf{Yhteensä} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance] %>} \\
+\textbf{<%=_"Total"%>} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance] %>} \\
 \end{longtable}
 <%
 totalbal += @account_sums[h.id][:balance]
@@ -74,6 +74,6 @@ totalbal += @account_sums[h.id][:balance]
 
 %>
 
-{\large Taseen loppusumma: <%="%0.02f" % totalbal%>}
+{\large <%=_"Assets and liabilities"%>: <%="%0.02f" % totalbal%>}
 
 \end{document}

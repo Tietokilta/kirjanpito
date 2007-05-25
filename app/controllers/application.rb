@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
 
 	before_filter :check_fiscal_period_change
 
+	Localization.lang = 'fi'
+
   protected
     def authorized?
       if(request.path_parameters[:action] == "edit" ||

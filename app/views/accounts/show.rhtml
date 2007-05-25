@@ -1,7 +1,7 @@
 <h2><%="%04d" % @account.number%> - <%=@account.name%></h2>
-<%= link_to 'Edit', :action => 'edit', :id => @account %> |
-<%= link_to 'Back', :action => 'list' %> <br />
-Parent: <%="%04d" % @account.parent.number %> - <%=@account.parent.name %> <br />
+<%= link_to _'Edit', :action => 'edit', :id => @account %> |
+<%= link_to _'Back', :action => 'list' %> <br />
+<%=_"Parent"%>: <%="%04d" % @account.parent.number %> - <%=@account.parent.name %> <br />
 <%=@account.description%> <br />
 
 <%
@@ -11,7 +11,7 @@ totc = 0
 
 
 <table style="width:auto;">
-<tr><td class="heading" colspan="5">Debet</td></tr>
+<tr><td class="heading" colspan="5"><%=_"Debit"%></td></tr>
 <%
 @deb.each { |e| 
 	totd += e.sum
@@ -22,18 +22,18 @@ totc = 0
 	<td><%=e.description%></td>
     <td class="alignright"><%=number_to_currency(e.sum) %></td>
 	<td>
-	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
-	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
+	<%= link_to _'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
+	<%= link_to _'Show', :controller => :entries, :action => 'show', :id => e.id %>
 	</td>
 </tr>
 <% } %>
 <tr>
-  <td class="total" colspan="2" align="right">Total:</td>
+  <td class="total" colspan="2" align="right"><%=_"Total"%>:</td>
   <td class="total" colspan="3"><%=number_to_currency(totd)%></td>
 </tr>
 
 
-<tr><td class="heading" colspan="5">Credit</td></tr>
+<tr><td class="heading" colspan="5"><%=_"Credit"%></td></tr>
 <%
 @cred.each { |e| 
 	totc += e.sum
@@ -44,19 +44,19 @@ totc = 0
 	<td><%=e.description%></td>
     <td class="alignright"><%=number_to_currency(e.sum) %></td>
 	<td>
-	<%= link_to 'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
-	<%= link_to 'Show', :controller => :entries, :action => 'show', :id => e.id %>
+	<%= link_to _'Edit', :controller => :entries, :action => 'edit', :id => e.id %> |
+	<%= link_to _'Show', :controller => :entries, :action => 'show', :id => e.id %>
 	</td>
 </tr>
 <% } %>
 <tr>
-  <td class="total" colspan="2" align="right">Total:</td>
+  <td class="total" colspan="2" align="right"><%=_"Total"%>:</td>
   <td class="total" colspan="3"><%=number_to_currency(totc)%></td>
 </tr>
 
-<tr><td class="heading" colspan="5">Budget</td></tr>
+<tr><td class="heading" colspan="5"><%=_"Budget"%></td></tr>
 <tr>
-  <td class="total" colspan="2" align="right">Status now:</td>
+  <td class="total" colspan="2" align="right"><%=_"Status now"%>:</td>
   <td class="total" colspan="3"><%=number_to_currency(totc - totd)%></td>
 </tr>
 <%

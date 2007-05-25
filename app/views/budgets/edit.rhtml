@@ -1,9 +1,9 @@
-<h1>Editing budget</h1>
+<h1><%=_"Editing budget"%></h1>
 
 <% form_tag :action => 'update', :id => @budget do %>
   <%= render :partial => 'form' %>
-  <%= submit_tag 'Edit' %>
+  <%= submit_tag _('Edit') %>
 <% end %>
 
-<%= link_to 'Show', :action => 'show', :id => @budget %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to _('Show'), :action => 'show', :id => @budget %> |
+<%= link_to _('Back'), :action => 'list' %>

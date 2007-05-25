@@ -4,8 +4,8 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', :action => 'edit', :id => @budget %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to _('Edit'), :action => 'edit', :id => @budget %> |
+<%= link_to _('Back'), :action => 'list' %>
 
 <%
 @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @budget.fiscal_period_id])
@@ -22,12 +22,12 @@ end
 }
 %>
 
-<h1>Budget accounts</h1>
+<h1><%=_"Budget accounts"%></h1>
 <% form_tag :action => 'update_accounts', :id => @budget do %>
 <%= error_messages_for 'budget' %>
-<%= submit_tag 'Save' %>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>">Collapse all</a>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
+<%= submit_tag _('Save') %>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
 
 <table style="width:auto;">
 <% @headings.each { |h| %>
@@ -38,8 +38,8 @@ end
   <tbody id="<%= h.id %>">
     <tr>
       <th>&nbsp;</th>
-      <th>Number - Description</th>
-      <th>Amount</th>
+      <th><%=_"Number"%> - <%=_"Description"%></th>
+      <th><%=_"Amount"%></th>
     </tr>
     
     <% i = 0; %>
@@ -61,5 +61,5 @@ end
 	</tbody>
 <% } %>
 </table>
-<%= submit_tag 'Save' %>
+<%= submit_tag _'Save' %>
 <% end %>

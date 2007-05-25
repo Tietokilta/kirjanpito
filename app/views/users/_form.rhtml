@@ -1,21 +1,21 @@
 <%= error_messages_for 'user' %>
 
 <!--[form:user]-->
-<p><label for="user_login">Login</label><br/>
+<p><label for="user_login"><%=_"Login"%></label><br/>
 <%= text_field 'user', 'login'  %></p>
 
-<p><label for="user_email">Email</label><br/>
+<p><label for="user_email"><%=_"Email"%></label><br/>
 <%= text_field 'user', 'email'  %></p>
 
 <% if !@current_user.nil? && @current_user.level >= 2 %>
-<p><label for="user_level">Level</label><br/>
-<%= select 'user', 'level', [["Toimari", 0], ["Hallituslainen", 1], ["Rahastonhoitaja", 2]] %></p>
+<p><label for="user_level"><%=_"Level"%></label><br/>
+<%= select 'user', 'level', [[_"Official", 0], [_"Board member", 1], [_"Treasurer", 2]] %></p>
 <%end%>
 
-<p><label for="user_password">Password</label><br/>
+<p><label for="user_password"><%=_"Password"%></label><br/>
 <%= password_field 'user', 'password'  %></p>
 
-<p><label for="user_password_confirmation">Password confirmation</label><br/>
+<p><label for="user_password_confirmation"><%=_"Password confirmation"%></label><br/>
 <%= password_field 'user', 'password_confirmation'  %></p>
 
 <!--[eoform:user]-->

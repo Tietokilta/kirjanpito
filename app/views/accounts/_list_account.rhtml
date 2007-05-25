@@ -37,7 +37,7 @@
 		<div>
 			<%= link_to image_tag('/images/show.gif'), :action => 'show', :id => account %>
 			<%= link_to image_tag('/images/edit.gif'), :action => 'edit', :id => account %>
-			<%= link_to image_tag('/images/cancel.gif'), { :action => 'destroy', :id => account }, :confirm => 'Are you sure?', :method => :post %>
+			<%= link_to image_tag('/images/cancel.gif'), { :action => 'destroy', :id => account }, :confirm => _('Are you sure?'), :method => :post %>
 		</div>
 	</td>
 	</tr>

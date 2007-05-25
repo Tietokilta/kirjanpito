@@ -1,6 +1,6 @@
 <% if !@headings.nil? && @headings.length > 0 %>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>">Collapse all</a>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>">Expand all</a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
+<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
 <% end %>
 <table cellspacing="0">
   <% for @heading in @headings
@@ -22,19 +22,19 @@
             when "type_id"
             when "fiscal_period_id"
             else
-                %><th <%=sort_td_class_helper(column.name)%>><%= sort_link_helper column.human_name, column.name %></th>
+                %><th <%=sort_td_class_helper(column.name)%>><%= sort_link_helper _(column.human_name), column.name %></th>
         <% end %>
       <% end %>
-			<th <%=sort_td_class_helper("balance")%>><%= sort_link_helper "Balance", "balance" unless @heading.type_id == 1%></th>
-			<th <%=sort_td_class_helper("budget")%>><%= sort_link_helper "Budget", "budget" unless @heading.type_id == 1 %></th>
-			<th <%=sort_td_class_helper("status")%>><%= sort_link_helper "Status", "status" %></th>
-      <th>Actions</th>
+			<th <%=sort_td_class_helper("balance")%>><%= sort_link_helper _("Balance"), "balance" unless @heading.type_id == 1%></th>
+			<th <%=sort_td_class_helper("budget")%>><%= sort_link_helper _("Budget"), "budget" unless @heading.type_id == 1 %></th>
+			<th <%=sort_td_class_helper("status")%>><%= sort_link_helper _("Status"), "status" %></th>
+      <th><%=_"Actions"%></th>
     </tr>
 		
 		<%= render :partial => 'list_account' %>
 		<% end %>
 		<tr class="sum_row">
-		<td>Totals</td>
+		<td><%=_"Totals"%></td>
 		<td></td>
 		<td></td>
 		<td><%=number_to_currency @account_sums[@heading.id][:balance] unless @heading.type_id == 1%></td>
@@ -45,4 +45,4 @@
     </tbody>
   <% end %>
 </table>
-<%= link_to 'New account', {:action => 'new', :fiscal_period_id => @fiscal_period_id} %>
+<%= link_to _('New account'), {:action => 'new', :fiscal_period_id => @fiscal_period_id} %>

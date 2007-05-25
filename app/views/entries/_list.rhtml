@@ -22,16 +22,16 @@
 
 
 
-	<%= link_to 'New entry', :action => 'new' %>
+	<%= link_to _('New entry'), :action => 'new' %>
 
 	<table>
 		<tr>
 		<% for column in Entry.content_columns %>
-			<th <%=sort_td_class_helper column.name%>><%= sort_link_helper column.human_name, column.name %></th>
+			<th <%=sort_td_class_helper column.name%>><%= sort_link_helper _(column.human_name), column.name %></th>
 		<% end %>
-					<th>Debet</th>
-			<th>Credit</th>
-			<th style="width: 80px;">Actions</th>
+					<th><%=_"Debit"%></th>
+			<th><%=_"Credit"%></th>
+			<th style="width: 80px;"><%=_"Actions"%></th>
 		</tr>
 		
 	<% i = 0; %>
@@ -59,7 +59,7 @@
 			<%= link_to_remote(image_tag('/images/cancel.gif'),
 					:update => "entries",
 					:url => { :action => 'destroy', :id => entry }, 
-					:confirm => 'Are you sure?', 
+					:confirm => _('Are you sure?'), 
 					:method => :post,
 					:before => "Element.show('spinner')",
 					:success => "Element.hide('spinner')") %>

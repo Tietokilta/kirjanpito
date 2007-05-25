@@ -8,11 +8,11 @@
         "odd_row"
     end    
     %>">
-  <th class="details"><%= column.human_name %>:</th>
+  <th class="details"><%=_ column.human_name %>:</th>
   <td class="details"><%=h @entry.send(column.name) %></td>
 </tr>
 <% end %>
 </table>
 
-<%= link_to 'Edit', :action => 'edit', :id => @entry %> |
-<%= link_to 'Back', :action => 'list' %>
+<%= link_to _('Edit'), :action => 'edit', :id => @entry %> |
+<%= link_to _('Back'), :action => 'list' %>

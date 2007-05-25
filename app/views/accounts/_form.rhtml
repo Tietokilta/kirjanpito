@@ -3,30 +3,30 @@
 <!--[form:account]-->
 <table>
 <tr class="even_row">
-  <th class="details"><label for="account_name">Name</label></th>
+  <th class="details"><label for="account_name"><%=_"Name"%></label></th>
   <td class="details"><%= text_field 'account', 'name'  %></td>
 </tr>
 <tr class="odd_row">
-  <th class="details"><label for="account_number">Number</label></th>
+  <th class="details"><label for="account_number"><%=_"Number"%></label></th>
   <td class="details"><input id="account_number" name="account[number]" size="30" type="text" value="<%= "%04d" % @account.number %>" /></td>
 </tr>
 <tr class="even_row">
-  <th class="details"><label for="account_description">Description</label></th>
+  <th class="details"><label for="account_description"><%=_"Description"%></label></th>
   <td class="details"><%= text_field 'account', 'description'  %></td>
 </tr>
 <tr class="odd_row">
-  <th class="details"><label for="account_fiscal_period_id">Fiscal period</label></th>
+  <th class="details"><label for="account_fiscal_period_id"><%=_"Fiscal period"%></label></th>
   <td class="details"><%=select 'account', 'fiscal_period_id', FiscalPeriod.find(:all).collect {|p| [p.startdate.to_s + " - " + p.enddate.to_s, p.id ]} %></td>
 </tr>
 <tr class="even_row">
-  <th class="details"><label for="type_id">Account type</label></th>
+  <th class="details"><label for="type_id"><%=_"Account type"%></label></th>
   <td class="details"><input id="type_id" name="account[type_id]" size="30" type="text" value="<%= @type_id.description unless @type_id.nil? %>" />
   <div class="auto_complete" id="type_id_auto_complete"></div>
   <%= auto_complete_field 'type_id', :url => {:action => 'autocomplete_type_id'} %>
   </td>
 </tr>
 <tr class="odd_row">
-  <th class="details"><label for="parent_id">Parent account</label></th>
+  <th class="details"><label for="parent_id"><%=_"Parent account"%></label></th>
   <td class="details"><input id="parent_id" name="account[parent_id]" size="30" type="text" value="<%= 
     if @parent_id
         parent_nmbr = "%04d" %  @parent_id.number

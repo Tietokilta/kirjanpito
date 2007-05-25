@@ -19,14 +19,14 @@
   <div style="float: right;">
 		<div style="padding: 0.6em">
 		<%=form_tag request.path, :method => :get %>
-		Fiscal period:
+		<%=_"Fiscal period"%>:
 		<%=select_tag "new_fiscal_period", 
 			FiscalPeriod.find(:all).collect{ |f|
 				"<option value='"+f.id.to_s+"'"+
 				(session[:fiscal_period_id] == f.id.to_s ? " selected='selected'" : "" )+
 				">"+f.startdate.year.to_s+"</option>"},
 			:onchange => "this.form.submit()"%>
-		<%=submit_tag "Change" %>
+		<%=submit_tag _("Change") %>
 		</form>
 		</div>
   </div>
@@ -53,19 +53,19 @@ def top_button(link, desc)
 		'</div>'
 end
 %>
-		<%=top_button(:help, "Help")%>
-		<%=top_button(:users, "Users") if !@current_user.nil? && @current_user.level >= 2 %>
-		<%=top_button(:entries, "Entries")%>
-		<%=top_button(:invoices, "Invoices")%>
-		<%=top_button(:budgets, "Budgets")%>
-		<%=top_button(:accounts, "Accounts")%>
+		<%=top_button(:help, _("Help"))%>
+		<%=top_button(:users, _("Users")) if !@current_user.nil? && @current_user.level >= 2 %>
+		<%=top_button(:entries, _("Entries"))%>
+		<%#=top_button(:invoices, _("Invoices"))%>
+		<%=top_button(:budgets, _("Budgets"))%>
+		<%=top_button(:accounts, _("Accounts"))%>
     <% else %>
-    <!-- <div><%= link_to "Login", {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
+    <!-- <div><%= link_to _("Login"), {:controller => :sessions, :action => :new}, {"class" => "header"} %></div> -->
     <% end %>
   </div>
     <div style="float: right;">
     <% if logged_in? %>
-    <%= link_to "Logout", "/logout" %>
+    <%= link_to _("Logout"), "/logout" %>
     <% end %>
   </div>
   

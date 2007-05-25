@@ -1,13 +1,13 @@
-<h1>Listing budgets</h1>
+<h1><%=_"Listing budgets"%></h1>
 
 <table>
   <tr>
   <% for column in Budget.columns 
 		next unless column.human_name != "Id"
 	%>
-  <th><%= column.human_name %></th>
+  <th><%= _ column.human_name %></th>
   <% end %>
-  <th>Actions</th>
+  <th><%=_"Actions"%></th>
   </tr>
   
 	<% for budget in @budgets %>
@@ -43,9 +43,9 @@
 	<% end %>
 </table>
 
-<%= link_to 'Previous page', { :page => @budget_pages.current.previous } if @budget_pages.current.previous %>
-<%= link_to 'Next page', { :page => @budget_pages.current.next } if @budget_pages.current.next %> 
+<%= link_to _('Previous page'), { :page => @budget_pages.current.previous } if @budget_pages.current.previous %>
+<%= link_to _('Next page'), { :page => @budget_pages.current.next } if @budget_pages.current.next %> 
 
 <br />
 
-<%= link_to 'New budget', :action => 'new' %>
+<%= link_to _('New budget'), :action => 'new' %>
