@@ -1,0 +1,27 @@
+<h1>Kirjanpito</h1>
+<p>Kirjanpito on tietoj&auml;rjestelm&auml;, jossa yll&auml;pidet&auml;&auml;n tietoa yrityksen tai yhteis&ouml;n taloudellisesta 
+toiminnasta ja tilasta yksitt&auml;isen liiketapahtuman tarkkuudella. Kirjanpidolla tarkoitetaan my&ouml;s 
+tapahtumien kirjaamista kirjanpitoon ja muita siihen liittyvi&auml; toimintoja.</p>
+
+<p>Kirjanpito voi olla kokonaan manuaalista, mutta nyky&auml;&auml;n se yleens&auml; toteutetaan osittain tai 
+kokonaan koneellisesti. Kirjanpidosta tuotetaan lakis&auml;&auml;teisi&auml; ja muita raportteja yrityksen tai 
+yhteis&ouml;n omaan sek&auml; sen sidosryhmien tarpeisiin. Er&auml;s kirjanpidon t&auml;rkeist&auml; teht&auml;vist&auml; on 
+yksityisten ja yrityksen varojen erill&auml;&auml;n pit&auml;minen.</p>
+
+<p>Kirjanpitovelvollisuudesta on s&auml;&auml;detty kirjanpitolaissa. Sen mukaan:<p>
+
+<ul>
+    <li>kaikki liike- tai ammattitoimintaa harjoittavat ovat kirjanpitovelvollisia</li>
+    <li>kirjanpitovelvollisen on pidett&auml;v&auml; kahdenkertaista kirjanpitoa, paitsi ammatinharjoittajan 
+        (jonka tilikausi on kalenterivuosi)</li>
+    <li>normaali tilikausi on 12 kuukautta, mutta aloitettaessa tai lopetettaessa taikka tilinp&auml;&auml;t&ouml;ksen 
+        ajankohtaa muutettaessa tilikausi saa olla t&auml;t&auml; lyhyempi tai pitempi, kuitenkin enint&auml;&auml;n 18 kuukautta. 
+        Tilikausi saa siis olla kuinka lyhyt tahansa.</li>
+</ul>
+
+<h2>Sis&auml;lt&ouml;</h2>
+<% for i in 1 .. (@pagesarray.size - 1) %>
+    <% @pagesarray[i].each {|link, name| %>
+    	<a href="kirjanpito?page=<%= i %>"><%= name %></a><br />
+    <% } %>
+<% end %>
