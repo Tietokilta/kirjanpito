@@ -131,6 +131,12 @@ Localization.define('fi') do |l|
   # script/../config/../config/../app/views/help/index.rhtml
   l.store 'Documents', 'Dokumentit'
 
+  # script/../config/../config/../app/views/fiscal_periods/list.rhtml
+  l.store 'Listing fiscal_periods', 'Tilikaudet'
+  l.store 'Startdate', 'Alkamispäivämäärä'
+  l.store 'Enddate', 'Päättymispäivämäärä'
+  l.store 'New fiscal_period', 'Uusi tilikausi'
+  l.store 'Editing fiscal_period', 'Muokkaa tilikautta'
 
 	l.store 'Change', 'Vaihda'
 	l.store 'Help', 'Apua'
