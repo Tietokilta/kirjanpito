@@ -1,18 +1,18 @@
 <% if !@headings.nil? && @headings.length > 0 %>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
-<a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
+<a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
+<a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
 <% end %>
 <table cellspacing="0">
   <% for @heading in @headings
 		#next if @heading.type_id == 1
 	%>
   <tr>
-  <td onClick="javascript:$('<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan=<%= Account.columns.length+2 %>>
+  <td onclick="javascript:$('<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan="<%= Account.columns.length+2 %>">
       <%=  @heading.name.to_s + ": " + @heading.description.to_s %>
   </td>
   </tr>
   
-  <tbody id="<%= @heading.id %>">
+  <tbody id="t<%= @heading.id %>">
     <% if !@accounts[@heading.id].nil? %>
     <tr>
       <% for column in Account.columns

@@ -1,6 +1,6 @@
 <h2><%="%04d" % @account.number%> - <%=@account.name%></h2>
-<%= link_to _'Edit', :action => 'edit', :id => @account %> |
-<%= link_to _'Back', :action => 'list' %> <br />
+<%= link_to _('Edit'), :action => 'edit', :id => @account %> |
+<%= link_to _('Back'), :action => 'list' %> <br />
 <%=_"Parent"%>: <%="%04d" % @account.parent.number %> - <%=@account.parent.name %> <br />
 <%=@account.description%> <br />
 

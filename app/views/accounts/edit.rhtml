@@ -1,11 +1,11 @@
 <h1><%=_"Editing account"%></h1>
 
 <% form_tag :action => 'update', :id => @account do %>
-  <%= submit_tag _'Edit' %>
+  <%= submit_tag _('Edit') %>
 <table class="details">
   <%= render :partial => 'form' %>
 </table>
 <% end %>
 
-<%= link_to _'Show', :action => 'show', :id => @account %> |
-<%= link_to _'Back', session[:return_to] %>
+<%= link_to _('Show'), :action => 'show', :id => @account %> |
+<%= link_to _('Back'), session[:return_to] %>
