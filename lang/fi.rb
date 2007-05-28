@@ -147,6 +147,7 @@ Localization.define('fi') do |l|
 	l.store 'Previous', 'Edellinen'
 	l.store 'Users', 'Käyttäjät'
 	l.store 'Entries', 'Tilitapahtumat'
+	l.store 'Fiscal periods', 'Tilikaudet'
 	l.store 'Invoices', 'Laskut'
 	l.store 'Budgets', 'Budjetit'
 	l.store 'Accounts', 'Tilit'
