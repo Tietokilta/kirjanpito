@@ -1,0 +1,12 @@
+<%= error_messages_for 'budget' %>
+
+<!--[form:budget]-->
+<p><label for="budget_description"><%=_"Description"%></label><br/>
+<%= text_field 'budget', 'description'  %></p>
+
+<p><label for="budget_fiscal_period_id"><%=_"Fiscal period"%></label><br/>
+<%=select 'budget', 'fiscal_period_id', FiscalPeriod.find(:all).collect {|p| [p.startdate.to_s + " - " + p.enddate.to_s, p.id ]} %><br />
+
+
+<!--[eoform:budget]-->
+

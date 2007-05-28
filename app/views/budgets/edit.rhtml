@@ -1,7 +1,7 @@
 <h1><%=_"Editing budget"%></h1>
 
 <% form_tag :action => 'update', :id => @budget do %>
-  <%= render :partial => 'form' %>
+  <%= render :partial => 'editing_form' %>
   <%= submit_tag _('Edit') %>
 <% end %>
 
