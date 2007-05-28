@@ -1,10 +1,11 @@
-<h1>Listing fiscal_periods</h1>
+<h1><%=_ "Listing fiscal_periods"%></h1>
 
 <table>
   <tr>
   <% for column in FiscalPeriod.content_columns %>
-    <th><%= column.human_name %></th>
+    <th><%= _ column.human_name %></th>
   <% end %>
+    <th><%= _"Actions" %>
   </tr>
   
 <% for fiscal_period in @fiscal_periods %>
@@ -12,16 +13,18 @@
   <% for column in FiscalPeriod.content_columns %>
     <td><%=h fiscal_period.send(column.name) %></td>
   <% end %>
-    <td><%= link_to 'Show', :action => 'show', :id => fiscal_period %></td>
-    <td><%= link_to 'Edit', :action => 'edit', :id => fiscal_period %></td>
-    <td><%= link_to 'Destroy', { :action => 'destroy', :id => fiscal_period }, :confirm => 'Are you sure?', :method => :post %></td>
+  <td>
+    <%= link_to_image '/images/show.gif', :action => 'show', :id => fiscal_period %>
+    <%= link_to_image '/images/edit.gif', :action => 'edit', :id => fiscal_period %>
+    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => fiscal_period }, :confirm => _('Are you sure?'), :method => :post %>  
+  </td>  
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'Previous page', { :page => @fiscal_period_pages.current.previous } if @fiscal_period_pages.current.previous %>
-<%= link_to 'Next page', { :page => @fiscal_period_pages.current.next } if @fiscal_period_pages.current.next %> 
+<%= link_to _('Previous page'), { :page => @fiscal_period_pages.current.previous } if @fiscal_period_pages.current.previous %>
+<%= link_to _('Next page'), { :page => @fiscal_period_pages.current.next } if @fiscal_period_pages.current.next %> 
 
 <br />
 
-<%= link_to 'New fiscal_period', :action => 'new' %>
+<%= link_to _('New fiscal_period'), :action => 'new' %>
