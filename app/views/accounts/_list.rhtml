@@ -7,7 +7,7 @@
 		#next if @heading.type_id == 1
 	%>
   <tr>
-  <td onclick="javascript:$('<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan="<%= Account.columns.length+2 %>">
+  <td onclick="javascript:$('t<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan="<%= Account.columns.length+2 %>">
       <%=  @heading.name.to_s + ": " + @heading.description.to_s %>
   </td>
   </tr>
