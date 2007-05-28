@@ -1,2 +1,2 @@
-page['entries'].replace_html :partial => 'list',  :object => @entries
-page['entry'].replace_html   :partial => 'entry', :object => @entry
+page.replace_html("entries",   :partial => 'list', :object => @entries);
+page.replace_html("entry",   :partial => 'entry', :object => @entry);

@@ -11,11 +11,11 @@
 </form>
 
 <% form_remote_tag :url => '/entries/add_to_entries',
-		:before => 'javascript:this.commit.disabled=true' do -%>
+		:success => "Element.hide('spinner')",
+		:before => 'this.commit.disabled=true;Element.show("spinner")' do -%>
   <div id="entry">
 		<%= render :partial => 'entry', :object => @entry %>
   </div>
-<%= submit_tag _("Add entry") %>
 <% end -%>
 
 <% if false %>
