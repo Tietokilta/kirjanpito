@@ -1,5 +1,5 @@
 <h2>Tilikaudet</h2>
-<p>Tilikausien hallinta tapahtuu <%= link_to "täältä", :controller => :fiscal_periods, :action => :list %>.</p>
+<p>Tilikausien hallinta tapahtuu valitsemalla <%= link_to "tilikaudet", :controller => :fiscal_periods, :action => :list %> yl&auml;valikosta.</p>
 
 <p>Tilikausi tulee luonnollisesti luoda ennen kuin sille voidaan lis&auml;t&auml; tapahtumia. Tilikausi lis&auml;t&auml;&auml;n valitsemalla <%= link_to "Uusi tilikausi", :controller => :fiscal_periods, :action => :new %>. Sitten tilikaudelle valitaan alkamis- ja p&auml;&auml;ttymisp&auml;iv&auml;m&auml;&auml;r&auml;t ja valitaan 'Luo'.</p>
 <p>Tilikausi voidaan poistaa klikkaamalla sen kohdalla olevaa ruksia <%= image_tag '/images/cancel.gif' %> ja valitsemalla 'Ok' kun ohjelma pyyt&auml;&auml; varmistamaan toiminnon. Tilikautta poistaessa kannattaa huomata ett&auml; <b>kaikki</b> siihen liittyv&auml;t tiedot poistetaan samalla, mukaanlukien kaikki tilitapahtumat.</p>
