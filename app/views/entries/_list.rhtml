@@ -27,7 +27,7 @@
 	<table>
 		<tr>
 		<% for column in Entry.content_columns %>
-			<th <%=sort_td_class_helper column.name%>><%= sort_link_helper _(column.human_name), column.name %></th>
+			<th <%=sort_td_class_helper column.name%>><%= sort_link_helper _(column.human_name), column.name, :entries %></th>
 		<% end %>
 					<th><%=_"Debit"%></th>
 			<th><%=_"Credit"%></th>

@@ -12,13 +12,13 @@ module ApplicationHelper
 		return result
 	end
 
-	def sort_link_helper(text, param)
+	def sort_link_helper(text, param, field = 'table')
 		key = param
 		key += " desc" if params[:sort] == param
 		key = nil if params[:sort] == param + " desc"
 		options = {
 			:url => {:action => 'list', :params => params.merge({:sort => key, :page => nil})},
-			:update => 'table',
+			:update => field,
 			:before => "Element.show('spinner')",
 			:success => "Element.hide('spinner')"
 		}
