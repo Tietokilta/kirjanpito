@@ -9,6 +9,7 @@ Localization.define('fi') do |l|
   l.store 'Totals', 'Yhteensä'
   l.store 'New account', 'Luo uusi tili'
 	l.store 'Actions', 'Toiminnot'
+	l.store 'Back to top', 'Takaisin ylös'
 
   # script/../config/../config/../app/views/accounts/list.rhtml
   l.store 'Listing accounts', 'Tililuettelo'
@@ -58,6 +59,7 @@ Localization.define('fi') do |l|
   l.store 'Account type', 'Tilin tyyppi'
   l.store 'Parent account', 'Ylätili'
 	l.store 'Fiscal period', 'Tilikausi'
+	l.store 'Fiscal periods', 'Tilikaudet'
 
   # script/../config/../config/../app/views/accounts/edit.rhtml
   l.store 'Editing account', 'Tilin muokkaus'

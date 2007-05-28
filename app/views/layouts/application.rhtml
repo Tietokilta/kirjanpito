@@ -35,7 +35,7 @@
 		<% end %>
   </div>
 
-  <a href="/"><img src="/images/logo_top.gif" alt="Logo" /></a>
+  <a href="/" id="top"><img src="/images/logo_top.gif" alt="Logo" /></a>
   </div>
   
   <div class="header_bottom">
@@ -94,6 +94,7 @@ end
   <div id="content">
     <p style="color: green"><%=_ flash[:notice] unless flash[:notice].nil? %></p>
     <%= yield %>
+		<a href="#top"><%=_ ("Back to top") %></a>
   </div>
   
   <div id="footer">
