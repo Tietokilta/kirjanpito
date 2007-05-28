@@ -1,5 +1,5 @@
 <h1><%=_ "Listing accounts"%></h1>
-
+<p><%= link_to _('New account'), {:action => 'new', :fiscal_period_id => @fiscal_period_id} %></p>
 <%=_ "Print"%>: <%= link_to _("General ledger"), :action => :ledger %>,
 <%= link_to _("Daily ledger"), {:controller => :entries, :action => :ledger} %>,
 <%= link_to _("Income & balance sheet"), :action => :balance %><br />
