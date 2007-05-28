@@ -12,6 +12,7 @@ Localization.define('fi') do |l|
 
   # script/../config/../config/../app/views/accounts/list.rhtml
   l.store 'Listing accounts', 'Tililuettelo'
+  l.store 'Account list', 'Tililuettelo'
   l.store 'General ledger', 'Pääkirja'
   l.store 'Daily ledger', 'Päiväkirja'
   l.store 'Income & balance sheet', 'Tulos ja tase'
@@ -141,14 +142,16 @@ Localization.define('fi') do |l|
   l.store 'Editing fiscal_period', 'Muokkaa tilikautta'
 
 	l.store 'Change', 'Vaihda'
-	l.store 'Help', 'Apua'
+	l.store 'Help', 'Ohjeet'
+	l.store 'Next', 'Seuraava'
+	l.store 'Previous', 'Edellinen'
 	l.store 'Users', 'Käyttäjät'
 	l.store 'Entries', 'Tilitapahtumat'
 	l.store 'Invoices', 'Laskut'
 	l.store 'Budgets', 'Budjetit'
 	l.store 'Accounts', 'Tilit'
 
-  # kirjautumisviestej�
+  # kirjautumisviestejä
   l.store 'You have been logged out.', 'Olet kirjautunut ulos.'
   
   #virheilmoituksia

@@ -5,9 +5,9 @@ class AccountsController < ApplicationController
 	before_filter :pages
 	def pages
 		@pages = {
-			'list' => "Tililuettelo", 
-			'ledger' => "Pääkirja", 
-			'balance' => "Tulos ja tase"
+			'list' => _("Account list"), 
+			'ledger' => _("General ledger"), 
+			'balance' => _("Income & balance sheet")
 			}
 	end
 

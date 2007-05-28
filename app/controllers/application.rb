@@ -14,8 +14,10 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
 	before_filter :check_fiscal_period_change
+	before_filter :check_lang_change
 
-	Localization.lang = 'fi'
+	#Localization.lang = 'fi'
+
 
   protected
     def authorized?
@@ -41,6 +43,12 @@ class ApplicationController < ActionController::Base
 
       redirect_back_or_default('')
     end
+
+		def check_lang_change
+			session[:lang] = 'fi' unless session[:lang]
+			session[:lang] = params[:lang] if params[:lang]
+			Localization.lang = session[:lang]
+		end
 
 		def check_fiscal_period_change
 			session[:fiscal_period_id] = params[:new_fiscal_period] if params[:new_fiscal_period]
