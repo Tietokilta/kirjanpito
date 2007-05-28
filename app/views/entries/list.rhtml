@@ -36,11 +36,3 @@
     :url => {:action => 'list'},
     :frequency => 2,
     :with => 'search' %>
-
-<%= observe_field 'add_entry',
-    :update => 'entries',
-    :before => "Element.show('spinner')",
-    :success => "Element.hide('spinner')",
-    :url => {:action => 'list'},
-    :frequency => 2,
-    :with => 'search' %>

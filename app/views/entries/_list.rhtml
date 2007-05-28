@@ -57,10 +57,8 @@
 			<%#= link_to image_tag('/images/show.gif'), :action => 'show', :id => entry %>
 			<%= link_to image_tag('/images/edit.gif'), :action => 'edit', :id => entry %>
 			<%= link_to_remote(image_tag('/images/cancel.gif'),
-					:update => "entries",
 					:url => { :action => 'destroy', :id => entry }, 
 					:confirm => _('Are you sure?'), 
-					:method => :post,
 					:before => "Element.show('spinner')",
 					:success => "Element.hide('spinner')") %>
 			</div>

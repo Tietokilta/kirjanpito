@@ -33,8 +33,13 @@ class EntriesController < ApplicationController
 
 		# If an AJAX call..
 		
-    if request.xml_http_request? and params[:action] != 'add_to_entries'
-      render :partial => "list", :layout => false
+    if request.xml_http_request?
+			case params[:action]
+				when 'add_to_entries'
+				when 'destroy'
+				else
+					render :partial => "list", :layout => false
+			end
     end
 	end
 
