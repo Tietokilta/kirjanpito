@@ -59,6 +59,7 @@ end
 %>
     <%=top_button(:logout, _("Logout")) %>
 		<%=top_button(:help, _("Help"))%>
+		<%=top_button(:fiscal_periods, _("Fiscal periods"))%>
 		<%=top_button(:users, _("Users")) if !@current_user.nil? && @current_user.level >= 2 %>
 		<%=top_button(:entries, _("Entries"))%>
 		<%#=top_button(:invoices, _("Invoices"))%>
