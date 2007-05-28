@@ -1,6 +1,5 @@
-Localization.define('en_US') { |l|
-}
 Localization.define('fi') do |l|
+	l.store "Sort by this field", 'Järjestä tämän kentän mukaan'
   l.store 'Collapse all', 'Pienennä kaikki'
   l.store 'Expand all', 'Suurenna kaikki'
   l.store 'Balance', 'Saldo'

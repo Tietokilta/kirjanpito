@@ -2,7 +2,7 @@
 
 <%=_ "Print"%>: <%= link_to _("General ledger"), :action => :ledger %>,
 <%= link_to _("Daily ledger"), {:controller => :entries, :action => :ledger} %>,
-<%= link_to _("Income & balance sheet"), :action => :balance %>
+<%= link_to _("Income & balance sheet"), :action => :balance %><br />
 
 <form name="sform" action="" style="display:inline;">
 <!--
@@ -15,14 +15,12 @@ select_tag("query",
 -->
 <%=_"Search"%>: <%=text_field_tag("search", params['search'] )%>
 </form>
-<p>
 
 <%= image_tag("spinner.gif",
     :align => 'middle',
     :border=> 0,
     :id => "spinner",
     :style=>"display: none;") %>
-</p>
 
 <%#= observe_field 'query',
     :update => 'table',

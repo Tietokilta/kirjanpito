@@ -23,7 +23,7 @@ module ApplicationHelper
 			:success => "Element.hide('spinner')"
 		}
 		html_options = {
-			:title => "Sort by this field",
+			:title => _("Sort by this field"),
 			:href => url_for(:action => 'list', :params => params.merge({:sort => key, :page => nil}))
 		}
 		link_to_remote(text, options, html_options)
