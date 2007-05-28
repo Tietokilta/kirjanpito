@@ -58,6 +58,7 @@ class EntriesController < ApplicationController
 		unless @latestEntry.nil?
 			@entry.receipt_number = @latestEntry.receipt_number + 1
 			@entry.fiscal_period_id = session[:fiscal_period_id]
+			@entry.date = @latestEntry.date
 			@entry.sum = @latestEntry.sum
 			@entry.description = @latestEntry.description
 			@entry.debet_account = @latestEntry.debet_account

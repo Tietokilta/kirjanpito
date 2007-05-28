@@ -1,5 +1,5 @@
 <h1><%=_"Listing users"%></h1>
-
+<p><%= link_to _('New user'), :action => 'new' %></p>
 <table>
 <tr>
 <% for column in User.columns
@@ -57,7 +57,3 @@
 
 <%= link_to _('Previous page'), { :page => @user_pages.current.previous } if @user_pages.current.previous %>
 <%= link_to _('Next page'), { :page => @user_pages.current.next } if @user_pages.current.next %> 
-
-<br />
-
-<%= link_to _('New user'), :action => 'new' %>

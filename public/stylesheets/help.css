@@ -2,3 +2,26 @@
   background-color: LightGrey;
   display: block;
 }
+
+.balance {
+    background-color: #772222;
+    color: white;
+}
+
+.income {
+    background-color: #777777;
+    color: white;
+}
+
+.sum {
+    background-color: #aaf;
+    color: #a00;
+}
+
+.sum_positive {
+    background-color: #aaffaa;
+}
+
+.sum_negative {
+    background-color: #ffaaaa;
+}

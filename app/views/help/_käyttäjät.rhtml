@@ -1,0 +1,12 @@
+<h2>K&auml;ytt&auml;j&auml;t</h2>
+<p>Vain p&auml;&auml;k&auml;ytt&auml;j&auml; (eli rahastonhoitaja) voi muokata k&auml;ytt&auml;ji&auml;. K&auml;ytt&auml;jien lis&auml;ys ja muokkaus tapahtuu valikosta l&ouml;ytyv&auml;n <%= link_to _('Users'), :controller => :users, :action => :list %>-kohdasta.</p>
+<p>Uusia k&auml;ytt&auml;ji&auml; luodaan valitsemalla <%= link_to _('New user'), :controller => :users, :action => :new %>. T&auml;m&auml; avaa n&auml;kym&auml;n jossa voidaan sy&ouml;tt&auml;&auml; uuden k&auml;ytt&auml;j&auml;n tiedot.</p>
+<p>K&auml;ytt&auml;j&auml;n tiedot ovat:</p>
+<ul>
+<li>K&auml;ytt&auml;j&auml;tunnus: tunnus jolla k&auml;ytt&auml;j&auml; kirjautuu. T&auml;m&auml;n t&auml;ytyy olla uniikki.</li>
+<li>S&auml;hk&ouml;posti: k&auml;ytt&auml;j&auml;n s&auml;hk&ouml;postiosoite.</li>
+<li>Taso: k&auml;ytt&auml;j&auml;n taso. Rahastonhoitajalla on oikeudet kaikkiin toimintoihin. Hallituksen j&auml;senell&auml; on vain oikeus katsella tilej&auml;, muttei muokata niit&auml;. Toimihenkil&ouml;ll&auml; on puolestaan vain oikeus n&auml;hd&auml; tiettyjen tilien tiedot.</li>
+<li>Salasana: salasana jolla k&auml;ytt&auml;j&auml; kirjautuu j&auml;rjestelm&auml;&auml;n.</li>
+</ul>
+<p>Toiminnallisuus joka rajoittaa toimihenkil&ouml;iden k&auml;ytt&ouml;oikeuksia vain tiettyihin tileihin ei ole toteutettu viel&auml;. He n&auml;kev&auml;t kaikkien tilien tiedot, mutta eiv&auml;t voi muokata mit&auml;&auml;n.</p>
+<p>K&auml;ytt&auml;jien tietoja voi kastella paperi-ikonia <%= image_tag '/images/show.gif'%> klikkaamalla. Niit&auml; voi muokata kyn&auml;-ikonia <%= image_tag '/images/edit.gif'%> ja ne voi tuhota ruksista <%= image_tag '/images/cancel.gif'%>.

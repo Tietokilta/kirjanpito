@@ -71,6 +71,7 @@ Localization.define('fi') do |l|
   # script/../config/../config/../app/views/users/new.rhtml
   l.store 'New User', 'Uusi käyttäjä'
   l.store 'New user', 'Luo uusi käyttäjä'
+  l.store 'User added!', 'Käyttaja lisätty!'
 
   # script/../config/../config/../app/views/users/list.rhtml
   l.store 'Listing users', 'Käyttäjälista'
@@ -84,7 +85,7 @@ Localization.define('fi') do |l|
   l.store 'Login', 'Käyttäjätunnus'
   l.store 'Email', 'Sähköposti'
   l.store 'Level', 'Taso'
-	l.store 'Offical', 'Toimihenkilö'
+	l.store 'Official', 'Toimihenkilö'
 	l.store 'Board member', 'Hallituslainen'
   l.store 'Treasurer', 'Rahastonhoitaja'
   l.store 'Password', 'Salasana'
@@ -102,6 +103,7 @@ Localization.define('fi') do |l|
   l.store 'Budget accounts', 'Budjetin tilit'
   l.store 'Amount', 'Summa'
   l.store 'Save', 'Tallenna'
+  l.store 'Edit budget description', 'Muokkaa budjetin selitettä'
 
   # script/../config/../config/../app/views/budgets/new.rhtml
   l.store 'New budget', 'Uusi budjetti'
@@ -146,6 +148,11 @@ Localization.define('fi') do |l|
 	l.store 'Budgets', 'Budjetit'
 	l.store 'Accounts', 'Tilit'
 
+  # kirjautumisviestej�
+  l.store 'You have been logged out.', 'Olet kirjautunut ulos.'
+  
+  #virheilmoituksia
+  l.store 'You are not authorized to do that!', 'Sinulla ei ole riittäviä oikeuksia toimintoon!'
 
 end
 	           

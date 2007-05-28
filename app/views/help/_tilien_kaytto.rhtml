@@ -1,0 +1,23 @@
+<h2>Tilit</h2>
+<p>Tilej&auml; k&auml;sitell&auml;&auml;n valikosta '<%= link_to _('Accounts'), :controller => :accounts, :action => :list %>'. Varmista ett&auml; oikea tilikausi on valittuna. K&auml;sitelt&auml;v&auml;&auml; tilikautta voit vaihtaa yl&auml;oikealla olevasta valikosta.</p>
+<p>Tileill&auml; on seuraavat ominaisuudet:
+<ul>
+<li>Nimi: tilin nimi. Samannimisi&auml; tilej&auml; voi olla monta yhdess&auml; tilikaudessa, mutta se ei ole suositeltavaa.</li>
+<li>Numero: tilin numero. T&auml;m&auml;n on oltava yksiselitteinen jokaisen tilikauden kohdalla.</li>
+<li>Selite: lis&auml;selitys tilin k&auml;yt&ouml;st&auml;. T&auml;h&auml;n voi laittaa selitys tilin k&auml;ytt&ouml;tarkoituksesta ja/tai selvent&auml;&auml; tilin nime&auml;.</li>
+<li>Tilikausi: tilikausi jolle tili kuuluu.</li>
+<li>Tilin tyyppi: tase tai tulostili. Tilit jaotellaan tilityypin mukaan tuloslaskelmaan ja taseeseen.</li>
+<li>Yl&auml;tili: t&auml;m&auml; on tilihierarkiaa varten. Tili muodostavat puurakenteen jossa vain lehtitileille voidaan kirjata tapahtumia. </li>
+</ul>
+N&auml;it&auml; tietoja muokkaamaan kyn&auml;-ikonia <%= image_tag '/images/edit.gif' %> klikkaamlla.
+</p>
+<p>Tilej&auml; voi lis&auml;t&auml; n&auml;kym&auml;n yl&auml;laidasta l&ouml;ytyv&auml;st&auml; <%= link_to _('New account'), :controller => :accounts, :action => :new %> linkist&auml;.</p>
+
+<h3>Sivun k&auml;yt&ouml;st&auml;</h3>
+<p>Tilikartta on v&auml;rikoodattu s.e. tulostiliryhm&auml;t ovat <span class="income">harmaalla</span>, tasetiliryhm&auml;t <span class="balance">punaisella</span> ja tiliryhm&auml;n summarivi <span class="sum">sinisell&auml;</span> taustalla. Tilien budjettitilanne on koodattu s.e. jos erotus on budjetin suhteen positiivinen niin se on <span class="sum_positive">vihre&auml;ll&auml;</span> ja jos negatiivinen niin <span class="sum_negative">punaisella</span> pohjalla. T&auml;m&auml; tarkoittaa ett&auml; esim. budjetinsa ylitt&auml;neiden tilien kohdalla erotus on punaisella.</p>
+<p>Tiliryhmi&auml; voi pienent&auml;&auml; klikkaamalla ryhm&auml; otsikkoa. Sivun yl&auml;p&auml;&auml;ss&auml; on my&ouml;s linkit joista voi pienent&auml;&auml; tai suurentaa kaikki tiliryhm&auml;t.</p>
+<p>Tilej&auml; voi hakea sivun yl&auml;p&auml;&auml;ss&auml; olevalla 'Etsi'-kent&auml;ll&auml;. Kun siihen sy&ouml;tet&auml;&auml;n numero tai teksti n&auml;ytet&auml;&auml;n vain ne tilit joitten numero tai nimi vastaavat t&auml;t&auml;.</p>
+
+<h3>Muu sivulta l&ouml;ytyv&auml; toiminnallisuus</h3>
+<p>Tilin tapahtumia p&auml;&auml;see katsomaan klikkaamalla tilin nime&auml; tai paperi-ikonia <%= image_tag '/images/show.gif' %>. T&auml;m&auml; avaa n&auml;kym&auml;n josta p&auml;&auml;see selaamaan tilille kirjattuja tapahtumia. Tilikartta toimii siis samalla p&auml;&auml;kirjana. T&auml;&auml;ll&auml; voi my&ouml;s muokata tilitapahtumia.</p>
+<p>Sivun yl&auml;laidasta l&ouml;ytyy my&ouml;s tilinp&auml;&auml;t&ouml;sasiakirjojen tulostuslinkit. Klikkaamalla haluamansa raportin nime&auml; ohjelma luo siit&auml; pdf-tiedoston jonka voi sitten tallentaa tai tulostaa.</p>

@@ -1,12 +1,3 @@
-<% for column in Budget.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> <%=h @budget.send(column.name) %>
-</p>
-<% end %>
-
-<%= link_to _('Edit'), :action => 'edit', :id => @budget %> |
-<%= link_to _('Back'), :action => 'list' %>
-
 <%
 @headings = Account.find(:all, :conditions => ['parent_id IS NULL AND fiscal_period_id = ?', @budget.fiscal_period_id])
 @headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
@@ -21,14 +12,22 @@ end
 	@selacc[a.account_id] = a
 }
 %>
+<%
+fiscal_period = FiscalPeriod.find(:first, :conditions => ['id = ?', @budget.send(:fiscal_period)])
+if fiscal_period
+    fiscal_period = fiscal_period.startdate.strftime("%d.%m.%Y") + " - " + fiscal_period.enddate.strftime("%d.%m.%Y")
+end
+%>
+<h1><%= fiscal_period %><br /><%=_(h(@budget.send(:description))) %> - <%=_"Budget accounts"%></h1>
+<p><%= link_to _('Edit budget description'), :action => 'edit', :id => @budget %> |
+<%= link_to _('Back'), :action => 'list' %></p>
 
-<h1><%=_"Budget accounts"%></h1>
 <% form_tag :action => 'update_accounts', :id => @budget do %>
 <%= error_messages_for 'budget' %>
 <%= submit_tag _('Save') %>
 <a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
 <a href="#" onClick="javascript:<% for h in @headings %>$('<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
-
+<% budget_sum = 0 %>
 <table style="width:auto;">
 <% @headings.each { |h| %>
   <tr>
@@ -49,6 +48,7 @@ end
   		if @selacc[a.id]
   			sel = true
   			sum = @selacc[a.id].sum
+  			budget_sum += sum
   		end
   		%>
     <% i += 1; %>
@@ -60,6 +60,9 @@ end
   	<% } %>
 	</tbody>
 <% } %>
+<tr class="sum_row">
+<td><%=_"Budget sum"%></td><td colspan="2"><%= budget_sum %>&euro;</td>
+</tr>
 </table>
 <%= submit_tag _('Save') %>
 <% end %>

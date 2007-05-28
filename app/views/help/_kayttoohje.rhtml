@@ -1,0 +1,8 @@
+<h2>K&auml;ytt&ouml;ohjeet</h2>
+<p>T&auml;&auml;lt&auml; l&ouml;yd&auml;t tarkat ohjeet kirjanpito-ohjelman k&auml;yt&ouml;st&auml;. N&auml;iss&auml; ohjeissa k&auml;sitell&auml;&auml;n vain ohjelman k&auml;ytt&ouml;&auml; eik&auml; kirjanpidon teoriaa mill&auml;&auml;n lailla.</p>
+<p>K&auml;tt&ouml;ohje on jaettu ohjelman valikon mukaan s.e. jokaisen valikon takaa l&ouml;tyv&auml; toiminnallisuus on selitetty omalla sivullaan.</p>
+<% for i in 1 .. (@subpages.size - 1) %>
+    <% @subpages[i].each {|link, name| %>
+    	<a href="kayttoohje?page=<%= i %>"><%= name %></a><br />
+    <% } %>
+<% end %>
