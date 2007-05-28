@@ -18,6 +18,8 @@
 								end
 						when "number"
 							"%04d" % account.number
+					   when "name"
+					       link_to h(account.send(column.name)), :action => 'show', :id => account
 						else
 							h account.send(column.name)
 				end %>

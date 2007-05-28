@@ -22,8 +22,8 @@ totc = 0
 	<td><%=e.description%></td>
     <td class="alignright"><%=number_to_currency(e.sum) %></td>
 	<td>
-	<%= link_to _('Edit'), :controller => :entries, :action => 'edit', :id => e.id %> |
-	<%= link_to _('Show'), :controller => :entries, :action => 'show', :id => e.id %>
+	<%= link_to_image '/images/edit.gif', :controller => :entries, :action => 'edit', :id => e.id %> |
+	<%= link_to_image '/images/show.gif', :controller => :entries, :action => 'show', :id => e.id %>
 	</td>
 </tr>
 <% } %>
