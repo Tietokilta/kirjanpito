@@ -24,7 +24,7 @@
 \newcommand{\rowcaption}{
 	<%=_"Date"%> & <%=_"Receipt"%> & <%=_"Description"%> &
 	\multicolumn{2}{l}{<%=_"Debit"%>} &
-	\multicolumn{2}{l}{<%=_"Credit"%>} & <%=_"Sum%%> \\ \hline}
+	\multicolumn{2}{l}{<%=_"Credit"%>} & <%=_"Sum"%> \\ \hline}
 
 \newcommand{\tablecaption}[1]{
 %	\multicolumn{8}{l}{\Large{\textbf{#1}}} \\
@@ -47,7 +47,7 @@
 	\multicolumn{2}{r}{\textsf{<%=_"Total"%>:}} & \textsf{#2} \\
 }
 
-\title{<%=_"Daily ledger"}
+\title{<%=_"Daily ledger"%>}
 \author{Tietokilta ry}
 \date{<%=@fp.startdate%> - <%=@fp.enddate%>}
 
