@@ -7,6 +7,7 @@ Localization.define('fi') do |l|
   l.store 'Budget', 'Budjetti'
   l.store 'Status', 'Tilanne'
   l.store 'Totals', 'Yhteensä'
+  l.store 'Grand total', 'Kaikki yhteensä'
   l.store 'New account', 'Luo uusi tili'
 	l.store 'Actions', 'Toiminnot'
 	l.store 'Back to top', 'Takaisin ylös'

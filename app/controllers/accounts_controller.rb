@@ -56,6 +56,11 @@ class AccountsController < ApplicationController
     #@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @headings.sort! {|a,b| a.id <=> b.id }
 
+		@last_balance_id = 1;
+
+		@headings.each {|h| @last_balance_id = h.id if h.type_id==2 && @last_balance_id < h.id }
+
+
 		sort = "number"
 		sort = params['sort'] if params['sort']
 		sqlsort = "number"

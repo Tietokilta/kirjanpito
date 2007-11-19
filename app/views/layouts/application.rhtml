@@ -22,7 +22,7 @@
 		<%=form_tag request.path, :method => :get %>
 		<%=_"Fiscal period"%>:
 		<%=select_tag "new_fiscal_period", 
-			FiscalPeriod.find(:all).collect{ |f|
+			FiscalPeriod.find(:all, :order => "id desc").collect{ |f|
 				"<option value='"+f.id.to_s+"'"+
 				(session[:fiscal_period_id] == f.id.to_s ? " selected='selected'" : "" )+
 				">"+f.startdate.year.to_s+"</option>"},

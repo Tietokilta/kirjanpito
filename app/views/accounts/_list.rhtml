@@ -2,6 +2,11 @@
 <a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
 <a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
 <% end %>
+<%
+total_bal = 0
+total_bud = 0
+%>
+<%=@last_balance_id %>
 <table cellspacing="0">
   <% for @heading in @headings
 		#next if @heading.type_id == 1
@@ -33,6 +38,10 @@
 		
 		<%= render :partial => 'list_account' %>
 		<% end %>
+		<%
+		total_bal += @account_sums[@heading.id][:balance]
+		total_bud += @account_sums[@heading.id][:budget]
+		%>
 		<tr class="sum_row">
 		<td><%=_"Totals"%></td>
 		<td></td>
@@ -42,6 +51,17 @@
 		<td><%=number_to_currency @account_sums[@heading.id][:balance] - @account_sums[@heading.id][:budget]%></td>
 		<td></td>
 		</tr>
+		<% if @heading.id == @last_balance_id %>
+		<tr class="sum_row grand_sum">
+		<td><%=_"Grand total"%></td>
+		<td></td>
+		<td></td>
+		<td><%=number_to_currency total_bal%></td>
+		<td><%=number_to_currency total_bud%></td>
+		<td><%=number_to_currency total_bal - total_bud%></td>
+		<td></td>
+		</tr>
+  	<% end %>
     </tbody>
   <% end %>
 </table>

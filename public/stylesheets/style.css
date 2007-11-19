@@ -144,6 +144,11 @@ tr.sum_row {
 	color: 							#a00;
 	text-align: 				right;
 }
+tr.grand_sum td {
+  background-color:   #bbf;
+	color: 							#500;
+	font-size:					110%;
+}
 
 /**
  *  Plain table styles
