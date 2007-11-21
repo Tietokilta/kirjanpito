@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
 	def pages
 		@pages = {
 			'list' => _("Account list"), 
+			'history' => _("Account history"), 
 			'ledger' => _("General ledger"), 
 			'balance' => _("Income & balance sheet")
 			}
@@ -39,6 +40,92 @@ class AccountsController < ApplicationController
 		@options_for_rtex[:filename] = 'balances.pdf'
 
 		@fp = FiscalPeriod.find session[:fiscal_period_id] 
+
+	end
+
+	def history
+
+		sql = "
+			SELECT s.fiscal_period_id, s.number, s.name, s.parent_id, sum(deb) as total, b.description as bdesc, ba.sum as budget FROM 
+			(SELECT a.fiscal_period_id, a.id, a.number, a.name, a.parent_id, -sum(ed.sum) as deb
+				FROM accounts a
+				LEFT JOIN entries ed ON a.id = ed.debet_account_id
+				GROUP BY a.id
+				UNION
+				SELECT a.fiscal_period_id, a.id, a.number, a.name, a.parent_id, sum(ec.sum) as cred
+				FROM accounts a
+				LEFT JOIN entries ec ON a.id = ec.credit_account_id
+				GROUP BY a.id
+			) as s
+			INNER JOIN budget_accounts ba ON s.id = ba.account_id
+			INNER JOIN budgets b ON ba.budget_id = b.id
+			GROUP by s.id, ba.id
+			ORDER by s.number, fiscal_period_id, ba.id"
+
+		@data = ActiveRecord::Base.connection.select_all(sql)
+		@tmp_accounts = Hash.new
+		
+
+		@years = Hash.new
+
+		@data.each { |x|
+			num = x["number"].to_i
+			@tmp_accounts[num] = {:number => num, :name => x["name"]} unless @tmp_accounts[num]
+			@tmp_accounts[num][x["fiscal_period_id"] + " " + x["bdesc"]] = x["budget"]
+			@tmp_accounts[num][x["fiscal_period_id"] + " total"] = x["total"]
+			
+			yr = x["fiscal_period_id"]
+			@years[yr] = Array.new unless @years[yr]
+			@years[yr].push x["bdesc"] unless @years[yr].include? x["bdesc"]
+		}
+		@accounts = Hash.new
+		@account_sums = Hash.new
+		@final_sum = Hash.new
+		@years.each { |y,b|
+			b.each { |bb|
+				@final_sum[y + " " + bb] = 0
+			}
+			@final_sum[y + " total"] = 0
+		}
+
+		@tmp_accounts.each { |num,x|
+			#parent = x["parent_id"].to_i.modulo 10000;
+			parent = num / 100
+			@accounts[parent] = Array.new unless @accounts[parent]
+			@accounts[parent].push x	
+			
+			unless @account_sums[parent] then
+				@account_sums[parent] = Hash.new
+				@years.each { |y,b|
+					b.each { |bb|
+						@account_sums[parent][y + " " + bb] = 0
+					}
+					@account_sums[parent][y + " total"] = 0
+				}
+			end
+			x.each { |a,b|
+				next if a == :number || a == :name
+				@account_sums[parent][a] += b.to_f
+				@final_sum[a] += b.to_f
+			}
+		}
+
+		@accounts.each { |a|
+			next unless @accounts[a[0]]
+			
+			@accounts[a[0]].sort! {|a,b|
+				a[:number] <=> b[:number]
+			}
+		}
+    
+		@headings = Account.find(:all, :conditions => ['parent_id IS NULL AND type_id = 2'], :group => 'name')
+    #@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
+    @headings.sort! {|a,b| a.number <=> b.number }
+
+    if request.xml_http_request?
+      render :partial => "history", :layout => false
+    end
+
 
 	end
 

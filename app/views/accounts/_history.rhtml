@@ -1,0 +1,67 @@
+<% if !@headings.nil? && @headings.length > 0 %>
+<a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').hide();<%end%>"><%=_"Collapse all"%></a>
+<a href="#" onclick="javascript:<% for h in @headings %>$('t<%= h.id %>').show();<%end%>"><%=_"Expand all"%></a>
+<% end %>
+<table cellspacing="0">
+  <% for @heading in @headings
+		#next if @heading.type_id == 1
+	%>
+  <tr>
+  <td onclick="javascript:$('t<%= @heading.id %>').toggle()" class="heading<%=" balance" if @heading.type_id == 1%>" colspan="<%=@years.size*2+3 %>">
+      <%=  @heading.name.to_s + ": " + @heading.description.to_s %>
+  </td>
+  </tr>
+  <tbody id="t<%= @heading.id %>">
+	<tr>
+		<th><%=_"Number"%></th>
+		<th><%=_"Description"%></th>
+		<% @years.each { |y,b|
+			b.each { |bb| %>
+		<th><%=y%> <%=bb%></th>
+		<% } %>
+		<th><%=y%> toteuma</th>
+		<% } %>
+	</tr>
+
+	<%acc= @accounts[@heading.id.modulo 10000]
+	prevnum = 0
+	first=1
+	if (acc) then
+	acc.each { |a|
+	%>
+	<tr>
+			<td><%=a[:number]%></td>
+			<td><%=a[:name]%></td>
+			<% @years.each { |y,b|
+				b.each { |bb| %>
+			<td><%=number_to_currency a[y.to_s + " " + bb]%></td>
+			<% } %>
+			<td><%=number_to_currency a[y + " total"]%></td>
+			<% } %>
+	</tr>
+	<% } end %>
+	<tr class="sum_row">
+	<td><%=_"Totals"%></td>
+	<td></td>
+			<% @years.each { |y,b|
+				b.each { |bb| %>
+			<td><%=number_to_currency @account_sums[@heading.id.modulo 10000][y + " " + bb]%></td>
+			<% } %>
+			<td><%=number_to_currency @account_sums[@heading.id.modulo 10000][y + " total"]%></td>
+			<% } %>
+	</tr>
+  </tbody>
+  <% end %>
+	<tbody>
+	<tr class="sum_row grand_sum">
+	<td><%=_"Grand total"%></td>
+	<td></td>
+		<% @years.each { |y,b|
+			b.each { |bb| %>
+		<td><%=number_to_currency @final_sum[y + " " + bb]%></td>
+		<% } %>
+		<td><%=number_to_currency @final_sum[y + " total"]%></td>
+		<% } %>
+	</tr>
+	</tbody>
+</table>

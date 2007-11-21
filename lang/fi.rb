@@ -15,12 +15,17 @@ Localization.define('fi') do |l|
   # script/../config/../config/../app/views/accounts/list.rhtml
   l.store 'Listing accounts', 'Tililuettelo'
   l.store 'Account list', 'Tililuettelo'
+  l.store 'Account history', 'Tilihistoria'
   l.store 'General ledger', 'Pääkirja'
   l.store 'Daily ledger', 'Päiväkirja'
   l.store 'Income & balance sheet', 'Tulos ja tase'
   l.store 'Select fiscal period', 'Valitse tilikausi'
   l.store 'Search', 'Etsi'
   l.store 'Print', 'Tulosta'
+
+	l.store 'Warning', 'Varoitus'
+	l.store 'This data is unverified and might contain strange errors.', 
+		'Näitä tietoja ei ole tarkistettu ja ne saattavat sisältää outoja virheitä.'
 
   # script/../config/../config/../app/views/accounts/autocomplete_type_id.rhtml
 
