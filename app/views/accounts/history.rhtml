@@ -1,7 +1,40 @@
 <h1><%=_ "Account history"%></h1>
 
+<p>
 <b><%=_"Warning"%></b>: 
 <%=_"This data is unverified and might contain strange errors."%>
+</p>
+
+<form name="sform" id="options" action="" style="display:inline;">
+<%=_"Select fiscal period"%>:<br />
+<% @allyears.each { |y| %>
+<input type="checkbox" name="year[<%=y%>]" value="1" <%='checked="checked"' if @years.include? y%> />
+<input type="hidden" name="year[<%=y%>]" value="0" /><%=y%>
+<% } %>
+
+<br />
+<%=_"Search"%>: <%=text_field_tag("search", params['search'] )%>
+</form>
+
+<%= image_tag("spinner.gif",
+    :align => 'middle',
+    :border=> 0,
+    :id => "spinner",
+    :style=>"display: none;") %>
+
+
+<%#= observe_field 'query',
+    :update => 'table',
+    :before => "Element.show('spinner')",
+    :success => "Element.hide('spinner')",
+    :url => {:action => 'list'},
+    :with => 'query' %>
+<%= observe_form 'options',
+    :update => 'table',
+    :before => "Element.show('spinner')",
+    :success => "Element.hide('spinner')",
+    :url => {:action => 'history'},
+    :frequency => 2 %>
 
 <div id="table">
     <%= render :partial => "history" %>

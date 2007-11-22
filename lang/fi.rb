@@ -23,6 +23,7 @@ Localization.define('fi') do |l|
   l.store 'Search', 'Etsi'
   l.store 'Print', 'Tulosta'
 
+	l.store 'actual', 'Toteuma'
 	l.store 'Warning', 'Varoitus'
 	l.store 'This data is unverified and might contain strange errors.', 
 		'Näitä tietoja ei ole tarkistettu ja ne saattavat sisältää outoja virheitä.'

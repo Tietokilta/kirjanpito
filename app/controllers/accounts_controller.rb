@@ -62,30 +62,31 @@ class AccountsController < ApplicationController
 			GROUP by s.id, ba.id
 			ORDER by s.number, fiscal_period_id, ba.id"
 
-		@data = ActiveRecord::Base.connection.select_all(sql)
 		@tmp_accounts = Hash.new
-		
+		@allyears = SortedSet.new
 
-		@years = Hash.new
-
-		@data.each { |x|
+		srch = params["search"]
+		srch.downcase! if srch
+		ActiveRecord::Base.connection.select_all(sql).each { |x|
+			if srch then
+				next unless x["number"].include?(srch) || x["name"].downcase.include?(srch)
+			end
 			num = x["number"].to_i
-			@tmp_accounts[num] = {:number => num, :name => x["name"]} unless @tmp_accounts[num]
-			@tmp_accounts[num][x["fiscal_period_id"] + " " + x["bdesc"]] = x["budget"]
-			@tmp_accounts[num][x["fiscal_period_id"] + " total"] = x["total"]
-			
 			yr = x["fiscal_period_id"]
-			@years[yr] = Array.new unless @years[yr]
-			@years[yr].push x["bdesc"] unless @years[yr].include? x["bdesc"]
+			@tmp_accounts[num] = {:number => num, :name => x["name"]} unless @tmp_accounts[num]
+			@tmp_accounts[num][yr + " " + _("actual")] = x["total"]
+			@tmp_accounts[num][yr + " " + x["bdesc"]] = x["budget"]
+			
+			@allyears << yr + " " + _("actual")
+			@allyears << yr + " " + x["bdesc"]
 		}
+
+
 		@accounts = Hash.new
 		@account_sums = Hash.new
 		@final_sum = Hash.new
-		@years.each { |y,b|
-			b.each { |bb|
-				@final_sum[y + " " + bb] = 0
-			}
-			@final_sum[y + " total"] = 0
+		@allyears.each { |y|
+			@final_sum[y] = 0
 		}
 
 		@tmp_accounts.each { |num,x|
@@ -96,11 +97,8 @@ class AccountsController < ApplicationController
 			
 			unless @account_sums[parent] then
 				@account_sums[parent] = Hash.new
-				@years.each { |y,b|
-					b.each { |bb|
-						@account_sums[parent][y + " " + bb] = 0
-					}
-					@account_sums[parent][y + " total"] = 0
+				@allyears.each { |y|
+					@account_sums[parent][y] = 0
 				}
 			end
 			x.each { |a,b|
@@ -117,10 +115,25 @@ class AccountsController < ApplicationController
 				a[:number] <=> b[:number]
 			}
 		}
+
+
+		if params['year'] then
+			@years = Array.new
+			params['year'].each { |y,v|
+				next unless v=="1"
+				@years.push y
+			}
+		else
+			@years = @allyears
+		end
+
+		@years.sort! unless @years.is_a? Set
     
 		@headings = Account.find(:all, :conditions => ['parent_id IS NULL AND type_id = 2'], :group => 'name')
     #@headings.sort! {|a,b| a.smallest_child <=> b.smallest_child }
     @headings.sort! {|a,b| a.number <=> b.number }
+
+		@headings.reject! {|a| a.name == "Kulttuuritoiminta ja liikunta" }
 
     if request.xml_http_request?
       render :partial => "history", :layout => false

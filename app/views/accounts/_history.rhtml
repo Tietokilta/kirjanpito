@@ -15,11 +15,8 @@
 	<tr>
 		<th><%=_"Number"%></th>
 		<th><%=_"Description"%></th>
-		<% @years.each { |y,b|
-			b.each { |bb| %>
-		<th><%=y%> <%=bb%></th>
-		<% } %>
-		<th><%=y%> toteuma</th>
+		<% @years.each { |y| %>
+		<th><%=y%></th>
 		<% } %>
 	</tr>
 
@@ -28,26 +25,21 @@
 	first=1
 	if (acc) then
 	acc.each { |a|
-	%>
-	<tr>
+ 		classAttr = cycle("class=\"odd_row\"", "class=\"even_row\"") -%>
+   <tr  <%= classAttr %> id="account_<%=a[:number]%>">
+
 			<td><%=a[:number]%></td>
 			<td><%=a[:name]%></td>
-			<% @years.each { |y,b|
-				b.each { |bb| %>
-			<td><%=number_to_currency a[y.to_s + " " + bb]%></td>
-			<% } %>
-			<td><%=number_to_currency a[y + " total"]%></td>
+			<% @years.each { |y| %>
+			<td><%=number_to_currency a[y]%></td>
 			<% } %>
 	</tr>
 	<% } end %>
 	<tr class="sum_row">
 	<td><%=_"Totals"%></td>
 	<td></td>
-			<% @years.each { |y,b|
-				b.each { |bb| %>
-			<td><%=number_to_currency @account_sums[@heading.id.modulo 10000][y + " " + bb]%></td>
-			<% } %>
-			<td><%=number_to_currency @account_sums[@heading.id.modulo 10000][y + " total"]%></td>
+			<% @years.each { |y,b| %>
+			<td><%=number_to_currency @account_sums[@heading.id.modulo 10000][y] if @account_sums[@heading.id.modulo 10000]%></td>
 			<% } %>
 	</tr>
   </tbody>
@@ -56,11 +48,8 @@
 	<tr class="sum_row grand_sum">
 	<td><%=_"Grand total"%></td>
 	<td></td>
-		<% @years.each { |y,b|
-			b.each { |bb| %>
-		<td><%=number_to_currency @final_sum[y + " " + bb]%></td>
-		<% } %>
-		<td><%=number_to_currency @final_sum[y + " total"]%></td>
+		<% @years.each { |y| %>
+		<td><%=number_to_currency @final_sum[y]%></td>
 		<% } %>
 	</tr>
 	</tbody>

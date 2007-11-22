@@ -129,6 +129,7 @@ td {
   margin:             0px;
   border-left:        1px solid;
   border-color:       #000;
+	white-space: nowrap;
 }
 
 tr.even_row {
