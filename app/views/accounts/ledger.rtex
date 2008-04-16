@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, <%=_"General ledger"%> <%=@fp.startdate.year%>}
+\markright{Tietokilta ry, <%=_"General ledger"%> <%=@fp.startdate%> - <%=@fp.enddate%>}
 
 \newcommand{\account}[1]{
 	\begin{longtable}{lrp{8cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lrr}

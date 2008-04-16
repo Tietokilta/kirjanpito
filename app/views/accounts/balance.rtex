@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, <%=_ "Income and balance sheet"%> <%=@fp.startdate.year%>}
+\markright{Tietokilta ry, <%=_ "Income and balance sheet"%> <%=@fp.startdate%> - <%=@fp.enddate%>}
 
 
 \title{<%=_"Income and balance sheet"%>}
@@ -53,6 +53,10 @@ totalbal += @account_sums[h.id][:balance]
 \section{Tase}
 <%
 
+win=totalbal
+
+totalbal=0
+
 @headings.each { |h|
 	next if h.type_id != 1
 
@@ -63,10 +67,16 @@ totalbal += @account_sums[h.id][:balance]
 	@accounts[h.id].each { |a| 
 		next unless @account_balance[a.id]
 		%><%=l "%04d" % a.number + " " + a.name%> & 
-		<%="%0.02f" % @account_balance[a.id] if @account_balance[a.id]%> \\<%
+		<%="%0.02f" % @account_balance[a.id].abs if @account_balance[a.id]%> \\<%
+
+		if (a.number == 3050) then
+			%><%=l "%04d" % 3060 + " " + _("Net income (loss)") %> & 
+			<%="%0.02f" % win %> \\<%
+			@account_sums[h.id][:balance] += win
+		end
 	}
 %>
-\textbf{<%=_"Total"%>} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance] %>} \\
+\textbf{<%=_"Total"%>} & \textbf{<%="%0.02f" % @account_sums[h.id][:balance].abs %>} \\
 \end{longtable}
 <%
 totalbal += @account_sums[h.id][:balance]
