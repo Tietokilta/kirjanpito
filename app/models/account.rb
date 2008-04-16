@@ -29,7 +29,7 @@ class Account < ActiveRecord::Base
   end 
 
 	def all_entries(startdate, enddate)
-		data = Entry.find(:all, :conditions => ['(credit_account_id = ? OR debet_account_id = ?) AND (date BETWEEN ? AND ?)', self.id, self.id, startdate, enddate], :order => 'date, receipt_number', :include => ['credit_account', 'debet_account'])
+		data = Entry.find(:all, :conditions => ['(credit_account_id = ? OR debet_account_id = ?) AND (date BETWEEN ? AND ?)', self.id, self.id, startdate.strftime("%Y-%m-%d"), enddate.strftime("%Y-%m-%d")], :order => 'date, receipt_number', :include => ['credit_account', 'debet_account'])
 
 	
 		return data

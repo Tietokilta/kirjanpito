@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
 	def self.getbalances(fiscal_period_id, startdate, enddate)
 
 
-		cond = ['fiscal_period_id = ? AND date BETWEEN ? AND ?', fiscal_period_id, startdate, enddate] if startdate and enddate
+		cond = ['fiscal_period_id = ? AND date BETWEEN ? AND ?', fiscal_period_id, startdate.strftime("%Y-%m-%d"), enddate.strftime("%Y-%m-%d")] if startdate and enddate
 		
 		cond ||=  ['fiscal_period_id = ?', fiscal_period_id]
 
