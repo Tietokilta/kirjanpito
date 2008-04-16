@@ -28,8 +28,8 @@ class Account < ActiveRecord::Base
     errors.add_to_base('The given fiscal period does not exist.') if fiscal_period_id.nil?
   end 
 
-	def all_entries
-		data = Entry.find(:all, :conditions => ['credit_account_id = ? OR debet_account_id = ?', self.id, self.id], :order => 'date, receipt_number', :include => ['credit_account', 'debet_account'])
+	def all_entries(startdate, enddate)
+		data = Entry.find(:all, :conditions => ['(credit_account_id = ? OR debet_account_id = ?) AND (date BETWEEN ? AND ?)', self.id, self.id, startdate, enddate], :order => 'date, receipt_number', :include => ['credit_account', 'debet_account'])
 
 	
 		return data

@@ -31,16 +31,27 @@ class AccountsController < ApplicationController
 
 		@accounts = Account.find(:all, :conditions => ['accounts.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'number')
 		@fp = FiscalPeriod.find session[:fiscal_period_id] 
+		
+		@startdate = Date.parse(params[:start]) if params[:start]
+		@enddate = Date.parse(params[:end]) if params[:end]
+
+		@startdate ||= @fp.startdate
+		@enddate ||= @fp.enddate
+
 	end
 
 	def balance
+		@fp = FiscalPeriod.find session[:fiscal_period_id] 
+		@startdate = Date.parse(params[:start]) if params[:start]
+		@enddate = Date.parse(params[:end]) if params[:end]
+
+		@startdate ||= @fp.startdate
+		@enddate ||= @fp.enddate
+		
 		list
 		@options_for_rtex = Hash.new
 		@options_for_rtex[:preprocess] = true
 		@options_for_rtex[:filename] = 'balances.pdf'
-
-		@fp = FiscalPeriod.find session[:fiscal_period_id] 
-
 	end
 
 	def history
@@ -186,7 +197,7 @@ class AccountsController < ApplicationController
 			@tmp_accounts = Account.find(:all, :conditions => ['parent_id IS NOT NULL AND fiscal_period_id = ?', @fiscal_period_id], :order => sqlsort, :include => :budget_accounts)
 		end
 		
-		@account_balance = Entry.getbalances session[:fiscal_period_id]
+		@account_balance = Entry.getbalances session[:fiscal_period_id], @startdate, @enddate
 
     @accounts = Hash.new
 		@account_sums = Hash.new

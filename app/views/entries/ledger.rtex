@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, <%=_"Daily ledger"%> <%=@fp.startdate%> - <%=@fp.enddate%>}
+\markright{Tietokilta ry, <%=_"Daily ledger"%> <%=@startdate%> - <%=@enddate%>}
 
 \newcommand{\account}[1]{
 	\begin{longtable}{lrp{6cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lr@{\extracolsep{3pt}}lr}
@@ -49,7 +49,7 @@
 
 \title{<%=_"Daily ledger"%>}
 \author{Tietokilta ry}
-\date{<%=@fp.startdate%> - <%=@fp.enddate%>}
+\date{<%=@startdate%> - <%=@enddate%>}
 
 \begin{document}
 

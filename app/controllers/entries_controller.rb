@@ -14,8 +14,15 @@ class EntriesController < ApplicationController
 		@options_for_rtex[:preprocess] = true
 		@options_for_rtex[:filename] = 'dailyledger.pdf'
 
-		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ?', session[:fiscal_period_id]], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
+		@startdate = Date.parse(params[:start]) if params[:start]
+		@enddate = Date.parse(params[:end]) if params[:end]
+		
 		@fp = FiscalPeriod.find session[:fiscal_period_id] 
+
+		@startdate ||= @fp.startdate
+		@enddate ||= @fp.enddate
+
+		@entries = Entry.find(:all, :conditions => ['entries.fiscal_period_id = ? AND entries.date BETWEEN ? AND ?', session[:fiscal_period_id], @startdate, @enddate], :order => 'date, receipt_number, entries.description', :include => ['credit_account', 'debet_account'])
 	end
 
   def list

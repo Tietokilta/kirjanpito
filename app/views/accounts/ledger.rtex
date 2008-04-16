@@ -12,7 +12,7 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, <%=_"General ledger"%> <%=@fp.startdate%> - <%=@fp.enddate%>}
+\markright{Tietokilta ry, <%=_"General ledger"%> <%=@startdate%> - <%=@enddate%>}
 
 \newcommand{\account}[1]{
 	\begin{longtable}{lrp{8cm}@{\extracolsep{\fill}}r@{\extracolsep{3pt}}lrr}
@@ -52,7 +52,7 @@
 
 \title{<%=_"General ledger"%>}
 \author{Tietokilta ry}
-\date{<%=@fp.startdate%> - <%=@fp.enddate%>}
+\date{<%=@startdate%> - <%=@enddate%>}
 
 \begin{document}
 
@@ -75,7 +75,7 @@ end
 	monthc=0
 	monthd=0
 	count=0
-	acc.all_entries.each { |e| 
+	acc.all_entries(@startdate, @enddate).each { |e| 
 		if e.debet_account_id != acc.id then
 			eacc = e.debet_account
 			cred = e.sum

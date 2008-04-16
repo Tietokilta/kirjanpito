@@ -12,12 +12,12 @@
 \usepackage{anysize}
 \marginsize{1cm}{1cm}{1cm}{1cm}
 
-\markright{Tietokilta ry, <%=_ "Income and balance sheet"%> <%=@fp.startdate%> - <%=@fp.enddate%>}
+\markright{Tietokilta ry, <%=_ "Income and balance sheet"%> <%=@startdate%> - <%=@enddate%>}
 
 
 \title{<%=_"Income and balance sheet"%>}
 \author{Tietokilta ry}
-\date{<%=@fp.startdate%> - <%=@fp.enddate%>}
+\date{<%=@startdate%> - <%=@enddate%>}
 
 \begin{document}
 
