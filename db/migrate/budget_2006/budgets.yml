@@ -1,9 +1,0 @@
-2006-1:
-  id: 200601
-  fiscal_period_id: 2006
-  description: Arvio
-
-2006-2:
-  id: 200602
-  fiscal_period_id: 2006
-  description: Lisäarvio
