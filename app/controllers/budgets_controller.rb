@@ -15,7 +15,7 @@ class BudgetsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @budget_pages, @budgets = paginate :budgets, :per_page => 10, :order => "fiscal_period_id asc, description"
+    @budgets = Budget.paginate :page => params[:page], :per_page => 10, :order => "fiscal_period_id asc, description"
   end
 
   def show

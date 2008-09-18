@@ -9,7 +9,7 @@ class AccountTypesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @account_type_pages, @account_types = paginate :account_types, :per_page => 10
+    @account_types = AccountType.paginate :page => params[:page], :per_page => 10
   end
 
   def show

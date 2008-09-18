@@ -9,7 +9,7 @@ class BudgetAccountsController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @budget_account_pages, @budget_accounts = paginate :budget_accounts, :per_page => 10
+    @budget_accounts = BudgetAccount.paginate :page => params[:page], :per_page => 10
   end
 
   def show

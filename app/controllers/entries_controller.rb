@@ -33,7 +33,7 @@ class EntriesController < ApplicationController
 		order = params[:sort] if params[:sort]
 	  order = "entries.description" if order == "description"
 
-    @entry_pages, @entries = paginate :entries, {:per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]}
+    @entries = Entry.paginate :page => params[:page], :per_page => 100, :conditions => conditions, :order => order, :include => [:credit_account, :debet_account]
 		
 		# Call new entry for the instant entry
 		new

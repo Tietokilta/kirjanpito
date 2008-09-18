@@ -34,16 +34,15 @@
   <% end %>
     <td>
     <div>
-    <%= link_to_image '/images/edit.gif', :action => 'show', :id => budget %>
-    <%= link_to_image '/images/cancel.gif', { :action => 'destroy', :id => budget }, :confirm => _('Are you sure?'), :method => :post %>
+    <%= link_to image_tag('/images/edit.gif'), :action => 'show', :id => budget %>
+    <%= link_to image_tag('/images/cancel.gif'), { :action => 'destroy', :id => budget }, :confirm => _('Are you sure?'), :method => :post %>
     </div>
     </td>
   </tr>
 	<% end %>
 </table>
 
-<%= link_to _('Previous page'), { :page => @budget_pages.current.previous } if @budget_pages.current.previous %>
-<%= link_to _('Next page'), { :page => @budget_pages.current.next } if @budget_pages.current.next %> 
+<%= will_paginate @budgets %>
 
 <br />
 

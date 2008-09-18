@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def list
-    @user_pages, @users = paginate :users, :per_page => 20, :order => :login
+    @users = User.paginate :page => params[:page], :per_page => 20, :order => :login
   end
 
   # render new.rhtml

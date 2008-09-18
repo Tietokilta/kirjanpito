@@ -1,25 +1,6 @@
 <div id="entries">
 	<%#=pagination_links (@entry_pages, :window_size => 5, :params => params)%>
-
-	<% 	prevp=0
-			pagination_links_each(@entry_pages, :window_size => 5, :link_to_current_page => true) { |p|
-
-		if ((prevp-p).abs > 2)
-			%> ... <%
-		end
-
-		if params[:page].to_i == p then
-			%>&nbsp;<%=link_to "&laquo;", { :params => params.merge(:page => p-1) } if @entry_pages[p].previous %> <%
-			%><%=p%> <%
-			%><%=link_to "&raquo;", { :params => params.merge(:page => p+1) } if @entry_pages[p].next %>&nbsp; <%
-
-		else
-			%><%=link_to p, { :params => params.merge(:page => p) }%> <%
-		end
-		prevp = p
-	}%>
-	<br />
-
+	<%= will_paginate @entry_pages %>
 
 
 	<%#= link_to _('New entry'), :action => 'new' %>

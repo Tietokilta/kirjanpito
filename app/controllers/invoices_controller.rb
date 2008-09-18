@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @invoice_pages, @invoices = paginate :invoices, :per_page => 10
+    @invoices = Invoice.paginate  :page => params[:page], :per_page => 10
   end
 
   def show
