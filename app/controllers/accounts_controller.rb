@@ -283,7 +283,7 @@ class AccountsController < ApplicationController
       @type = @type.id
     end
 
-    @parent = Account.find(:first, :conditions => ['name LIKE ?', params[:account][:parent_id][5..-1]])
+    @parent = Account.find(:first, :conditions => ['name LIKE ? and fiscal_period_id = ?', params[:account][:parent_id][5..-1], session[:fiscal_period_id]])
     if @parent
       @parent = @parent.id
     end
@@ -318,7 +318,7 @@ class AccountsController < ApplicationController
       @type = @type.id
     end
 
-    @parent = Account.find(:first, :conditions => ['name LIKE ?', params[:account][:parent_id][5..-1]])
+    @parent = Account.find(:first, :conditions => ['name LIKE ? and fiscal_period_id = ?', params[:account][:parent_id][5..-1], session[:fiscal_period_id]])
     if @parent
       @parent = @parent.id
     end
@@ -350,7 +350,7 @@ class AccountsController < ApplicationController
 
   def autocomplete_parent_id
       @parent_ids = Account.find(:all,
-        :conditions => [ 'number LIKE ? OR name LIKE ?', '%'+params[:account][:parent_id]+'%', '%'+params[:account][:parent_id]+'%'] )
+        :conditions => [ '(number LIKE ? OR name LIKE ?) and fiscal_period_id = ?', '%'+params[:account][:parent_id]+'%', '%'+params[:account][:parent_id]+'%', session[:fiscal_period_id]] )
       @parent_id = params[:account][:parent_id]
       render :layout => false
   end
