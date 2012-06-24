@@ -6,9 +6,10 @@
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 #RAILS_GEM_VERSION = '1.2.3' unless defined? RAILS_GEM_VERSION
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.14' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
+require 'thread'
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
@@ -22,6 +23,8 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
+
+  config.i18n.default_locale = :fi
 
   # Force all environments to use the same logger level 
   # (by default production uses :info, the others :debug)
