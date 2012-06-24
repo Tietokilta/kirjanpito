@@ -30,6 +30,8 @@ Rails::Initializer.run do |config|
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
 
+  config.gem 'rtex'
+
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake db:sessions:create')
   config.action_controller.session_store = :active_record_store
