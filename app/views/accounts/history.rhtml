@@ -8,8 +8,8 @@
 <form name="sform" id="options" action="" style="display:inline;">
 <%=_"Select fiscal period"%>:<br />
 <% @allyears.each { |y| %>
-<input type="checkbox" name="year[<%=y%>]" value="1" <%='checked="checked"' if @years.include? y%> />
 <input type="hidden" name="year[<%=y%>]" value="0" /><%=y%>
+<input type="checkbox" name="year[<%=y%>]" value="1" <%='checked="checked"' if @years.include? y%> />
 <% } %>
 
 <br />
