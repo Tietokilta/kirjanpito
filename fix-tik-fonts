@@ -3,6 +3,7 @@
 #Run as www-data
 
 mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsl1000c
+mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecsl1000
 mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecbx1000
 mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecrm1000
 mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecbx1200
